@@ -1,23 +1,46 @@
 import 'package:go_router/go_router.dart';
 import 'package:trade_fashion/features/auth/presentation/views/login_view.dart';
+import 'package:trade_fashion/features/auth/presentation/views/register_view.dart';
+import 'package:trade_fashion/features/auth/presentation/views/reset_password_view.dart';
+import 'package:trade_fashion/features/auth/presentation/views/verify_email_view.dart';
 import 'package:trade_fashion/features/splash/presentation/views/splash_view.dart';
 
 class AppRouter {
   static const kLoginView = '/loginView';
+  static const kRegisterView = '/registerView';
+  static const kResetPassView = '/ResetPasswordView';
+  static const kEmailVerifyCodeView = '/VerifyEmailView';
   static const kHomeViewPath = '/homeView';
   static const kBookDetailsViewPath = '/bookDetailsView';
   static const kSearchViewBodyPath = '/searchViewBody';
   static final router = GoRouter(
     routes: [
-
       GoRoute(
         path: '/',
         builder: (context, state) => const SplashView(),
       ),
       GoRoute(
-          path: kLoginView,
+        path: kLoginView,
         builder: (context, state) {
-           return const LoginView();
+          return const LoginView();
+        },
+      ),
+      GoRoute(
+        path: kRegisterView,
+        builder: (context, state) {
+          return const RegisterView();
+        },
+      ),
+      GoRoute(
+        path: kResetPassView,
+        builder: (context, state) {
+          return const ResetPasswordView();
+        },
+      ),
+      GoRoute(
+        path: kEmailVerifyCodeView,
+        builder: (context, state) {
+          return const VerifyEmailView();
         },
       ),
       // GoRoute(
