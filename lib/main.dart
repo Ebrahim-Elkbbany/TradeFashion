@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:trade_fashion/core/utils/app_router.dart';
 
@@ -18,6 +19,13 @@ class TradeFashion extends StatelessWidget {
       builder: (_,child) {
         return MaterialApp.router(
           theme: ThemeData.light().copyWith(
+              appBarTheme: const AppBarTheme(
+                iconTheme: IconThemeData(color: Colors.black),
+                systemOverlayStyle: SystemUiOverlayStyle(
+                  statusBarColor: Colors.white,
+                  statusBarIconBrightness: Brightness.dark,
+                ),
+                backgroundColor: Colors.white,elevation: 0,toolbarHeight: 58,),
             scaffoldBackgroundColor: Colors.white,
             textTheme: ThemeData.light().textTheme
           ),

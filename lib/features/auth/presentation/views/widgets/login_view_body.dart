@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
+import 'package:trade_fashion/core/utils/app_router.dart';
 import 'package:trade_fashion/core/utils/styles.dart';
 import 'package:trade_fashion/core/widgets/custom_button.dart';
 import 'package:trade_fashion/core/widgets/custom_continue_with_container.dart';
@@ -40,7 +42,9 @@ class LoginViewBody extends StatelessWidget {
                LoginViewRow(
                 buttonName: 'Reset',
                 leftName: 'Forget Password? ',
-                 onPressed: (){},
+                 onPressed: (){
+                  GoRouter.of(context).push(AppRouter.kResetPassView);
+                 },
               ),
               SizedBox(
                 height: 25.h,
@@ -55,7 +59,9 @@ class LoginViewBody extends StatelessWidget {
               LoginViewRow(
                 buttonName:'SignUp' ,
                 leftName: 'Don\'t Have An Account? ',
-                onPressed: (){},
+                onPressed: (){
+                  GoRouter.of(context).push(AppRouter.kRegisterView);
+                },
               ),
               SizedBox(
                 height: 72.h,
