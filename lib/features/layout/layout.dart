@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'manger/layout_cubit.dart';
 
-class LayoutScreen extends StatelessWidget {
-  const LayoutScreen({Key? key}) : super(key: key);
+class LayoutView extends StatelessWidget {
+  const LayoutView({Key? key}) : super(key: key);
 //well done
   @override
   Widget build(BuildContext context) {
