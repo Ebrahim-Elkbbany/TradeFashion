@@ -51,7 +51,9 @@ class LoginViewBody extends StatelessWidget {
               ),
               CustomButton(
                 buttonName: 'LOGIN',
-                onPressed: () {},
+                onPressed: () {
+                  GoRouter.of(context).push(AppRouter.kLayoutView);
+                },
               ),
               SizedBox(
                 height: 20.h,
