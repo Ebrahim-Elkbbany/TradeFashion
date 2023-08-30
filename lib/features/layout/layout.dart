@@ -27,6 +27,7 @@ class LayoutScreen extends StatelessWidget {
               BottomNavigationBarItem(
                   icon: Icon(Icons.person,), label: ''),
             ],
+          //
           ),
         );
       },
