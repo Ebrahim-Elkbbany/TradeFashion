@@ -5,6 +5,8 @@ import 'package:trade_fashion/features/auth/presentation/views/reset_password_vi
 import 'package:trade_fashion/features/auth/presentation/views/verify_email_view.dart';
 import 'package:trade_fashion/features/splash/presentation/views/splash_view.dart';
 
+import '../../features/home/presentation/views/category_item_view.dart';
+import '../../features/home/presentation/views/category_view.dart';
 import '../../features/home/presentation/views/home_view.dart';
 import '../../features/layout/layout.dart';
 
@@ -15,6 +17,8 @@ class AppRouter {
   static const kEmailVerifyCodeView = '/VerifyEmailView';
   static const kLayoutView = '/LayoutView';
   static const kHomeView = '/HomeView';
+  static const kCategoryView = '/CategoryView';
+  static const kCategoryItemView = '/CategoryItemView';
   static const kBookDetailsViewPath = '/bookDetailsView';
   static const kSearchViewBodyPath = '/searchViewBody';
   static final router = GoRouter(
@@ -57,6 +61,18 @@ class AppRouter {
         path: kHomeView,
         builder: (context, state) {
           return const HomeView();
+        },
+      ),
+      GoRoute(
+        path: kCategoryView,
+        builder: (context, state) {
+          return const CategoryView();
+        },
+      ),
+      GoRoute(
+        path: kCategoryItemView,
+        builder: (context, state) {
+          return const CategoryItemView();
         },
       ),
       // GoRoute(

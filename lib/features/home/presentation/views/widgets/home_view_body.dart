@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:trade_fashion/constants.dart';
-import 'package:trade_fashion/core/utils/styles.dart';
 import 'package:trade_fashion/core/widgets/custom_text_form_field.dart';
 import 'package:trade_fashion/features/home/presentation/views/widgets/product_list_view.dart';
 
+import '../../../../../core/utils/app_router.dart';
 import '../../../../../core/utils/assets.dart';
 import 'category_list_view.dart';
-import 'list_view_product_item.dart';
 
 class HomeViewBody extends StatelessWidget {
   const HomeViewBody({Key? key}) : super(key: key);
@@ -44,34 +44,43 @@ class HomeViewBody extends StatelessWidget {
             Image.asset(AssetsData.cardImage),
           ],
         ),
-        body:const SingleChildScrollView(
+        body:  SingleChildScrollView(
           child: Column(children: [
-             CustomTextFormField(
+            const SizedBox(
+              height: 24,
+            ),
+            const CustomTextFormField(
               boarderRadius: 100,
               prefix: Icons.search_outlined,
               hintText: 'search',
             ),
-             SizedBox(
+            const SizedBox(
               height: 24,
             ),
-             Row(
+            Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
+                const Text(
                   'Categories',
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
                 ),
-                Text(
-                  'See All',
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+                InkWell(
+                  onTap: (){
+                    GoRouter.of(context).push(AppRouter.kCategoryView);
+
+                  },
+                  child:const Text(
+                    'See All',
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+                  ),
                 ),
               ],
             ),
-             SizedBox(
+            const SizedBox(
               height: 16,
             ),
-            CategoryListView(),
-             Row(
+            const CategoryListView(),
+            const Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
@@ -84,19 +93,22 @@ class HomeViewBody extends StatelessWidget {
                 ),
               ],
             ),
-             SizedBox(
+            const SizedBox(
               height: 24,
             ),
-            ProductListView(),
-             SizedBox(
+            const ProductListView(),
+            const SizedBox(
               height: 24,
             ),
-             Row(
+            const  Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
                   'New In',
-                  style: TextStyle(color:kPrimaryColor,fontSize: 16, fontWeight: FontWeight.w700),
+                  style: TextStyle(
+                      color: kPrimaryColor,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700),
                 ),
                 Text(
                   'See All',
@@ -104,16 +116,13 @@ class HomeViewBody extends StatelessWidget {
                 ),
               ],
             ),
-             SizedBox(
+            const  SizedBox(
               height: 24,
             ),
-            ProductListView(),
-
+            const ProductListView(),
           ]),
         ),
       ),
     );
   }
 }
-
-

@@ -3,7 +3,7 @@ import 'package:trade_fashion/constants.dart';
 import 'package:trade_fashion/core/utils/styles.dart';
 
 class CustomButton extends StatelessWidget {
-  const CustomButton({Key? key, required this.buttonName, this.onPressed})
+  const CustomButton({Key? key, required this.buttonName,this.onPressed})
       : super(key: key);
 
   final String buttonName;
@@ -29,7 +29,7 @@ class CustomButton extends StatelessWidget {
           buttonName,
           style: Styles.textStyle16.copyWith(
             color: Colors.white,
-            fontWeight: FontWeight.w500,
+            fontWeight:FontWeight.w500,
           ),
         ),
       ),
