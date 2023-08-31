@@ -22,6 +22,7 @@ class CustomTextFormField extends StatelessWidget {
     this.enabledBorderColor = const Color(0xffF4F4F4),
     this.focusedBorderColor = kPrimaryColor,
     this.fillColor =const Color(0xffF4F4F4),
+     this.boarderRadius=8, this.prefix,
   }) : super(key: key);
 
   final TextEditingController? controller;
@@ -33,9 +34,11 @@ class CustomTextFormField extends StatelessWidget {
   final String? Function(String?)? validate;
   final String? hintText;
   final IconData? suffix;
+  final IconData? prefix;
   final void Function()? suffixPressed;
   final bool isClickable;
   final int maxLines;
+  final double boarderRadius;
   final Color disabledBorderColor;
   final Color enabledBorderColor;
   final Color focusedBorderColor;
@@ -57,16 +60,17 @@ class CustomTextFormField extends StatelessWidget {
       decoration: InputDecoration(
         filled: true,
         fillColor: fillColor,
+        prefixIcon:Icon(prefix),
         disabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8),
+            borderRadius: BorderRadius.circular(boarderRadius),
             borderSide: BorderSide(
               color: disabledBorderColor,
             )),
         enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8),
+            borderRadius: BorderRadius.circular(boarderRadius),
             borderSide: BorderSide(color: enabledBorderColor)),
         focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8),
+            borderRadius: BorderRadius.circular(boarderRadius),
             borderSide:  BorderSide(color: focusedBorderColor)),
         hintText: hintText,
         hintStyle: Styles.textStyle16.copyWith(color:const Color(0xff8E8E8E) ),
