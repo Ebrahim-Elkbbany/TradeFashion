@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:trade_fashion/core/utils/app_router.dart';
 import 'package:trade_fashion/core/utils/styles.dart';
@@ -12,19 +11,19 @@ class ResetPasswordViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 23.w),
+      padding:const EdgeInsets.symmetric(horizontal: 23),
       child: Column(
           crossAxisAlignment: CrossAxisAlignment.start, children: [
-        SizedBox(height: 20.h),
+        const SizedBox(height: 20),
         Text('Reset Password', style: Styles.textStyle32),
-        SizedBox(
-          height: 32.h,
+        const SizedBox(
+          height: 32,
         ),
         const CustomTextFormField(
           hintText: 'Enter Email Address',
         ),
-        SizedBox(
-          height: 24.h,
+        const  SizedBox(
+          height: 24,
         ),
         CustomButton(
           buttonName: 'Send Code',

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:trade_fashion/core/widgets/custom_text_form_field.dart';
 
 class RegisterViewTextFieldSection extends StatelessWidget {
@@ -7,31 +6,31 @@ class RegisterViewTextFieldSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return const Column(
       children: [
-        const CustomTextFormField(
+         CustomTextFormField(
           hintText: 'FirstName',
         ),
         SizedBox(
-          height: 16.h,
+          height: 16,
         ),
-        const CustomTextFormField(
+         CustomTextFormField(
           hintText: 'LastName',
         ),
         SizedBox(
-          height: 16.h,
+          height: 16,
         ),
-        const CustomTextFormField(
+         CustomTextFormField(
           hintText: 'Email Address',
         ),
-        SizedBox(
-          height: 16.h,
+         SizedBox(
+          height: 16,
         ),
-        const CustomTextFormField(
+         CustomTextFormField(
           hintText: 'Password',
         ),
-        SizedBox(
-          height: 40.h,
+         SizedBox(
+          height: 40,
         ),
       ],
     );

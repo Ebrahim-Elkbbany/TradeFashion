@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:trade_fashion/constants.dart';
 import 'package:trade_fashion/core/utils/styles.dart';
 
@@ -13,7 +12,7 @@ class CustomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 50.w,
+      height: 50,
       width: double.infinity,
       child: TextButton(
         style: TextButton.styleFrom(
@@ -22,7 +21,7 @@ class CustomButton extends StatelessWidget {
             borderRadius:
                 BorderRadius.circular(
                   100,
-                ).w,
+                ),
           ),
         ),
         onPressed: onPressed,

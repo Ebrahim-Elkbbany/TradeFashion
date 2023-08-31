@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:trade_fashion/core/utils/styles.dart';
 
 class ContinueWithContainer extends StatelessWidget {
@@ -15,20 +14,20 @@ class ContinueWithContainer extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           color: const Color(0xffF4F4F4),
-          borderRadius: BorderRadius.circular(100).w,
+          borderRadius: BorderRadius.circular(100),
 
         ),
-        height: 50.h,
+        height: 50,
         width: double.infinity,
         child: Row(
 
           children: [
-            SizedBox(
-              width: 22.w,
+            const SizedBox(
+              width: 22,
             ),
-            Image.asset(image,height: 25.h,width: 25.w),
-             SizedBox(
-              width: 54.w,
+            Image.asset(image,height: 25,width: 25),
+            const SizedBox(
+              width: 54,
             ),
             Text(
               name,
