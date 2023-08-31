@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:trade_fashion/core/utils/app_router.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:trade_fashion/core/utils/styles.dart';
 import 'core/utils/theme.dart';
 import 'features/layout/manger/layout_cubit.dart';
 
@@ -17,7 +18,17 @@ class TradeFashion extends StatelessWidget {
       providers: [BlocProvider(create: (context) => LayoutCubit())],
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
-        theme: lightTheme,
+        theme: lightTheme.copyWith(
+            appBarTheme: AppBarTheme(
+          elevation: 0,
+          backgroundColor: Colors.white,
+          centerTitle: true,
+          iconTheme: const IconThemeData(color: Colors.black),
+          titleTextStyle: Styles.textStyle16.copyWith(
+            fontWeight: FontWeight.bold,
+            color: Colors.black,
+          ),
+        )),
         routerConfig: AppRouter.router,
       ),
     );

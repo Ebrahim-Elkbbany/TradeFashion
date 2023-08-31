@@ -17,18 +17,20 @@ class HomeViewBody extends StatelessWidget {
       padding: const EdgeInsets.all(20.0),
       child: Scaffold(
         appBar: AppBar(
-          centerTitle: true,
           leading: Image.asset(AssetsData.profile),
           title: Container(
             width: 73,
             height: 40,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(100),
-              color: const Color(0xffF4F4F4),
+              color: kSecondaryColor,
             ),
             child: const Padding(
               padding: EdgeInsets.all(8.0),
-              child: Row(children: [
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+
+                  children: [
                 Text(
                   "Men",
                   style: TextStyle(
@@ -45,6 +47,7 @@ class HomeViewBody extends StatelessWidget {
           ],
         ),
         body:  SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
           child: Column(children: [
             const SizedBox(
               height: 24,
