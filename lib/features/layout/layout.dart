@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:trade_fashion/constants.dart';
 import 'manger/layout_cubit.dart';
 
 class LayoutView extends StatelessWidget {
@@ -13,6 +14,9 @@ class LayoutView extends StatelessWidget {
         return Scaffold(
           body: cubit.bottomScreen[cubit.currentIndex],
           bottomNavigationBar: BottomNavigationBar(
+            selectedItemColor: kPrimaryColor,
+            showSelectedLabels: false,
+            showUnselectedLabels: false,
             currentIndex: cubit.currentIndex,
             onTap: (index) {
               cubit.changeBottomScreen(index);
@@ -23,7 +27,7 @@ class LayoutView extends StatelessWidget {
               BottomNavigationBarItem(
                   icon: Icon(Icons.notification_important_sharp,), label: ''),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.card_travel,), label: ''),
+                  icon: Icon(Icons.shopping_cart_sharp,), label: ''),
               BottomNavigationBarItem(
                   icon: Icon(Icons.person,), label: ''),
             ],
