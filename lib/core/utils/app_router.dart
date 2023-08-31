@@ -3,6 +3,8 @@ import 'package:trade_fashion/features/auth/presentation/views/login_view.dart';
 import 'package:trade_fashion/features/auth/presentation/views/register_view.dart';
 import 'package:trade_fashion/features/auth/presentation/views/reset_password_view.dart';
 import 'package:trade_fashion/features/auth/presentation/views/verify_email_view.dart';
+import 'package:trade_fashion/features/profile/presentation/views/address_view.dart';
+import 'package:trade_fashion/features/profile/presentation/views/payment_view.dart';
 import 'package:trade_fashion/features/splash/presentation/views/splash_view.dart';
 
 import '../../features/home/presentation/views/category_item_view.dart';
@@ -19,7 +21,8 @@ class AppRouter {
   static const kHomeView = '/HomeView';
   static const kCategoryView = '/CategoryView';
   static const kCategoryItemView = '/CategoryItemView';
-  static const kBookDetailsViewPath = '/bookDetailsView';
+  static const kAddressView = '/AddressView';
+  static const kPaymentView = '/PaymentViewView';
   static const kSearchViewBodyPath = '/searchViewBody';
   static final router = GoRouter(
     routes: [
@@ -73,6 +76,18 @@ class AppRouter {
         path: kCategoryItemView,
         builder: (context, state) {
           return const CategoryItemView();
+        },
+      ),
+      GoRoute(
+        path: kAddressView,
+        builder: (context, state) {
+          return const AddressView();
+        },
+      ),
+      GoRoute(
+        path: kPaymentView,
+        builder: (context, state) {
+          return const PaymentView();
         },
       ),
       // GoRoute(

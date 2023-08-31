@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:trade_fashion/features/settings/presentation/views/widgets/profile_list_tile.dart';
+import 'package:go_router/go_router.dart';
+import 'package:trade_fashion/core/utils/app_router.dart';
+import 'package:trade_fashion/features/profile/presentation/views/widgets/profile_list_tile.dart';
+
 
 class ProfileListTileSection extends StatelessWidget {
   const ProfileListTileSection({Key? key}) : super(key: key);
@@ -10,7 +13,9 @@ class ProfileListTileSection extends StatelessWidget {
       children: [
         ProfileListTile(
           leadingText: 'Address',
-          onTap: () {},
+          onTap: () {
+            GoRouter.of(context).push(AppRouter.kAddressView);
+          },
         ),
         const SizedBox(
           height: 8,
@@ -24,7 +29,9 @@ class ProfileListTileSection extends StatelessWidget {
         ),
         ProfileListTile(
           leadingText: 'Payment',
-          onTap: () {},
+          onTap: () {
+            GoRouter.of(context).push(AppRouter.kPaymentView);
+          },
         ),
         const SizedBox(
           height: 8,
