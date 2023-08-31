@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:trade_fashion/core/utils/app_router.dart';
 import 'package:trade_fashion/core/utils/styles.dart';
@@ -15,29 +14,29 @@ class LoginViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 23.w),
+        padding: const EdgeInsets.symmetric(horizontal: 23),
         child: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
           padding: EdgeInsetsDirectional.zero,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: 70.h),
+              const SizedBox(height: 70),
               Text('Sign in', style: Styles.textStyle32),
-              SizedBox(
-                height: 32.h,
+              const SizedBox(
+                height: 32,
               ),
               const CustomTextFormField(
                 hintText: 'Email Address',
               ),
-              SizedBox(
-                height: 20.h,
+              const SizedBox(
+                height: 20,
               ),
               const CustomTextFormField(
                 hintText: 'Password',
               ),
-              SizedBox(
-                height: 16.h,
+              const  SizedBox(
+                height: 16,
               ),
                LoginViewRow(
                 buttonName: 'Reset',
@@ -46,8 +45,8 @@ class LoginViewBody extends StatelessWidget {
                   GoRouter.of(context).push(AppRouter.kResetPassView);
                  },
               ),
-              SizedBox(
-                height: 25.h,
+              const  SizedBox(
+                height: 25,
               ),
               CustomButton(
                 buttonName: 'LOGIN',
@@ -55,8 +54,8 @@ class LoginViewBody extends StatelessWidget {
                   GoRouter.of(context).push(AppRouter.kLayoutView);
                 },
               ),
-              SizedBox(
-                height: 20.h,
+              const SizedBox(
+                height: 20,
               ),
               LoginViewRow(
                 buttonName:'SignUp' ,
@@ -65,8 +64,8 @@ class LoginViewBody extends StatelessWidget {
                   GoRouter.of(context).push(AppRouter.kRegisterView);
                 },
               ),
-              SizedBox(
-                height: 72.h,
+              const SizedBox(
+                height: 72,
               ),
                ContinueWithContainer(
                 image: 'assets/images/auth/apple_svg.png',
@@ -75,8 +74,8 @@ class LoginViewBody extends StatelessWidget {
 
                  },
               ),
-              SizedBox(
-                height: 16.h,
+              const SizedBox(
+                height: 16,
               ),
               ContinueWithContainer(
                 image:'assets/images/auth/google.png',
@@ -85,8 +84,8 @@ class LoginViewBody extends StatelessWidget {
 
                  },
               ),
-              SizedBox(
-                height: 16.h,
+              const SizedBox(
+                height: 16,
               ),
               ContinueWithContainer(
                 image:'assets/images/auth/Facebook.png',

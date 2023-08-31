@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:trade_fashion/core/utils/app_router.dart';
 import 'package:trade_fashion/core/utils/styles.dart';
@@ -14,14 +13,14 @@ class VerifyEmailView extends StatelessWidget {
     return  Scaffold(
       appBar: AppBar(),
       body: Padding(
-        padding:  EdgeInsets.symmetric(horizontal: 23.w),
+        padding: const EdgeInsets.symmetric(horizontal: 23),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 20.h),
+            const SizedBox(height: 20),
             Text('Verify Code', style: Styles.textStyle32),
-            SizedBox(
-              height: 32.h,
+            const SizedBox(
+              height: 32,
             ),
             const CustomTextFormField(
               hintText: 'Enter Code',

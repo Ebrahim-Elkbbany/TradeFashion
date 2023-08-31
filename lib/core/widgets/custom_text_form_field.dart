@@ -1,6 +1,5 @@
 
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:trade_fashion/constants.dart';
 import 'package:trade_fashion/core/utils/styles.dart';
 
@@ -59,18 +58,18 @@ class CustomTextFormField extends StatelessWidget {
         filled: true,
         fillColor: fillColor,
         disabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8).w,
+            borderRadius: BorderRadius.circular(8),
             borderSide: BorderSide(
               color: disabledBorderColor,
             )),
         enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8).w,
+            borderRadius: BorderRadius.circular(8),
             borderSide: BorderSide(color: enabledBorderColor)),
         focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8).w,
+            borderRadius: BorderRadius.circular(8),
             borderSide:  BorderSide(color: focusedBorderColor)),
         hintText: hintText,
-        hintStyle: Styles.textStyle16.copyWith(color:Color(0xff8E8E8E) ),
+        hintStyle: Styles.textStyle16.copyWith(color:const Color(0xff8E8E8E) ),
         suffixIcon: suffix != null
             ? IconButton(
                 onPressed: suffixPressed,
