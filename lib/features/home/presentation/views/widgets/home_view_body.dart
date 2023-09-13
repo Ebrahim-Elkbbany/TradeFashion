@@ -3,10 +3,10 @@ import 'package:go_router/go_router.dart';
 import 'package:trade_fashion/constants.dart';
 import 'package:trade_fashion/core/widgets/custom_text_form_field.dart';
 import 'package:trade_fashion/features/home/presentation/views/widgets/product_list_view.dart';
-
 import '../../../../../core/utils/app_router.dart';
 import '../../../../../core/utils/assets.dart';
 import 'category_list_view.dart';
+
 
 class HomeViewBody extends StatelessWidget {
   const HomeViewBody({Key? key}) : super(key: key);
@@ -18,30 +18,6 @@ class HomeViewBody extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           leading: Image.asset(AssetsData.profile),
-          title: Container(
-            width: 73,
-            height: 40,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(100),
-              color: kSecondaryColor,
-            ),
-            child: const Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-
-                  children: [
-                Text(
-                  "Men",
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 12,
-                      fontWeight: FontWeight.w700),
-                ),
-                Icon(Icons.keyboard_arrow_down_outlined)
-              ]),
-            ),
-          ),
           actions: [
             Image.asset(AssetsData.cardImage),
           ],

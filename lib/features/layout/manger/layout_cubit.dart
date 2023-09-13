@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trade_fashion/features/profile/presentation/views/profile_view.dart';
 
 import '../../home/presentation/views/home_view.dart';
-import '../../notification/presentation/views/notifications _view.dart';
+import '../../notification/presentation/views/category _view.dart';
 import '../../order/presentation/views/order_view.dart';
 
 
@@ -21,5 +21,5 @@ class LayoutCubit extends Cubit<LayoutState> {
     currentIndex=index;
     emit(ChangeBottomScreen());
   }
-  List<Widget>bottomScreen=const [HomeView(),NotificationsView(),OrderView(),ProfileView()];
+  List<Widget>bottomScreen=const [HomeView(),CategoryView(),OrderView(),ProfileView()];
 }

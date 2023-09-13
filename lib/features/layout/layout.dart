@@ -25,7 +25,7 @@ class LayoutView extends StatelessWidget {
               BottomNavigationBarItem(
                   icon: Icon(Icons.home_sharp,), label: ''),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.notification_important_sharp,), label: ''),
+                  icon: Icon(Icons.category,), label: ''),
               BottomNavigationBarItem(
                   icon: Icon(Icons.shopping_cart_sharp,), label: ''),
               BottomNavigationBarItem(
