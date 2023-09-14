@@ -24,7 +24,9 @@ class HomeViewBody extends StatelessWidget {
         ),
         body:  SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
-          child: Column(children: [
+          child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
             const SizedBox(
               height: 24,
             ),
@@ -59,41 +61,12 @@ class HomeViewBody extends StatelessWidget {
               height: 16,
             ),
             const CategoryListView(),
-            const Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Top Selling',
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
-                ),
-                Text(
-                  'See All',
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 24,
-            ),
-            const ProductListView(),
-            const SizedBox(
-              height: 24,
-            ),
-            const  Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'New In',
-                  style: TextStyle(
-                      color: kPrimaryColor,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w700),
-                ),
-                Text(
-                  'See All',
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
-                ),
-              ],
+            const Text(
+              'Product',
+              style: TextStyle(
+                  color: kPrimaryColor,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w700),
             ),
             const  SizedBox(
               height: 24,
