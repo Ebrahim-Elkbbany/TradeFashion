@@ -8,9 +8,9 @@ import 'package:trade_fashion/features/profile/presentation/views/payment_view.d
 import 'package:trade_fashion/features/splash/presentation/views/splash_view.dart';
 
 import '../../features/home/presentation/views/category_item_view.dart';
-import '../../features/home/presentation/views/category_view.dart';
 import '../../features/home/presentation/views/home_view.dart';
 import '../../features/layout/layout.dart';
+import '../../features/notification/presentation/views/category _view.dart';
 
 class AppRouter {
   static const kLoginView = '/loginView';

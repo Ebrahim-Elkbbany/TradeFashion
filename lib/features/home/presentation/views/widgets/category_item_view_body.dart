@@ -7,52 +7,45 @@ class CategoryItemViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding:const  EdgeInsets.symmetric(horizontal: 10.0),
-          child:
-          Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            const CircleAvatar(
-              radius: 15,
-              backgroundColor: Color(0xffF4F4F4),
-              child: Padding(
-                padding: EdgeInsets.only(left: 5.0),
-                child: Icon(
-                  Icons.arrow_back_ios,
-                  size: 15,
-                  color: Colors.black,
-                ),
-              ),
-            ),
-            const SizedBox(
-              height: 16,
-            ),
-            const   Text(
-              'Hoodies (240)',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
+      appBar: AppBar(title:   const   Text(
+        'Hoodies (240)',
+        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
 
-            ),
-            const SizedBox(
-              height: 16,
-            ),
-            Expanded(
-              child: GridView.count(
-                crossAxisCount: 2,
-                mainAxisSpacing: 15,
-                childAspectRatio: 1 / 1.6,
-                crossAxisSpacing: 15,
-                children: List.generate(
-                  10,
-                      (index) {
-                    return const Center(child:  ListViewProductItem());
-                  },
-                ),
-              ),
-            ),
-          ]),
-        ),
       ),
 
+      ),
+      body: Builder(builder: (context) {
+        if(MediaQuery.of(context).size.width.toInt()<=560) {
+          return GridView.count(
+            shrinkWrap: true,
+            physics:const NeverScrollableScrollPhysics(),
+            crossAxisCount:2,
+            mainAxisSpacing: 15,
+            childAspectRatio: 1 / 2,
+            crossAxisSpacing: 15,
+            children: List.generate(
+              10,
+                  (index) {
+                return const Center(child:  ListViewProductItem());
+              },
+            ),
+          );
+        }
+        return GridView.count(
+          shrinkWrap: true,
+          physics:const NeverScrollableScrollPhysics(),
+          crossAxisCount:6,
+          mainAxisSpacing: 15,
+          childAspectRatio: 1 / 1.3,
+          crossAxisSpacing: 15,
+          children: List.generate(
+            10,
+                (index) {
+              return const Center(child:  ListViewProductItem());
+            },
+          ),
+        );
+      },),
     );
   }
 }
