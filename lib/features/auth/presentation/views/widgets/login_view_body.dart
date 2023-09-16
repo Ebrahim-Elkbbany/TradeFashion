@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:trade_fashion/core/utils/api_service.dart';
 import 'package:trade_fashion/core/utils/app_router.dart';
 import 'package:trade_fashion/core/utils/styles.dart';
 import 'package:trade_fashion/core/widgets/custom_button.dart';
