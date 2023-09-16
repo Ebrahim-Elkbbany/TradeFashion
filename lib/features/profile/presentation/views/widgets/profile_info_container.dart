@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:trade_fashion/constants.dart';
+import 'package:trade_fashion/core/utils/app_router.dart';
 import 'package:trade_fashion/core/utils/styles.dart';
 import 'package:trade_fashion/core/widgets/custom_text_button.dart';
 
@@ -46,6 +48,9 @@ class ProfileInfoContainer extends StatelessWidget {
             ),
             CustomTextButton(
               text: 'Edit',
+              onPressed: () {
+                GoRouter.of(context).push(AppRouter.kEditProfileViewPath);
+              },
               textStyle: Styles.textStyle12
                   .copyWith(color: kPrimaryColor, fontWeight: FontWeight.bold),
             ),
