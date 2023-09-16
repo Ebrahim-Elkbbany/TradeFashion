@@ -3,8 +3,10 @@ import 'package:trade_fashion/features/auth/presentation/views/login_view.dart';
 import 'package:trade_fashion/features/auth/presentation/views/register_view.dart';
 import 'package:trade_fashion/features/auth/presentation/views/reset_password_view.dart';
 import 'package:trade_fashion/features/auth/presentation/views/verify_email_view.dart';
-import 'package:trade_fashion/features/profile/presentation/views/address_view.dart';
+import 'package:trade_fashion/features/profile/presentation/views/edit_profile_view.dart';
+import 'package:trade_fashion/features/profile/presentation/views/language_view.dart';
 import 'package:trade_fashion/features/profile/presentation/views/payment_view.dart';
+import 'package:trade_fashion/features/profile/presentation/views/theme_view.dart';
 import 'package:trade_fashion/features/splash/presentation/views/splash_view.dart';
 
 import '../../features/home/presentation/views/category_item_view.dart';
@@ -21,9 +23,11 @@ class AppRouter {
   static const kHomeView = '/HomeView';
   static const kCategoryView = '/CategoryView';
   static const kCategoryItemView = '/CategoryItemView';
-  static const kAddressView = '/AddressView';
+  static const kThemeViewPath = '/ThemeView';
   static const kPaymentView = '/PaymentViewView';
   static const kSearchViewBodyPath = '/searchViewBody';
+  static const kEditProfileViewPath = '/EditProfileView';
+  static const kLanguageViewPath = '/LanguageView';
   static final router = GoRouter(
     routes: [
       GoRoute(
@@ -79,15 +83,27 @@ class AppRouter {
         },
       ),
       GoRoute(
-        path: kAddressView,
+        path: kThemeViewPath,
         builder: (context, state) {
-          return const AddressView();
+          return const ThemeView();
         },
       ),
       GoRoute(
         path: kPaymentView,
         builder: (context, state) {
           return const PaymentView();
+        },
+      ),
+      GoRoute(
+          path: kEditProfileViewPath,
+         builder: (context, state) {
+           return const EditProfileView();
+         },
+      ),
+      GoRoute(
+        path: kLanguageViewPath,
+        builder: (context, state) {
+          return const LanguageView();
         },
       ),
       // GoRoute(

@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:trade_fashion/constants.dart';
 import 'package:trade_fashion/core/utils/styles.dart';
@@ -21,8 +20,9 @@ class CustomTextFormField extends StatelessWidget {
     this.disabledBorderColor = const Color(0xffF4F4F4),
     this.enabledBorderColor = const Color(0xffF4F4F4),
     this.focusedBorderColor = kPrimaryColor,
-    this.fillColor =const Color(0xffF4F4F4),
-     this.boarderRadius=8, this.prefix,
+    this.fillColor = const Color(0xffF4F4F4),
+    this.boarderRadius = 8,
+    this.prefix,
   }) : super(key: key);
 
   final TextEditingController? controller;
@@ -60,7 +60,11 @@ class CustomTextFormField extends StatelessWidget {
       decoration: InputDecoration(
         filled: true,
         fillColor: fillColor,
-        prefixIcon:Icon(prefix),
+        prefixIcon: prefix != null
+            ? Icon(
+                  prefix,
+                )
+            : null,
         disabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(boarderRadius),
             borderSide: BorderSide(
@@ -71,9 +75,9 @@ class CustomTextFormField extends StatelessWidget {
             borderSide: BorderSide(color: enabledBorderColor)),
         focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(boarderRadius),
-            borderSide:  BorderSide(color: focusedBorderColor)),
+            borderSide: BorderSide(color: focusedBorderColor)),
         hintText: hintText,
-        hintStyle: Styles.textStyle16.copyWith(color:const Color(0xff8E8E8E) ),
+        hintStyle: Styles.textStyle16.copyWith(color: const Color(0xff8E8E8E)),
         suffixIcon: suffix != null
             ? IconButton(
                 onPressed: suffixPressed,

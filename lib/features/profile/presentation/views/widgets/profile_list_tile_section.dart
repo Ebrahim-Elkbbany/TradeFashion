@@ -11,10 +11,11 @@ class ProfileListTileSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
+
         ProfileListTile(
           leadingText: 'Theme',
           onTap: () {
-            GoRouter.of(context).push(AppRouter.kAddressView);
+            GoRouter.of(context).push(AppRouter.kThemeViewPath);
           },
         ),
         const SizedBox(
@@ -22,7 +23,9 @@ class ProfileListTileSection extends StatelessWidget {
         ),
         ProfileListTile(
           leadingText: 'Language',
-          onTap: () {},
+          onTap: () {
+            GoRouter.of(context).push(AppRouter.kLanguageViewPath);
+          },
         ),
         const SizedBox(
           height: 8,
