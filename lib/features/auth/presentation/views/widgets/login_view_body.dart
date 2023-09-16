@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:trade_fashion/core/utils/api_service.dart';
@@ -91,8 +92,8 @@ class LoginViewBody extends StatelessWidget {
               ContinueWithContainer(
                 image:'assets/images/auth/Facebook.png',
                 name: 'Continue With Facebook',
-                 onTap: () {
-
+                 onTap: () async{
+                    await ApiService(Dio()).get();
                  },
               ),
 
