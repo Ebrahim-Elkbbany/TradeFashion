@@ -22,7 +22,7 @@ class _LanguageViewBodyState extends State<LanguageViewBody> {
             groupValue: selectLanguage,
             title: 'English',
             onChanged: (value) {
-              setState(() {
+              setState((){
                 selectLanguage = value;
               });
             },
