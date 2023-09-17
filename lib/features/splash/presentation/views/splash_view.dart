@@ -8,17 +8,9 @@ class SplashView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: kPrimaryColor,
-        elevation: 0,
-        systemOverlayStyle: const SystemUiOverlayStyle(
-          statusBarColor: kPrimaryColor,
-          statusBarIconBrightness: Brightness.light,
-        ),
-      ),
+    return const Scaffold(
       backgroundColor: kPrimaryColor,
-      body: const SplashViewBody(),
+      body: SplashViewBody(),
     );
   }
 }

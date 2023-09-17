@@ -5,4 +5,6 @@ class AssetsData{
   static const productImage='assets/images/home/productImage.png';
   static const logoImage='assets/images/splash/logo.png';
   static const profileImage='assets/images/profile/profile_image.png';
+  static const loginImage='assets/images/auth/loginvector.jpg';
+  static const registerImage='assets/images/auth/registrationvector.jpg';
 }

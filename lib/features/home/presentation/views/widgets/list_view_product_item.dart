@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:trade_fashion/features/home/data/models/product_model.dart';
 
 import '../../../../../core/utils/assets.dart';
 import '../../../../../core/utils/styles.dart';
 
 class ListViewProductItem extends StatelessWidget {
   const ListViewProductItem({
+    this.productModel,
     super.key,
   });
+  final ProductModel? productModel;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 281,
-      width: 159,
+      padding: const EdgeInsetsDirectional.all(8),
       clipBehavior: Clip.antiAliasWithSaveLayer,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
@@ -35,7 +37,7 @@ class ListViewProductItem extends StatelessWidget {
                 const Text('148.00',style:TextStyle(fontSize: 12,fontWeight: FontWeight.w700),)
 
               ]),
-          IconButton(icon: const Icon(Icons.favorite_outline),onPressed: (){}),
+          IconButton(icon: const Icon(Icons.favorite_outline),onPressed: (){},),
         ],
       ),
     );

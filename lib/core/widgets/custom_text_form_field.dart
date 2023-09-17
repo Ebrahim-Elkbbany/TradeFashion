@@ -16,13 +16,15 @@ class CustomTextFormField extends StatelessWidget {
     this.hintText,
     this.suffix,
     this.suffixPressed,
-    this.maxLines = 1,
+    this.maxLines = 1 ,
     this.disabledBorderColor = const Color(0xffF4F4F4),
     this.enabledBorderColor = const Color(0xffF4F4F4),
     this.focusedBorderColor = kPrimaryColor,
     this.fillColor = const Color(0xffF4F4F4),
     this.boarderRadius = 8,
     this.prefix,
+    this.prefixColor,
+    this.labelText
   }) : super(key: key);
 
   final TextEditingController? controller;
@@ -33,6 +35,7 @@ class CustomTextFormField extends StatelessWidget {
   final bool isPassword;
   final String? Function(String?)? validate;
   final String? hintText;
+  final String? labelText;
   final IconData? suffix;
   final IconData? prefix;
   final void Function()? suffixPressed;
@@ -43,6 +46,7 @@ class CustomTextFormField extends StatelessWidget {
   final Color enabledBorderColor;
   final Color focusedBorderColor;
   final Color fillColor;
+  final Color? prefixColor;
 
   @override
   Widget build(BuildContext context) {
@@ -63,6 +67,7 @@ class CustomTextFormField extends StatelessWidget {
         prefixIcon: prefix != null
             ? Icon(
                   prefix,
+                  color: prefixColor,
                 )
             : null,
         disabledBorder: OutlineInputBorder(
@@ -77,6 +82,7 @@ class CustomTextFormField extends StatelessWidget {
             borderRadius: BorderRadius.circular(boarderRadius),
             borderSide: BorderSide(color: focusedBorderColor)),
         hintText: hintText,
+        labelText: labelText,
         hintStyle: Styles.textStyle16.copyWith(color: const Color(0xff8E8E8E)),
         suffixIcon: suffix != null
             ? IconButton(
