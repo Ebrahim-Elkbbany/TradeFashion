@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trade_fashion/core/utils/api_service.dart';
 
@@ -16,7 +17,7 @@ class HomeCubit extends Cubit<HomeState> {
     await ApiService(Dio()).get(endPoint:'v2/list' ,queryParams: {
     'store': 'US',
     'offset': '0',
-    'categoryId': '4809',
+    'categoryId': '4208',
     'limit': '48',
     'country': 'US',
     'sort': 'freshness',
@@ -25,6 +26,7 @@ class HomeCubit extends Cubit<HomeState> {
     'lang': 'en-US'
     },).then((value){
       productModel=ProductModel.fromJson(value);
+      print(productModel!.products?[0].price?.current?.text);
       emit(HomeSuccess(productModel!));
 
     }).catchError((error){

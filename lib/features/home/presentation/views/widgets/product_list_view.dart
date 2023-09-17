@@ -6,7 +6,7 @@ class ProductListView extends StatelessWidget {
   const ProductListView({
     super.key, this.productModel,
   });
-  final ProductModel ?productModel;
+  final ProductModel ? productModel;
   @override
   Widget build(BuildContext context) {
     if(MediaQuery.of(context).size.width.toInt()<560) {
@@ -15,12 +15,12 @@ class ProductListView extends StatelessWidget {
         physics:const NeverScrollableScrollPhysics(),
         crossAxisCount:2,
         mainAxisSpacing: 10,
-        childAspectRatio: 1 / 1.7,
+        childAspectRatio: 1 / 1.8,
         crossAxisSpacing: 10,
         children: List.generate(
-          10,
+          productModel!.products!.length,
               (index) {
-            return  Center(child:  ListViewProductItem());
+            return  Center(child:  ListViewProductItem(productModelProduct: productModel!.products![index],));
           },
         ),
       );
