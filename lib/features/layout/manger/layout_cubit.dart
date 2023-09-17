@@ -18,5 +18,5 @@ class LayoutCubit extends Cubit<LayoutState> {
     currentIndex=index;
     emit(ChangeBottomScreen());
   }
-  List<Widget>bottomScreen=const [HomeView(),CategoryView(),CartView(),ProfileView()];
+  List<Widget>bottomScreen=const[HomeView(),CategoryView(),CartView(),ProfileView()];
 }

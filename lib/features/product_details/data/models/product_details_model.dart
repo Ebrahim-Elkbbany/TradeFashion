@@ -40,8 +40,6 @@ class Media{
  final List<Image> ? images;
 
   Media({this.images});
-
-
   factory Media.fromJson(Map<String,dynamic>json){
     return Media(
       images: json["images"] == null ? [] : List<Image>.from(json["images"]!.map((x) => Image.fromJson(x))),

@@ -1,17 +1,17 @@
 part of 'home_cubit.dart';
 
+@immutable
 abstract class HomeState {}
 
 class HomeInitial extends HomeState {}
 
 class HomeLoading extends HomeState {}
 class HomeSuccess extends HomeState {
-  final ProductModel productModel;
+  final CategoryModel categoryModel;
 
-  HomeSuccess(this.productModel);
+  HomeSuccess(this.categoryModel);
 
 }
-
 class HomeFailure extends HomeState {
   final String errorMessage;
 
