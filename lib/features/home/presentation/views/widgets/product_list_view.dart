@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:trade_fashion/features/home/DD.dart';
-
+import '../../../data/models/product_model.dart';
 import 'list_view_product_item.dart';
 
 class ProductListView extends StatelessWidget {
   const ProductListView({
-    super.key, this.categoryModel,
+    super.key, this.productModel,
   });
-  final CategoryModel ?categoryModel;
+  final ProductModel ?productModel;
   @override
   Widget build(BuildContext context) {
     if(MediaQuery.of(context).size.width.toInt()<560) {

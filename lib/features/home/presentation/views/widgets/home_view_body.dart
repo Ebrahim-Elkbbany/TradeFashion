@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:trade_fashion/constants.dart';
 import 'package:trade_fashion/core/widgets/custom_circular_indicator.dart';
 import 'package:trade_fashion/core/widgets/custom_error_widget.dart';
@@ -8,7 +7,6 @@ import 'package:trade_fashion/core/widgets/custom_text_form_field.dart';
 import 'package:trade_fashion/features/home/presentation/manger/home_cubit.dart';
 import 'package:trade_fashion/features/home/presentation/views/widgets/product_list_view.dart';
 import 'package:trade_fashion/features/layout/manger/layout_cubit.dart';
-import '../../../../../core/utils/app_router.dart';
 import '../../../../../core/utils/assets.dart';
 import 'category_list_view.dart';
 
@@ -95,7 +93,7 @@ class HomeViewBody extends StatelessWidget {
           } else if (state is HomeFailure) {
             return CustomErrorWidget(errorMessage: state.errorMessage);
           }else{
-            return CustomCircularIndicator();
+            return const CustomCircularIndicator();
           }
         },
       ),
