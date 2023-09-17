@@ -18,7 +18,7 @@ class HomeViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => HomeCubit()..getProduct(4209),
+      create: (context) => HomeCubit()..getProduct(),
       child: BlocBuilder<HomeCubit, HomeState>(
         builder: (context, state) {
           if (state is HomeSuccess) {
