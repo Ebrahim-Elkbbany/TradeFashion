@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:trade_fashion/core/utils/assets.dart';
 import 'package:trade_fashion/core/utils/styles.dart';
+import 'package:trade_fashion/features/home/presentation/views/widgets/home_view_body.dart';
 
 import '../../../../../core/utils/app_router.dart';
+import '../../../../home/presentation/views/home_view.dart';
 
 class CategoryViewBody extends StatelessWidget {
   const CategoryViewBody({Key? key}) : super(key: key);
@@ -11,70 +13,59 @@ class CategoryViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        leading: Text(
+          ModalRoute.of(context)!.settings.name!,
+        ),
+        title: const Text(
+          'Category',
+        ),
+      ),
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10.0),
-          child:
-          Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            InkWell(
-              onTap: (){Navigator.pop(context);},
-              child: const CircleAvatar(
-                radius: 15,
-                backgroundColor: Color(0xffF4F4F4),
-                child: Padding(
-                  padding: EdgeInsets.only(left: 5.0),
-                  child: Icon(
-                    Icons.arrow_back_ios,
-                    size: 15,
-                    color: Colors.black,
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          Expanded(
+            child: ListView.separated(
+              physics: const BouncingScrollPhysics(),
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+              itemBuilder: (context, index) => InkWell(
+                onTap: () {
+                  GoRouter.of(context).push(AppRouter.kCategoryItemView);
+                },
+                child: Container(
+                  width: double.infinity,
+                  padding: const EdgeInsetsDirectional.all(12),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
+                    color: const Color(0xffF4F4F4),
+                  ),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Image.asset(AssetsData.profile),
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      Text(
+                        'Hoodies',
+                        style: Styles.textStyle16
+                            .copyWith(fontWeight: FontWeight.w500),
+                      ),
+                      const Spacer(),
+                      const Icon(
+                        Icons.arrow_forward_ios,
+                        size: 20,
+                      ),
+                    ],
                   ),
                 ),
               ),
+              separatorBuilder: (context, index) => const SizedBox(
+                height: 16,
+              ),
+              itemCount: 9,
             ),
-            const SizedBox(
-              height: 16,
-            ),
-            const Text(
-              'Shop by Categories',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.w700),
-            ),
-            const SizedBox(
-              height: 16,
-            ),
-            Expanded(
-              child: ListView.separated(
-                  itemBuilder: (context, index) =>  InkWell(
-                    onTap: (){
-                      GoRouter.of(context).push(AppRouter.kCategoryItemView);
-                    },
-                    child: Container(
-                      width: double.infinity,
-                      height: 64,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                          color: const Color(0xffF4F4F4)),
-                      child:
-                      Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
-                        const SizedBox(
-                          width: 16,
-                        ),
-                        Image.asset(AssetsData.profile),
-                        const SizedBox(
-                          width: 16,
-                        ),
-                        Text(
-                          'Hoodies',
-                          style: Styles.textStyle16,
-                        )
-                      ]),
-                    ),
-                  ) ,
-                  separatorBuilder: (context, index) => const SizedBox(height: 16,),
-                  itemCount: 9),
-            )
-
-          ]),
-        ),
+          )
+        ]),
       ),
     );
   }

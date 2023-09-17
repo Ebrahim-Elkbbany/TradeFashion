@@ -2,33 +2,29 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:trade_fashion/constants.dart';
+import 'package:trade_fashion/core/widgets/custom_circular_indicator.dart';
+import 'package:trade_fashion/core/widgets/custom_error_widget.dart';
 import 'package:trade_fashion/core/widgets/custom_text_form_field.dart';
 import 'package:trade_fashion/features/home/presentation/manger/home_cubit.dart';
 import 'package:trade_fashion/features/home/presentation/views/widgets/product_list_view.dart';
+import 'package:trade_fashion/features/layout/manger/layout_cubit.dart';
 import '../../../../../core/utils/app_router.dart';
 import '../../../../../core/utils/assets.dart';
 import 'category_list_view.dart';
-
 
 class HomeViewBody extends StatelessWidget {
   const HomeViewBody({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(20.0),
-      child: BlocProvider(
-        create: (context) => HomeCubit()..getCategory(),
-        child: BlocBuilder<HomeCubit, HomeState>(
-          builder: (context, state) {
-            return Scaffold(
-              appBar: AppBar(
-                leading: Image.asset(AssetsData.profile),
-                actions: [
-                  Image.asset(AssetsData.cardImage),
-                ],
-              ),
-              body: SingleChildScrollView(
+    return BlocProvider(
+      create: (context) => HomeCubit()..getProduct(4209),
+      child: BlocBuilder<HomeCubit, HomeState>(
+        builder: (context, state) {
+          if (state is HomeSuccess) {
+            return Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              child: SingleChildScrollView(
                 physics: const BouncingScrollPhysics(),
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -36,9 +32,20 @@ class HomeViewBody extends StatelessWidget {
                       const SizedBox(
                         height: 24,
                       ),
+                      Row(
+                        children: [
+                          Image.asset(AssetsData.profile),
+                          const Spacer(),
+                          Image.asset(AssetsData.cardImage),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 24,
+                      ),
                       const CustomTextFormField(
                         boarderRadius: 100,
                         prefix: Icons.search_outlined,
+                        prefixColor: kPrimaryColor,
                         hintText: 'search',
                       ),
                       const SizedBox(
@@ -54,8 +61,7 @@ class HomeViewBody extends StatelessWidget {
                           ),
                           InkWell(
                             onTap: () {
-                              GoRouter.of(context).push(
-                                  AppRouter.kCategoryView);
+                              LayoutCubit.get(context).changeBottomScreen(1);
                             },
                             child: const Text(
                               'See All',
@@ -66,9 +72,12 @@ class HomeViewBody extends StatelessWidget {
                         ],
                       ),
                       const SizedBox(
-                        height: 16,
+                        height: 25,
                       ),
                       const CategoryListView(),
+                      const SizedBox(
+                        height: 25,
+                      ),
                       const Text(
                         'Product',
                         style: TextStyle(
@@ -83,8 +92,12 @@ class HomeViewBody extends StatelessWidget {
                     ]),
               ),
             );
-          },
-        ),
+          } else if (state is HomeFailure) {
+            return CustomErrorWidget(errorMessage: state.errorMessage);
+          }else{
+            return CustomCircularIndicator();
+          }
+        },
       ),
     );
   }

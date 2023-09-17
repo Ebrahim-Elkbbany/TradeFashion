@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:trade_fashion/core/utils/styles.dart';
 
 class ContinueWithContainer extends StatelessWidget {
-  const ContinueWithContainer({Key? key, required this.image, required this.name, this.onTap}) : super(key: key);
+  const ContinueWithContainer({Key? key, required this.image, required this.name, this.onTap, this.height =50}) : super(key: key);
   final String image;
   final String name;
+  final double height;
   final void Function()? onTap;
 
   @override
@@ -17,7 +18,7 @@ class ContinueWithContainer extends StatelessWidget {
           borderRadius: BorderRadius.circular(100),
 
         ),
-        height: 50,
+        height: height,
         width: double.infinity,
         child: Row(
 
