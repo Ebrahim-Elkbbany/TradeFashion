@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:trade_fashion/features/home/DD.dart';
 
+import '../../../data/models/product_model.dart';
 import 'list_view_product_item.dart';
 
 class ProductListView extends StatelessWidget {
   const ProductListView({
-    super.key, this.categoryModel,
+    super.key, this.productModel,
   });
-  final CategoryModel ?categoryModel;
+  final ProductModel ?productModel;
   @override
   Widget build(BuildContext context) {
     if(MediaQuery.of(context).size.width.toInt()<560) {
@@ -19,9 +19,9 @@ class ProductListView extends StatelessWidget {
         childAspectRatio: 1 / 1.7,
         crossAxisSpacing: 10,
         children: List.generate(
-          10,
+          productModel!.products!.length,
               (index) {
-            return  Center(child:  ListViewProductItem());
+            return  Center(child:  ListViewProductItem(productModel: productModel!.products?[index]));
           },
         ),
       );
@@ -34,9 +34,9 @@ class ProductListView extends StatelessWidget {
       childAspectRatio: 1 / 1.2,
       crossAxisSpacing: 5,
       children: List.generate(
-        10,
+        productModel!.products!.length,
             (index) {
-          return const Center(child:  ListViewProductItem());
+          return  Center(child:  ListViewProductItem(productModel: productModel!.products?[index],));
         },
       ),
     );

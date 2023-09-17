@@ -2,23 +2,22 @@ import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:meta/meta.dart';
 import 'package:trade_fashion/core/utils/api_service.dart';
-import 'package:trade_fashion/features/home/data/models/product_details_model.dart';
 import 'package:trade_fashion/features/home/data/models/product_model.dart';
 
-import '../../DD.dart';
+
 
 part 'home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
   HomeCubit() : super(HomeInitial());
 
-  CategoryModel? categoryModel;
+  ProductModel? productModel;
   void getProduct(int categoryId)async{
     emit(HomeLoading());
-    await ApiService(Dio()).get(endPoint:'v2/list' ,queryParams: {
+    await ApiService(Dio()).get(endPoint:'v2/list',queryParams: {
     'store': 'US',
     'offset': '0',
-    'categoryId': '4809',
+    'categoryId': '4209',
     'limit': '48',
     'country': 'US',
     'sort': 'freshness',
@@ -26,8 +25,9 @@ class HomeCubit extends Cubit<HomeState> {
     'sizeSchema': 'US',
     'lang': 'en-US'
     },).then((value){
-      categoryModel=CategoryModel.fromJson(value);
-      emit(HomeSuccess(categoryModel!));
+      productModel=ProductModel.fromJson(value);
+      print(productModel!.products?[0].name);
+      emit(HomeSuccess(productModel!));
 
     }).catchError((error){
       print(error.toString());

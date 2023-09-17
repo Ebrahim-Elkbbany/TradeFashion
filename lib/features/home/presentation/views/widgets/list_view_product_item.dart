@@ -8,7 +8,7 @@ class ListViewProductItem extends StatelessWidget {
     this.productModel,
     super.key,
   });
-  final ProductModel? productModel;
+  final ProductModelProduct? productModel;
 
   @override
   Widget build(BuildContext context) {
@@ -29,11 +29,11 @@ class ListViewProductItem extends StatelessWidget {
                 const SizedBox(
                   height: 8,
                 ),
-                Text('Men\'s Harrington Jacket',style: Styles.textStyle12,),
+                Text(productModel!.name!,style: Styles.textStyle12,maxLines: 2, overflow: TextOverflow.ellipsis),
                 const SizedBox(
                   height: 8,
                 ),
-                const Text('148.00',style:TextStyle(fontSize: 12,fontWeight: FontWeight.w700),)
+                 Text(productModel!.price!.current!.text!,style:TextStyle(fontSize: 12,fontWeight: FontWeight.w700),)
 
               ]),
           IconButton(icon: const Icon(Icons.favorite_outline),onPressed: (){},),

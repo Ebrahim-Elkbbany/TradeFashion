@@ -8,7 +8,6 @@ import 'package:trade_fashion/core/widgets/custom_text_form_field.dart';
 import 'package:trade_fashion/features/home/presentation/manger/home_cubit.dart';
 import 'package:trade_fashion/features/home/presentation/views/widgets/product_list_view.dart';
 import 'package:trade_fashion/features/layout/manger/layout_cubit.dart';
-import '../../../../../core/utils/app_router.dart';
 import '../../../../../core/utils/assets.dart';
 import 'category_list_view.dart';
 
@@ -18,7 +17,7 @@ class HomeViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => HomeCubit()..getProduct(),
+      create: (context) => HomeCubit()..getProduct(2098),
       child: BlocBuilder<HomeCubit, HomeState>(
         builder: (context, state) {
           if (state is HomeSuccess) {
@@ -88,7 +87,7 @@ class HomeViewBody extends StatelessWidget {
                       const SizedBox(
                         height: 24,
                       ),
-                      const ProductListView(),
+                       ProductListView(productModel: state.productModel),
                     ]),
               ),
             );
