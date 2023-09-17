@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:meta/meta.dart';
 import 'package:trade_fashion/core/utils/api_service.dart';
+import 'package:trade_fashion/features/home/data/models/product_details_model.dart';
 
 import '../../DD.dart';
 
@@ -10,26 +11,20 @@ part 'home_state.dart';
 class HomeCubit extends Cubit<HomeState> {
   HomeCubit() : super(HomeInitial());
 
-  ProductModel? categoryModel;
+  ProductDetailsModel? productDetailsModel;
   void getCategory(){
     emit(HomeLoading());
-    ApiService(Dio()).get(endPoint:'v2/list' ,queryParams: {
+    ApiService(Dio()).get(endPoint:'v3/detail' ,queryParams: {
+      'id': '203830320',
+      'lang': 'en-US',
       'store': 'US',
-      'offset': '0',
-      'categoryId': '4210',
-      'limit': '48',
-      'country': 'US',
-      'sort': 'freshness',
-      'currency': 'USD',
       'sizeSchema': 'US',
-      'lang': 'en-US'
+      'currency': 'USD'
     } ).then((value){
-      categoryModel=ProductModel.fromJson(value);
-      print(value);
-      print(categoryModel!.products?[0].id);
-      print(categoryModel!.products?[0].additionalImageUrls);
+      productDetailsModel=ProductDetailsModel.fromJson(value);
+      print(productDetailsModel!.media!.images?[0].url);
 
-      //
+
       emit(HomeSuccess());
     }).catchError((error){
       print(error.toString());
