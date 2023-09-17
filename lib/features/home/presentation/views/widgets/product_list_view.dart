@@ -12,6 +12,7 @@ class ProductListView extends StatelessWidget {
   Widget build(BuildContext context) {
     if(MediaQuery.of(context).size.width.toInt()<560) {
       return GridView.count(
+        //
         shrinkWrap: true,
         physics:const NeverScrollableScrollPhysics(),
         crossAxisCount:2,
