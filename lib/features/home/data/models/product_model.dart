@@ -1,12 +1,11 @@
-import 'dart:ui';
 class CategoryModel{
   String? categoryName;
-  List<ProductModel>?productData;
+  List<ProductModel>productData=[];
 
   CategoryModel.fromJson(Map<String,dynamic> json){
     categoryName=json['categoryName'];
     json['products'].forEach((element) {
-      productData?.add(ProductModel.fromJson(element));
+      productData.add(ProductModel.fromJson(element));
     });
   }
 }
@@ -16,7 +15,7 @@ class ProductModel{
   String? name;
   String? brandName;
   List<Price>? price;
-  Color? color;
+  String? color;
   String? imgUrl;
   List<String>?allImgUrl;
 

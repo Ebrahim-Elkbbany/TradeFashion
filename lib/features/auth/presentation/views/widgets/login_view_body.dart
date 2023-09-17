@@ -93,7 +93,6 @@ class LoginViewBody extends StatelessWidget {
                 image:'assets/images/auth/Facebook.png',
                 name: 'Continue With Facebook',
                  onTap: () async{
-                    await ApiService(Dio()).get();
                  },
               ),
 
