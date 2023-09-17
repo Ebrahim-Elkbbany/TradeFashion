@@ -1,72 +1,107 @@
-class CategoryModel{
-  String? categoryName;
-  List<ProductModel>productData=[];
+class ProductModel {
+  final String? categoryName;
+  final List<ProductModelProduct>? products;
 
-  CategoryModel.fromJson(Map<String,dynamic> json){
-    categoryName=json['categoryName'];
-    json['products'].forEach((element) {
-      productData.add(ProductModel.fromJson(element));
-    });
-  }
-}
+  ProductModel({
+    this.categoryName,
+    this.products,
+  });
 
-class ProductModel{
-  int? id;
-  String? name;
-  String? brandName;
-  List<Price>? price;
-  String? color;
-  String? imgUrl;
-  List<String>?allImgUrl;
+  factory ProductModel.fromJson(Map<String, dynamic> json) => ProductModel(
+    categoryName: json["categoryName"],
+    products: json["products"] == null
+        ? []
+        : List<ProductModelProduct>.from(
+        json["products"]!.map((x) => ProductModelProduct.fromJson(x))),
+  );
 
- ProductModel({ this.id, this.name,this.brandName, this.price, this.color, this.imgUrl, this.allImgUrl,});
- ProductModel.fromJson( Map<String,dynamic>json){
-   id=json['id'];
-   name=json['name'];
-   brandName=json['brandName'];
-   color=json['colour'];
-   imgUrl=json['imageUrl'];
-   json['price'].forEach((element){
-     price?.add(Price.fromJson(element));
-   });
-   allImgUrl?.add(json['additionalImageUrls']);
- }
 
 }
-// class ImgUrl{
-//   String? imgUrl;
-//   ImgUrl({this.imgUrl});
-//   ImgUrl.fromJson(Map<String,dynamic>json){
-//     imgUrl=json['imgUrl'];
-//   }
-// }
+
+class ProductModelProduct {
+  final int? id;
+  final String? name;
+  final Price? price;
+  final String? colour;
+  final String? brandName;
+  final String? imageUrl;
+  final List<String>? additionalImageUrls;
+
+  ProductModelProduct({
+    this.id,
+    this.name,
+    this.price,
+    this.colour,
+    this.brandName,
+    this.imageUrl,
+    this.additionalImageUrls,
+  });
+
+  factory ProductModelProduct.fromJson(Map<String, dynamic> json) =>
+      ProductModelProduct(
+        id: json["id"],
+        name: json["name"],
+        price: json["price"] == null ? null : Price.fromJson(json["price"]),
+        colour: json["colour"],
+        brandName: json["brandName"],
+        imageUrl: json["imageUrl"],
+        additionalImageUrls: json["additionalImageUrls"] == null
+            ? []
+            : List<String>.from(json["additionalImageUrls"]!.map((x) => x)),
+      );
+
+  Map<String, dynamic> toJson() => {
+    "id": id,
+    "name": name,
+    "price": price?.toJson(),
+    "colour": colour,
+    "brandName": brandName,
+    "imageUrl": imageUrl,
+    "additionalImageUrls": additionalImageUrls == null
+        ? []
+        : List<dynamic>.from(additionalImageUrls!.map((x) => x)),
+  };
+}
+
 class Price {
-  List<CurrentPrice>current=[];
-  List<PreviousPrice>previous=[];
-  Price.fromJson(Map<String,dynamic> json){
+  final Current? current;
+  final Current? previous;
 
-    json['current'].forEach((element){
-      current.add(CurrentPrice.fromJson(element));
-    });
-    json['previous'].forEach((element){
-      previous.add(PreviousPrice.fromJson(element));
-    });
+  Price({
+    this.current,
+    this.previous,
+  });
 
-  }
+  factory Price.fromJson(Map<String, dynamic> json) => Price(
+    current:
+    json["current"] == null ? null : Current.fromJson(json["current"]),
+    previous: json["previous"] == null
+        ? null
+        : Current.fromJson(json["previous"]),
+  );
+
+  Map<String, dynamic> toJson() => {
+    "current": current?.toJson(),
+    "previous": previous?.toJson(),
+  };
 }
-class CurrentPrice{
-  int? value;
-  String? text;
-  CurrentPrice.fromJson(Map<String,dynamic> json){
-    value=json['value'];
-    text=json['text'];
-  }
-}
-class PreviousPrice{
-  int? value;
-  String? text;
-  PreviousPrice.fromJson(Map<String,dynamic> json){
-    value=json['value'];
-    text=json['text'];
-  }
+
+class Current {
+  final double? value;
+  final String? text;
+
+  Current({
+    this.value,
+    this.text,
+  });
+
+  factory Current.fromJson(Map<String, dynamic> json) => Current(
+    value: json["value"]?.toDouble(),
+    text: json["text"],
+  );
+
+  Map<String, dynamic> toJson() => {
+    "value": value,
+    "text": text,
+  };
 }
