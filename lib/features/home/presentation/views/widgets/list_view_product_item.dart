@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:trade_fashion/features/home/data/models/product_model.dart';
-
 import '../../../../../core/utils/assets.dart';
 import '../../../../../core/utils/styles.dart';
 
