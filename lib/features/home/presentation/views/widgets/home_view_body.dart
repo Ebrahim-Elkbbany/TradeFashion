@@ -86,7 +86,7 @@ class HomeViewBody extends StatelessWidget {
                       const SizedBox(
                         height: 24,
                       ),
-                      const ProductListView(),
+                       ProductListView(productModel:state.productModel ),
                     ]),
               ),
             );
