@@ -1,10 +1,7 @@
-import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
-import 'package:meta/meta.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trade_fashion/core/utils/api_service.dart';
-
-import '../../DD.dart';
-
+import '../../data/models/product_model.dart';
 part 'home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
@@ -28,14 +25,10 @@ class HomeCubit extends Cubit<HomeState> {
       print(value);
       print(categoryModel!.products?[0].id);
       print(categoryModel!.products?[0].additionalImageUrls);
-
-      //
       emit(HomeSuccess());
     }).catchError((error){
       print(error.toString());
       emit(HomeFailure());
-
     });
   }
-
 }
