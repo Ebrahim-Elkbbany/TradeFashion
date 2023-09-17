@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:trade_fashion/core/utils/app_router.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trade_fashion/core/utils/styles.dart';
@@ -22,6 +23,11 @@ class TradeFashion extends StatelessWidget {
             appBarTheme: AppBarTheme(
           elevation: 0,
           backgroundColor: Colors.white,
+          systemOverlayStyle: SystemUiOverlayStyle.light.copyWith(
+            statusBarColor: Colors.white,
+            statusBarBrightness: Brightness.light,
+            statusBarIconBrightness: Brightness.dark
+          ),
           centerTitle: true,
           iconTheme: const IconThemeData(color: Colors.black),
           titleTextStyle: Styles.textStyle16.copyWith(
@@ -29,7 +35,7 @@ class TradeFashion extends StatelessWidget {
             color: Colors.black,
           ),
         )),
-        routerConfig: AppRouter.router,
+        routerConfig: AppRouter.router ,
       ),
     );
   }
