@@ -1,9 +1,6 @@
-import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
-import 'package:meta/meta.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trade_fashion/core/utils/api_service.dart';
-import 'package:trade_fashion/features/home/data/models/product_details_model.dart';
-import 'package:trade_fashion/features/home/data/models/product_model.dart';
 
 import '../../DD.dart';
 
