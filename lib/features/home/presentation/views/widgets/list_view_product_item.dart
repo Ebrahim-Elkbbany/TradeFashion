@@ -41,8 +41,12 @@ class ListViewProductItem extends StatelessWidget {
                 )
 
               ]),
-          IconButton(icon: const Icon(Icons.favorite_outline),onPressed: (){},),
-        ],
+          GestureDetector(
+              onTap: (){},
+              child:const Padding(
+                padding:  EdgeInsets.all(8.0),
+                child:  Icon(Icons.favorite_outline),
+              ))        ],
       ),
     );
   }
