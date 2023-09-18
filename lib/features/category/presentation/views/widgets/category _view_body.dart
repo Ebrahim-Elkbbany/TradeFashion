@@ -9,22 +9,23 @@ class CategoryViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[300],
+
         appBar: AppBar(
-          backgroundColor: Colors.cyan,
+           leading: Text(''),
           title: const Text(
             'Category',
+
           ),
         ),
         body: Padding(
-          padding: const EdgeInsets.all(12.0),
+          padding: const EdgeInsets.symmetric(horizontal: 12.0,),
           child: GridView.count(
             crossAxisCount: 2,
             mainAxisSpacing: 10,
             crossAxisSpacing: 10,
-            childAspectRatio: .5/.7,
+            childAspectRatio: 1/1.49,
             children: List.generate(
-              10, (index) => CatGridViewItem(categoryRepo:CategoryRepo(),index:index ),
+              CategoryRepo().pageItems.length, (index) => CatGridViewItem(categoryRepo:CategoryRepo(),index:index ),
             ),
           ),
         ),
