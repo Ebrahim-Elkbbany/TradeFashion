@@ -4,38 +4,30 @@ import 'list_view_product_item.dart';
 
 class ProductListView extends StatelessWidget {
   const ProductListView({
-    super.key, this.productModel,
+    super.key,
+    this.productModel,
   });
-  final ProductModel ? productModel;
+
+  final ProductModel? productModel;
+
   @override
   Widget build(BuildContext context) {
-    if(MediaQuery.of(context).size.width.toInt()<560) {
-      return GridView.count(
-        shrinkWrap: true,
-        physics:const NeverScrollableScrollPhysics(),
-        crossAxisCount:2,
-        mainAxisSpacing: 10,
-        childAspectRatio: 1 / 1.8,
-        crossAxisSpacing: 10,
-        children: List.generate(
-          productModel!.products!.length,
-              (index) {
-            return  Center(child:  ListViewProductItem(productModelProduct: productModel!.products![index],));
-          },
-        ),
-      );
-    }
     return GridView.count(
       shrinkWrap: true,
-      physics:const NeverScrollableScrollPhysics(),
-      crossAxisCount:6,
+      physics: const NeverScrollableScrollPhysics(),
+      crossAxisCount: MediaQuery.of(context).size.width.toInt() < 560 ? 2 : 6,
       mainAxisSpacing: 10,
-      childAspectRatio: 1 / 1.2,
-      crossAxisSpacing: 5,
+      childAspectRatio:
+          MediaQuery.of(context).size.width.toInt() < 560 ? 1 / 1.8 : 1 / 1.2,
+      crossAxisSpacing: 10,
       children: List.generate(
-        10,
-            (index) {
-          return const Center(child:  ListViewProductItem());
+        productModel!.products!.length,
+        (index) {
+          return Center(
+            child: ListViewProductItem(
+              productModelProduct: productModel!.products![index],
+            ),
+          );
         },
       ),
     );
