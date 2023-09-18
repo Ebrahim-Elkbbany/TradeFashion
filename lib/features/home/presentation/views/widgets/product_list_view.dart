@@ -9,35 +9,21 @@ class ProductListView extends StatelessWidget {
   final ProductModel ? productModel;
   @override
   Widget build(BuildContext context) {
-    if(MediaQuery.of(context).size.width.toInt()<560) {
-      return GridView.count(
-        shrinkWrap: true,
-        physics:const NeverScrollableScrollPhysics(),
-        crossAxisCount:2,
-        mainAxisSpacing: 10,
-        childAspectRatio: 1 / 1.8,
-        crossAxisSpacing: 10,
-        children: List.generate(
-          productModel!.products!.length,
-              (index) {
-            return  Center(child:  ListViewProductItem(productModelProduct: productModel!.products![index],));
-          },
-        ),
-      );
-    }
     return GridView.count(
       shrinkWrap: true,
       physics:const NeverScrollableScrollPhysics(),
-      crossAxisCount:6,
+      crossAxisCount:MediaQuery.of(context).size.width.toInt()<750 ?2:6,
       mainAxisSpacing: 10,
-      childAspectRatio: 1 / 1.2,
-      crossAxisSpacing: 5,
+      childAspectRatio: MediaQuery.of(context).size.width.toInt()<560 ?1 / 1.8: 1 / 1.2,
+      crossAxisSpacing: 10,
       children: List.generate(
-        10,
+        productModel!.products!.length,
             (index) {
-          return const Center(child:  ListViewProductItem());
+          return  Center(child:  ListViewProductItem(productModelProduct: productModel!.products![index],));
         },
       ),
     );
+
+
   }
 }
