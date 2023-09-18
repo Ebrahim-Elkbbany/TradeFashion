@@ -7,6 +7,7 @@ class AssetsData{
   static const profileImage='assets/images/profile/profile_image.png';
   static const loginImage='assets/images/auth/loginvector.jpg';
   static const registerImage='assets/images/auth/registrationvector.jpg';
+
   static const cat1='assets/images/home/category/cat1.jpg';
   static const cat2='assets/images/home/category/cat2.jpg';
   static const cat3='assets/images/home/category/cat3.jpg';

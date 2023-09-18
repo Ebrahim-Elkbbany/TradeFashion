@@ -8,6 +8,7 @@ import 'package:trade_fashion/features/home/presentation/manger/home_cubit.dart'
 import 'package:trade_fashion/features/home/presentation/views/widgets/product_list_view.dart';
 import 'package:trade_fashion/features/layout/manger/layout_cubit.dart';
 import '../../../../../core/utils/assets.dart';
+import '../../../../category/data/category_repo.dart';
 import 'category_list_view.dart';
 
 class HomeViewBody extends StatelessWidget {
@@ -28,7 +29,7 @@ class HomeViewBody extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const SizedBox(
-                        height: 24,
+                        height: 10,
                       ),
                       Row(
                         children: [
@@ -72,7 +73,7 @@ class HomeViewBody extends StatelessWidget {
                       const SizedBox(
                         height: 25,
                       ),
-                      const CategoryListView(),
+                       CategoryListView(categoryRepo: CategoryRepo()),
                       const SizedBox(
                         height: 25,
                       ),
@@ -86,13 +87,13 @@ class HomeViewBody extends StatelessWidget {
                       const SizedBox(
                         height: 24,
                       ),
-                       ProductListView(productModel:state.productModel ),
+                      ProductListView(productModel: state.productModel),
                     ]),
               ),
             );
           } else if (state is HomeFailure) {
             return CustomErrorWidget(errorMessage: state.errorMessage);
-          }else{
+          } else {
             return const CustomCircularIndicator();
           }
         },
