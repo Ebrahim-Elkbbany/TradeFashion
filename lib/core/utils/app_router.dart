@@ -3,6 +3,7 @@ import 'package:trade_fashion/features/auth/presentation/views/login_view.dart';
 import 'package:trade_fashion/features/auth/presentation/views/register_view.dart';
 import 'package:trade_fashion/features/auth/presentation/views/reset_password_view.dart';
 import 'package:trade_fashion/features/auth/presentation/views/verify_email_view.dart';
+import 'package:trade_fashion/features/product_details/presentation/views/product_details_view.dart';
 import 'package:trade_fashion/features/profile/presentation/views/edit_profile_view.dart';
 import 'package:trade_fashion/features/profile/presentation/views/language_view.dart';
 import 'package:trade_fashion/features/profile/presentation/views/payment_view.dart';
@@ -28,6 +29,7 @@ class AppRouter {
   static const kSearchViewBodyPath = '/searchViewBody';
   static const kEditProfileViewPath = '/EditProfileView';
   static const kLanguageViewPath = '/LanguageView';
+  static const kProductDetailsViewPath = '/ProductDetailsView';
   static final router = GoRouter(
     routes: [
       GoRoute(
@@ -104,6 +106,12 @@ class AppRouter {
         path: kLanguageViewPath,
         builder: (context, state) {
           return const LanguageView();
+        },
+      ),
+      GoRoute(
+        path: kProductDetailsViewPath,
+        builder: (context, state) {
+          return const ProductDetailsView();
         },
       ),
       // GoRoute(
