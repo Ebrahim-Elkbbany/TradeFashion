@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:trade_fashion/core/utils/app_router.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trade_fashion/core/utils/styles.dart';
+import 'package:trade_fashion/features/home/presentation/manger/home_cubit.dart';
 import 'core/utils/theme.dart';
 import 'features/layout/manger/layout_cubit.dart';
 
@@ -16,7 +17,11 @@ class TradeFashion extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: [BlocProvider(create: (context) => LayoutCubit())],
+      providers: [
+        BlocProvider(create: (context) => LayoutCubit()),
+        BlocProvider(create: (context) => HomeCubit()..getProduct()),
+
+      ],
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
         theme: lightTheme.copyWith(

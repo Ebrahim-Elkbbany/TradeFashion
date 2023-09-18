@@ -7,4 +7,16 @@ class AssetsData{
   static const profileImage='assets/images/profile/profile_image.png';
   static const loginImage='assets/images/auth/loginvector.jpg';
   static const registerImage='assets/images/auth/registrationvector.jpg';
+
+  static const cat1='assets/images/home/category/cat1.jpg';
+  static const cat2='assets/images/home/category/cat2.jpg';
+  static const cat3='assets/images/home/category/cat3.jpg';
+  static const cat4='assets/images/home/category/cat4.jpg';
+  static const cat5='assets/images/home/category/cat5.jpg';
+  static const cat6='assets/images/home/category/cat6.jpg';
+  static const cat7='assets/images/home/category/cat7.jpg';
+  static const cat8='assets/images/home/category/cat8.jpg';
+  static const cat9='assets/images/home/category/cat9.jpg';
+  static const cat10='assets/images/home/category/cat10.jpg';
+
 }
