@@ -13,64 +13,68 @@ class CatGridViewItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<Color> colors = [
-      Colors.amber,
-      Colors.teal,
-      Colors.brown,
-      Colors.lightBlue,
-      Colors.red,
-      Colors.deepPurple,
-      Colors.brown,
-      Colors.lightBlue,
-      Colors.amber,
-      Colors.teal,
-      Colors.brown,
-      Colors.lightBlue,
-      Colors.red,
-      Colors.deepPurple,
-      Colors.brown,
-      Colors.lightBlue,
-    ];
+    // List<Color> colors = [
+    //   Colors.amber,
+    //   Colors.teal,
+    //   Colors.brown,
+    //   Colors.lightBlue,
+    //   Colors.red,
+    //   Colors.deepPurple,
+    //   Colors.brown,
+    //   Colors.lightBlue,
+    //   Colors.amber,
+    //   Colors.teal,
+    //   Colors.brown,
+    //   Colors.lightBlue,
+    //   Colors.red,
+    //   Colors.deepPurple,
+    //   Colors.brown,
+    //   Colors.lightBlue,
+    // ];
     return Container(
-      width: 170,
-      height: 220,
+      clipBehavior: Clip.antiAliasWithSaveLayer,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
-        color: colors[index],
+        color:const Color(0xffF4F4F4),
       ),
-      child: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Text(
-            categoryRepo.pageItems[index].title,
-            style: const TextStyle(
-                color: Colors.white, fontSize: 20, fontWeight: FontWeight.w600),
-          ),
-          const SizedBox(
-            height: 15,
-          ),
-          Image.asset(
-            categoryRepo.pageItems[index].image,
-            height: 120,
-            width: 110,
-          ),
-          const Spacer(),
-          Align(
-            alignment: Alignment.centerRight,
-            child: CircleAvatar(
-              radius: 20,
-              backgroundColor: Colors.white,
-              child: InkWell(
-                onTap: () {},
-                child: const Icon(
-                  Icons.arrow_forward_ios_sharp,
-                  color: Colors.black,
+      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        Image.asset(
+          height: 200,
+          width: double.infinity,
+          fit: BoxFit.cover,
+          categoryRepo.pageItems[index].image,
+        ),
+        const Spacer(),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            children: [
+              SizedBox(
+                width: MediaQuery.of(context).size.width/3.9,
+                child: Text(
+                  categoryRepo.pageItems[index].title,
+                  maxLines: 2,
+                  style: const TextStyle(fontSize: 18,fontWeight: FontWeight.w500 ),
                 ),
               ),
-            ),
-          )
-        ]),
-      ),
+              const Spacer(),
+              CircleAvatar(
+                radius: 18,
+                backgroundColor: Colors.white70,
+                child: InkWell(
+                  onTap: () {},
+                  child: const Icon(
+                    Icons.arrow_forward_ios_sharp,
+                    color: Colors.black,
+                    size: 18,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+
+      ]),
     );
   }
 }
