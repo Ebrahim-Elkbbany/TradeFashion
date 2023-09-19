@@ -9,12 +9,10 @@ class CategoryViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
         appBar: AppBar(
            leading: Text(''),
           title: const Text(
             'Category',
-
           ),
         ),
         body: Padding(

@@ -1,4 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'package:trade_fashion/features/category/presentation/views/product_view.dart';
+import 'package:trade_fashion/features/home/presentation/manger/home_cubit.dart';
+import 'package:trade_fashion/features/home/presentation/manger/home_cubit.dart';
+
 import '../../../data/category_repo.dart';
 
 class CatGridViewItem extends StatelessWidget {
@@ -13,29 +19,11 @@ class CatGridViewItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // List<Color> colors = [
-    //   Colors.amber,
-    //   Colors.teal,
-    //   Colors.brown,
-    //   Colors.lightBlue,
-    //   Colors.red,
-    //   Colors.deepPurple,
-    //   Colors.brown,
-    //   Colors.lightBlue,
-    //   Colors.amber,
-    //   Colors.teal,
-    //   Colors.brown,
-    //   Colors.lightBlue,
-    //   Colors.red,
-    //   Colors.deepPurple,
-    //   Colors.brown,
-    //   Colors.lightBlue,
-    // ];
     return Container(
       clipBehavior: Clip.antiAliasWithSaveLayer,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
-        color:const Color(0xffF4F4F4),
+        color: const Color(0xffF4F4F4),
       ),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         Image.asset(
@@ -50,11 +38,14 @@ class CatGridViewItem extends StatelessWidget {
           child: Row(
             children: [
               SizedBox(
-                width: MediaQuery.of(context).size.width/3.9,
+                width: MediaQuery.of(context).size.width / 3.9,
                 child: Text(
                   categoryRepo.pageItems[index].title,
                   maxLines: 2,
-                  style: const TextStyle(fontSize: 18,fontWeight: FontWeight.w500 ),
+                  style: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
               ),
               const Spacer(),
@@ -62,7 +53,14 @@ class CatGridViewItem extends StatelessWidget {
                 radius: 18,
                 backgroundColor: Colors.white70,
                 child: InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ProductView(categoryId: categoryRepo.pageItems[index].id),
+                      ),
+                    );
+                  },
                   child: const Icon(
                     Icons.arrow_forward_ios_sharp,
                     color: Colors.black,
@@ -73,7 +71,6 @@ class CatGridViewItem extends StatelessWidget {
             ],
           ),
         ),
-
       ]),
     );
   }
