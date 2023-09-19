@@ -71,7 +71,7 @@ class HomeViewBody extends StatelessWidget {
                     const SizedBox(
                       height: 25,
                     ),
-                     CategoryListView(categoryRepo: CategoryRepo()),
+                    CategoryListView(categoryRepo: CategoryRepo()),
                     const SizedBox(
                       height: 25,
                     ),

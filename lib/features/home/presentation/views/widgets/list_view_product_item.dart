@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:trade_fashion/core/utils/app_router.dart';
 import 'package:trade_fashion/features/home/data/models/product_model.dart';
 import '../../../../../core/utils/styles.dart';
+import '../../../../product_details/presentation/views/product_details_view.dart';
 
 class ListViewProductItem extends StatelessWidget {
   const ListViewProductItem({
@@ -16,7 +17,7 @@ class ListViewProductItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        GoRouter.of(context).push(AppRouter.kProductDetailsViewPath);
+        Navigator.push(context, MaterialPageRoute(builder: (context) => ProductDetailsView(productModelProduct:productModelProduct ) ,));
       },
       child: Container(
         clipBehavior: Clip.antiAliasWithSaveLayer,
