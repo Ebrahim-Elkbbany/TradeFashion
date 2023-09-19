@@ -11,7 +11,7 @@ import 'package:trade_fashion/features/profile/presentation/views/theme_view.dar
 import 'package:trade_fashion/features/splash/presentation/views/splash_view.dart';
 
 import '../../features/category/presentation/views/category _view.dart';
-import '../../features/home/presentation/views/category_item_view.dart';
+import '../../features/category/presentation/views/product_view.dart';
 import '../../features/home/presentation/views/home_view.dart';
 import '../../features/layout/layout.dart';
 
@@ -78,12 +78,12 @@ class AppRouter {
           return const CategoryView();
         },
       ),
-      GoRoute(
-        path: kCategoryItemView,
-        builder: (context, state) {
-          return const CategoryItemView();
-        },
-      ),
+      // GoRoute(
+      //   path: kCategoryItemView,
+      //   builder: (context, state) {
+      //     return  CategoryItemView();
+      //   },
+      // ),
       GoRoute(
         path: kThemeViewPath,
         builder: (context, state) {
