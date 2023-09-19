@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
+import '../../../../home/data/models/product_model.dart';
+
 class DetailsSection extends StatelessWidget {
-  const DetailsSection({Key? key}) : super(key: key);
+  const DetailsSection({Key? key, this.productModelProduct}) : super(key: key);
+  final ProductModelProduct? productModelProduct;
 
   @override
   Widget build(BuildContext context) {
@@ -12,9 +15,14 @@ class DetailsSection extends StatelessWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const Text(
-                'Sony WH-100XM4',
-                style: TextStyle(fontWeight: FontWeight.w800, fontSize: 23),
+              Expanded(
+                child: Text(
+                  productModelProduct!.name!,
+                  style: const TextStyle(
+                      fontWeight: FontWeight.w800,
+                      fontSize: 23,
+                      overflow: TextOverflow.ellipsis),
+                ),
               ),
               const Spacer(),
               Container(
