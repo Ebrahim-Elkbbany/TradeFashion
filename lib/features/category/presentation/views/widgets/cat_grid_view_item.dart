@@ -57,7 +57,10 @@ class CatGridViewItem extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => ProductView(categoryId: categoryRepo.pageItems[index].id),
+                        builder: (context) => ProductView(
+                          categoryId: categoryRepo.pageItems[index].id,
+                          categoryName: categoryRepo.pageItems[index].title,
+                        ),
                       ),
                     );
                   },

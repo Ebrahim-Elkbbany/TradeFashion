@@ -5,7 +5,7 @@ import 'model.dart';
 class CategoryRepo{
   List<CategoryModel>pageItems= [
     CategoryModel(image: AssetsData.cat11,title:'Face Skin Care',id: 5297 ),
-    CategoryModel(image: AssetsData.cat6,title:'Shoes  &Boots ',id: 4209 ),
+    CategoryModel(image: AssetsData.cat6,title:'Shoes&Boots ',id: 4209 ),
     CategoryModel(image: AssetsData.cat8,title:'Jeans',id: 4208 ),
     CategoryModel(image: AssetsData.cat2,title:'Glasses',id: 18963 ),
     CategoryModel(image: AssetsData.cat5,title:'Women\'s',id: 50184 ),

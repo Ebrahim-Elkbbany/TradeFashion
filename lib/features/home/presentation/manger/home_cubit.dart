@@ -16,15 +16,16 @@ class HomeCubit extends Cubit<HomeState> {
   }
   int currentIndex=4209;
   ProductModel? productModel;
-  void getProduct({int? categoryId})async{
+  void getHomeProduct()async{
     emit(HomeLoading());
     await ApiService(Dio()).get(endPoint:'v2/list' ,queryParams: {
     'store': 'US',
     'offset': '0',
-    'categoryId': '$categoryId',
-    'limit': '48',
+    'categoryId': '',
+    'limit': '100',
     'country': 'US',
     'sort': 'freshness',
+    'q': 'Men\'s',
     'currency': 'USD',
     'sizeSchema': 'US',
     'lang': 'en-US'
