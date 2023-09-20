@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../data/category_repo.dart';
 import 'cat_grid_view_item.dart';
+
 class CategoryViewBody extends StatelessWidget {
   const CategoryViewBody({
     Key? key,
@@ -9,28 +10,33 @@ class CategoryViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-           leading: Text(''),
-          title: const Text(
-            'Category',
-          ),
+      appBar: AppBar(
+        leading: Text(''),
+        title: const Text(
+          'Category',
         ),
-        body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 12.0,),
-          child: GridView.count(
-            crossAxisCount: 2,
-            mainAxisSpacing: 10,
-            crossAxisSpacing: 10,
-            childAspectRatio: 1/1.49,
-            children: List.generate(
-              CategoryRepo().pageItems.length, (index) => CatGridViewItem(categoryRepo:CategoryRepo(),index:index ),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: 12.0,
+        ),
+        child: GridView.count(
+          crossAxisCount: 2,
+          mainAxisSpacing: 10,
+          crossAxisSpacing: 10,
+          childAspectRatio: 1 / 1.49,
+          children: List.generate(
+            CategoryRepo().pageItems.length,
+            (index) => CatGridViewItem(
+              categoryRepo: CategoryRepo(),
+              index: index,
             ),
           ),
         ),
+      ),
     );
   }
 }
-
 
 //      Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
 //         Expanded(

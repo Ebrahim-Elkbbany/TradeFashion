@@ -20,6 +20,7 @@ class HomeViewBody extends StatelessWidget {
 
     return BlocBuilder<HomeCubit, HomeState>(
       builder: (context, state) {
+
         if (state is HomeSuccess) {
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
