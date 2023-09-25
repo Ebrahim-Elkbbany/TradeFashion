@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'package:trade_fashion/core/utils/app_router.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trade_fashion/core/utils/styles.dart';
-import 'package:trade_fashion/features/category/presentation/manger/category_product_cubit/category_product_cubit.dart';
+import 'package:trade_fashion/features/auth/presentation/manger/auth_cubit.dart';
 import 'package:trade_fashion/features/home/presentation/manger/home_cubit.dart';
 import 'app_bloc_observer.dart';
 import 'core/utils/theme.dart';
@@ -11,6 +12,11 @@ import 'features/layout/manger/layout_cubit.dart';
 import 'features/product_details/presentation/manger/product_details_cubit/product_details_cubit.dart';
 
 void main() {
+
+  // Initialize FFI
+  sqfliteFfiInit();
+
+  databaseFactory = databaseFactoryFfi;
   runApp(const TradeFashion());
   Bloc.observer = AppBlocObserver();
 }
@@ -23,8 +29,10 @@ class TradeFashion extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => LayoutCubit()),
+        BlocProvider(create: (context) => AuthCubit()),
         BlocProvider(create: (context) => HomeCubit()..getHomeProduct()),
         BlocProvider(create: (context) => ProductDetailsCubit()),
+
       ],
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,

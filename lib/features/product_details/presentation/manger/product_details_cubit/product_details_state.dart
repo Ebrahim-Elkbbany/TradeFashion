@@ -19,3 +19,5 @@ class ProductDetailsFailure extends ProductDetailsState {
 }
 class ChangeImageState extends ProductDetailsState {}
 class ChangeSelectedState extends ProductDetailsState {}
+class ChangeIndexState extends ProductDetailsState {}
+class ChangeProductModelState extends ProductDetailsState {}
