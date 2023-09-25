@@ -26,12 +26,6 @@ class RegisterViewBody extends StatelessWidget {
               height: 32,
             ),
             const RegisterViewTextFieldSection(),
-            CustomButton(
-              buttonName: 'Register',
-              onPressed: () {
-                GoRouter.of(context).push(AppRouter.kLayoutView);
-              },
-            ),
           ],
         ),
       ),
