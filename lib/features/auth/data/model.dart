@@ -5,13 +5,15 @@ import 'package:path/path.dart';
 class DatabaseHelper {
   static final DatabaseHelper _instance = DatabaseHelper.internal();
   factory DatabaseHelper() => _instance;
-
   static Database? _db;
 
   Future<Database?> get db async {
-    if (_db != null) return _db;
-    _db = await initDb();
-    return _db;
+    if (_db == null) {
+      _db = await initDb();
+      return _db;
+    }else{
+      return _db;
+    }
   }
 
   DatabaseHelper.internal();
@@ -31,6 +33,17 @@ class DatabaseHelper {
         lastName TEXT,
         email TEXT,
         password TEXT
+      )
+    ''');
+    await db.execute('''
+      CREATE TABLE cart (
+        id INTEGER PRIMARY KEY,
+        productName TEXT,
+        price TEXT,
+        email TEXT,
+        image TEXT,
+        color TEXT,
+        size TEXT,
       )
     ''');
   }

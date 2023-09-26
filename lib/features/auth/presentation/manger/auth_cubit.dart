@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:trade_fashion/features/home/data/models/product_model.dart';
 import '../../../../core/widgets/toast.dart';
 import '../../data/model.dart';
 part 'auth_state.dart';
@@ -19,6 +20,7 @@ class AuthCubit extends Cubit<AuthState> {
     );
   }
 
+  String ? email;
   Future<void> login({
     required final String email,
     required final String password,
@@ -77,6 +79,27 @@ class AuthCubit extends Cubit<AuthState> {
 
     });
   }
+
+
+
+ List<Map<String, Object?>> cartList ;
+
+  Future<List<Map<String, Object?>>> getCart({required String email})async{
+    final db = await DatabaseHelper().db;
+    Future<List<Map<String, Object?>>> cartData=db!.query(
+      'cart',
+      where: 'email = ?',
+      whereArgs: [email],
+    ).then((value) =>
+        cartList = value
+    );
+    return cartData;
+  }
+  Future<List<Map<String, Object?>>> insertCart({required String email})async{
+    final db = await DatabaseHelper().db;
+
+  }
+
 
 
 
