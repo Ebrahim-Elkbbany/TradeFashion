@@ -5,6 +5,7 @@ import 'package:trade_fashion/core/utils/app_router.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trade_fashion/core/utils/styles.dart';
 import 'package:trade_fashion/features/auth/presentation/manger/auth_cubit.dart';
+import 'package:trade_fashion/features/favourites/presentation/manger/favourites_cubit/favourites_cubit.dart';
 import 'package:trade_fashion/features/home/presentation/manger/home_cubit.dart';
 import 'app_bloc_observer.dart';
 import 'core/utils/theme.dart';
@@ -12,7 +13,6 @@ import 'features/layout/manger/layout_cubit.dart';
 import 'features/product_details/presentation/manger/product_details_cubit/product_details_cubit.dart';
 
 void main() {
-
   runApp(const TradeFashion());
   Bloc.observer = AppBlocObserver();
 }
@@ -25,10 +25,10 @@ class TradeFashion extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => LayoutCubit()),
-        BlocProvider(create: (context) => AuthCubit()),
+        BlocProvider(create: (context) => AuthCubit()..getCart()),
+        BlocProvider(create:(context) => FavouritesCubit()..getFavourite()),
         BlocProvider(create: (context) => HomeCubit()..getHomeProduct()),
         BlocProvider(create: (context) => ProductDetailsCubit()),
-
       ],
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
@@ -37,10 +37,9 @@ class TradeFashion extends StatelessWidget {
           elevation: 0,
           backgroundColor: Colors.white,
           systemOverlayStyle: SystemUiOverlayStyle.light.copyWith(
-            statusBarColor: Colors.white,
-            statusBarBrightness: Brightness.light,
-            statusBarIconBrightness: Brightness.dark
-          ),
+              statusBarColor: Colors.white,
+              statusBarBrightness: Brightness.light,
+              statusBarIconBrightness: Brightness.dark),
           centerTitle: true,
           iconTheme: const IconThemeData(color: Colors.black),
           titleTextStyle: Styles.textStyle16.copyWith(
@@ -48,7 +47,7 @@ class TradeFashion extends StatelessWidget {
             color: Colors.black,
           ),
         )),
-        routerConfig: AppRouter.router ,
+        routerConfig: AppRouter.router,
       ),
     );
   }
