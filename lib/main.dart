@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:sqflite_common_ffi/sqflite_ffi.dart';
+
 import 'package:trade_fashion/core/utils/app_router.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trade_fashion/core/utils/styles.dart';
@@ -13,10 +13,6 @@ import 'features/product_details/presentation/manger/product_details_cubit/produ
 
 void main() {
 
-  // Initialize FFI
-  sqfliteFfiInit();
-
-  databaseFactory = databaseFactoryFfi;
   runApp(const TradeFashion());
   Bloc.observer = AppBlocObserver();
 }

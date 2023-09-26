@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:trade_fashion/core/utils/app_router.dart';
 import 'package:trade_fashion/core/utils/assets.dart';
 import 'package:trade_fashion/core/utils/styles.dart';
 import 'package:trade_fashion/core/widgets/custom_text_button.dart';
@@ -38,7 +40,7 @@ class ProfileViewBody extends StatelessWidget {
               ),
               CustomTextButton(
                 onPressed: (){
-
+                  GoRouter.of(context).push(AppRouter.kLoginView);
                 },
                 text: 'Sign Out',
                 textStyle: Styles.textStyle16.copyWith(
@@ -46,8 +48,6 @@ class ProfileViewBody extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-
-
               const SizedBox(
                 height: 16,
               ),
