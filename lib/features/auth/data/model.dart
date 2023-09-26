@@ -21,12 +21,17 @@ class DatabaseHelper {
   Future<Database> initDb() async {
     final databasesPath = await getDatabasesPath();
     final path = join(databasesPath, 'my_database.db');
-    var theDb = await openDatabase(path, version: 1, onCreate: _onCreate);
+    var theDb = await openDatabase(path, version: 1, onCreate: _onCreate,onUpgrade: _onUpgrade);
     return theDb;
   }
+  void _onUpgrade(Database db, int oldVersion, int newVersion) {
+
+  }
+
 
   void _onCreate(Database db, int version) async {
-    await db.execute('''
+    Batch batch =db.batch();
+    batch.execute('''
       CREATE TABLE users (
         id INTEGER PRIMARY KEY,
         firstName TEXT,
@@ -35,7 +40,7 @@ class DatabaseHelper {
         password TEXT
       )
     ''');
-    await db.execute('''
+    batch.execute('''
       CREATE TABLE cart (
         id INTEGER PRIMARY KEY,
         productName TEXT,
@@ -43,9 +48,20 @@ class DatabaseHelper {
         email TEXT,
         image TEXT,
         color TEXT,
-        size TEXT,
+        size TEXT
       )
     ''');
+    batch.execute('''
+      CREATE TABLE favourite (
+        id INTEGER PRIMARY KEY,
+        productName TEXT,
+        productId TEXT,
+        price TEXT,
+        email TEXT,
+        image TEXT
+      )
+    ''');
+    batch.commit();
   }
 
   Future<void> addUser({
@@ -65,6 +81,12 @@ class DatabaseHelper {
       },
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
+  }
+
+  deleteMyDatabase()async{
+    String databasePath = await getDatabasesPath();
+    String path = join(databasePath, 'todo.db');
+    await deleteDatabase(path);
   }
 
 }

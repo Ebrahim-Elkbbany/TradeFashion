@@ -6,7 +6,14 @@ import 'package:trade_fashion/core/utils/styles.dart';
 class ListViewItem extends StatelessWidget {
   const ListViewItem({
     super.key,
+    required this.name,
+    required this.price,
+    required this.image,
   });
+
+  final String name;
+  final String price;
+  final String image;
 
   @override
   Widget build(BuildContext context) {
@@ -14,20 +21,23 @@ class ListViewItem extends StatelessWidget {
       padding: const EdgeInsetsDirectional.all(10),
       width: double.infinity,
       decoration: BoxDecoration(
-          color: kSecondaryColor, borderRadius: BorderRadius.circular(12)),
+        color: kSecondaryColor,
+        borderRadius: BorderRadius.circular(12),
+      ),
       height: 100,
       child: Row(
         children: [
-          Image.asset(AssetsData.productImage,
-            height: 80, width: 80, fit: BoxFit.cover,),
-          SizedBox(width: MediaQuery.of(context).size.width*.02,),
+          Image.network(image, height: 80, width: 80, fit: BoxFit.cover),
+          SizedBox(
+            width: MediaQuery.of(context).size.width * .02,
+          ),
           Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.4,
                 child: Text(
-                  'Cotton shirt Regular Fit',
+                  name,
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   style: Styles.textStyle16.copyWith(
@@ -76,7 +86,7 @@ class ListViewItem extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Text(
-                '\$149',
+                price,
                 style: Styles.textStyle16.copyWith(
                   fontWeight: FontWeight.bold,
                 ),

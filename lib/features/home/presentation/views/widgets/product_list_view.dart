@@ -19,7 +19,7 @@ class ProductListView extends StatelessWidget {
       children: List.generate(
         productModel!.products!.length,
             (index) {
-          return  Center(child:  ListViewProductItem(productModelProduct: productModel!.products![index],));
+          return  Center(child:ListViewProductItem(productModelProduct: productModel!.products![index],));
         },
       ),
     );
