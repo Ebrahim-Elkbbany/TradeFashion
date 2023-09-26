@@ -71,6 +71,11 @@ class ListViewProductItem extends StatelessWidget {
                     : Colors.grey,
               ),
               onPressed: () {
+                AuthCubit.get(context).insertCart(
+                    productName: productModelProduct!.name!,
+                    price: productModelProduct!.price!.current!.text!,
+                    image: 'http://${productModelProduct!.imageUrl}', color: 'a7a', size: "a7a",
+                );
                 FavouritesCubit.get(context).insertFavourite(
                   productName: productModelProduct!.name!,
                   price: productModelProduct!.price!.current!.text!,
