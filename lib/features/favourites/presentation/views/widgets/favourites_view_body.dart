@@ -16,7 +16,6 @@ class FavouritesViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-  
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -25,8 +24,9 @@ class FavouritesViewBody extends StatelessWidget {
         ),
       ),
       body: BlocBuilder<FavouritesCubit, FavouritesState>(
+
         builder: (context, state) {
-          FavouritesCubit.get(context).getFavourite();
+          var cubit =FavouritesCubit.get(context);
           if (state is GetFavouritesSuccessState) {
             return GridView.count(
               padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -56,7 +56,7 @@ class FavouritesViewBody extends StatelessWidget {
                     price: state.favouritesList![index]['price'].toString(),
                     image: state.favouritesList![index]['image'].toString(),
                    productId: state.favouritesList![index]['productId'].toString(),
-                  ),
+                   ),
                   );
                 },
               ),
@@ -64,6 +64,7 @@ class FavouritesViewBody extends StatelessWidget {
           } else if (state is GetFavouritesErrorState) {
             return CustomErrorWidget(errorMessage: state.error);
           } else {
+            cubit.getFavourite();
             return const CustomCircularIndicator();
           }
         },
