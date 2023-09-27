@@ -26,7 +26,7 @@ class TradeFashion extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => LayoutCubit()),
         BlocProvider(create: (context) => AuthCubit()..getCart()),
-        BlocProvider(create:(context) => FavouritesCubit()..getFavourite()),
+        BlocProvider(create:(context) => FavouritesCubit()..getFavourite()..favoriteItems),
         BlocProvider(create: (context) => HomeCubit()..getHomeProduct()),
         BlocProvider(create: (context) => ProductDetailsCubit()),
       ],

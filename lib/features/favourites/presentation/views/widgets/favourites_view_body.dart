@@ -2,20 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trade_fashion/core/widgets/custom_circular_indicator.dart';
 import 'package:trade_fashion/core/widgets/custom_error_widget.dart';
-
-import 'package:trade_fashion/features/category/presentation/manger/category_product_cubit/category_product_cubit.dart';
 import 'package:trade_fashion/features/favourites/presentation/manger/favourites_cubit/favourites_cubit.dart';
 import 'package:trade_fashion/features/favourites/presentation/views/widgets/favourites_list_item.dart';
+
+import '../../../../home/data/models/product_model.dart';
 
 
 class FavouritesViewBody extends StatelessWidget {
   const FavouritesViewBody({
-    Key? key,
+    Key? key, required this.productModel,
   }) : super(key: key);
+  final ProductModel productModel;
 
   @override
   Widget build(BuildContext context) {
-    FavouritesCubit.get(context).getFavourite();
+  
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -25,6 +26,7 @@ class FavouritesViewBody extends StatelessWidget {
       ),
       body: BlocBuilder<FavouritesCubit, FavouritesState>(
         builder: (context, state) {
+          FavouritesCubit.get(context).getFavourite();
           if (state is GetFavouritesSuccessState) {
             return GridView.count(
               padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -40,11 +42,20 @@ class FavouritesViewBody extends StatelessWidget {
               children: List.generate(
                 state.favouritesList!.length,
                 (index) {
+                  int index5 = 0;
+                  for (int i = 0; i < productModel.products!.length; i++) {
+                    if (productModel.products![i].id == int.parse(state.favouritesList![index]['productId'].toString())) {
+                      index5 = i;
+                      break;
+                    }
+                  }
                   return Center(
                       child: ListViewFavouriteItem(
+                    productModelProduct: productModel.products![index5],
                     name: state.favouritesList![index]['productName'].toString(),
                     price: state.favouritesList![index]['price'].toString(),
                     image: state.favouritesList![index]['image'].toString(),
+                   productId: state.favouritesList![index]['productId'].toString(),
                   ),
                   );
                 },

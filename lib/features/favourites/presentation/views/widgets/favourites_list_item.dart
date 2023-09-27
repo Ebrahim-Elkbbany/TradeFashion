@@ -1,17 +1,23 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:trade_fashion/constants.dart';
+import 'package:trade_fashion/features/favourites/presentation/manger/favourites_cubit/favourites_cubit.dart';
 
 import '../../../../../core/utils/styles.dart';
+import '../../../../home/data/models/product_model.dart';
 import '../../../../product_details/presentation/views/product_details_view.dart';
 
 class ListViewFavouriteItem extends StatelessWidget {
   const ListViewFavouriteItem({
 
-    super.key, required this.name, required this.price, required this.image,
+    super.key, required this.name, required this.price, required this.image, required this.productId, required this.productModelProduct,
   });
   final String name;
   final String price;
   final String image;
+  final String productId;
+  final ProductModelProduct productModelProduct;
 
 
 
@@ -19,7 +25,7 @@ class ListViewFavouriteItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => ProductDetailsView( ) ,));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => ProductDetailsView(productModelProduct: productModelProduct, ) ,));
       },
       child: Container(
         clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -50,10 +56,31 @@ class ListViewFavouriteItem extends StatelessWidget {
                   )
 
                 ]),
-            IconButton(icon: const Icon(Icons.favorite_outline),onPressed: (){
 
-            },
+                IconButton(
+                  icon: Icon(
+                    FavouritesCubit.get(context).favoriteItems.any(
+                          (item) => item == productId,
+                    )
+                        ? Icons.favorite
+                        : Icons.favorite_outline,
+                    color: FavouritesCubit.get(context).favoriteItems.any(
+                          (item) => item == productId,
+                    )
+                        ? kPrimaryColor
+                        : null,
+                  ),
+                  onPressed: () {
+                    FavouritesCubit.get(context).insertFavourite(
+                      productName: name,
+                      price: price,
+                      image: image,
+                      productId: productId,
+                    );
+                  },
+
             ),
+
           ],
         ),
       ),

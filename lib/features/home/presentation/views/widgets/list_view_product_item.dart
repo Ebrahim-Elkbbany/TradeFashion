@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:trade_fashion/constants.dart';
 import 'package:trade_fashion/core/utils/app_router.dart';
@@ -63,25 +64,31 @@ class ListViewProductItem extends StatelessWidget {
                 ),
               )
             ]),
-            IconButton(
+            BlocBuilder<FavouritesCubit, FavouritesState>(
+              builder: (context, state) {
+              return IconButton(
               icon: Icon(
-                Icons.favorite_outline,
-                color: FavouritesCubit.get(context).isFavourite == true
+                FavouritesCubit.get(context).favoriteItems.any(
+                      (item) => item == productModelProduct!.id.toString(),
+                )
+                    ? Icons.favorite
+                    : Icons.favorite_outline,
+                color: FavouritesCubit.get(context).favoriteItems.any(
+                      (item) => item == productModelProduct!.id.toString(),
+                )
                     ? kPrimaryColor
-                    : Colors.grey,
+                    : null,
               ),
               onPressed: () {
-                AuthCubit.get(context).insertCart(
-                    productName: productModelProduct!.name!,
-                    price: productModelProduct!.price!.current!.text!,
-                    image: 'http://${productModelProduct!.imageUrl}', color: 'a7a', size: "a7a",
-                );
                 FavouritesCubit.get(context).insertFavourite(
                   productName: productModelProduct!.name!,
                   price: productModelProduct!.price!.current!.text!,
                   image: 'http://${productModelProduct!.imageUrl}',
                   productId: "${productModelProduct!.id}",
                 );
+
+              },
+            );
               },
             ),
           ],
