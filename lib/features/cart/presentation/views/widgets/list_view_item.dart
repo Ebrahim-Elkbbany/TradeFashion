@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:trade_fashion/constants.dart';
-import 'package:trade_fashion/core/utils/assets.dart';
 import 'package:trade_fashion/core/utils/styles.dart';
+import '../../manger/cart_cubit.dart';
 
 class ListViewItem extends StatelessWidget {
   const ListViewItem({
@@ -9,22 +9,28 @@ class ListViewItem extends StatelessWidget {
     required this.name,
     required this.price,
     required this.image,
+    required this.cubit,
+    required this.productId, required this.quantity, required this.indexItem,
   });
 
+  final CartCubit cubit;
   final String name;
   final String price;
+  final int quantity;
+  final int indexItem;
   final String image;
+  final String productId;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsetsDirectional.all(10),
       width: double.infinity,
+      height: 100,
       decoration: BoxDecoration(
         color: kSecondaryColor,
         borderRadius: BorderRadius.circular(12),
       ),
-      height: 100,
       child: Row(
         children: [
           Image.network(image, height: 80, width: 80, fit: BoxFit.cover),
@@ -50,15 +56,15 @@ class ListViewItem extends StatelessWidget {
                 child: Row(
                   children: [
                     Text(
-                      'Size -',
+                      'Num -',
                       style: Styles.textStyle16.copyWith(
-                        color: Colors.black54,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                     Text(
-                      'M',
+                      '${quantity}P',
                       style: Styles.textStyle16.copyWith(
-                        fontWeight: FontWeight.bold,
+                        color: Colors.black54,
                       ),
                     ),
                     const Spacer(),
@@ -100,7 +106,10 @@ class ListViewItem extends StatelessWidget {
                       radius: 16,
                       backgroundColor: kPrimaryColor,
                       child: IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          print (quantity+1);
+                          cubit.changeQuantity(quantity+1,productId,indexItem);
+                        },
                         icon: const Icon(
                           Icons.add,
                           color: Colors.white,
@@ -112,7 +121,10 @@ class ListViewItem extends StatelessWidget {
                       radius: 16,
                       backgroundColor: kPrimaryColor,
                       child: IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          print (quantity-1);
+                          cubit.changeQuantity(quantity-1,productId,indexItem);
+                        },
                         icon: const Icon(
                           Icons.remove,
                           color: Colors.white,
