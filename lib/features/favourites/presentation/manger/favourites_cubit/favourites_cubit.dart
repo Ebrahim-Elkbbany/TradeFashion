@@ -24,7 +24,6 @@ class FavouritesCubit extends Cubit<FavouritesState> {
       where: 'email = ?',
       whereArgs: [tokenEmail],
     ).then((value) {
-
       emit(GetFavouritesSuccessState(value));
     }
     ).catchError((e){
