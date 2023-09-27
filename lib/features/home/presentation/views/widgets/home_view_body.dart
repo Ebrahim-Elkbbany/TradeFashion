@@ -5,6 +5,7 @@ import 'package:trade_fashion/core/utils/component.dart';
 import 'package:trade_fashion/core/widgets/custom_circular_indicator.dart';
 import 'package:trade_fashion/core/widgets/custom_error_widget.dart';
 import 'package:trade_fashion/core/widgets/custom_text_form_field.dart';
+import 'package:trade_fashion/features/favourites/presentation/manger/favourites_cubit/favourites_cubit.dart';
 import 'package:trade_fashion/features/favourites/presentation/views/favourites_view.dart';
 import 'package:trade_fashion/features/home/presentation/manger/home_cubit.dart';
 import 'package:trade_fashion/features/home/presentation/views/widgets/product_list_view.dart';
@@ -18,6 +19,7 @@ class HomeViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return BlocBuilder<HomeCubit, HomeState>(
       builder: (context, state) {
         if (state is HomeSuccess) {
@@ -37,7 +39,7 @@ class HomeViewBody extends StatelessWidget {
                         const Spacer(),
                         IconButton(
                             onPressed: () {
-                              navigateTo(context, const FavouritesView());
+                              navigateTo(context,   FavouritesView(productModel: state.productModel));
                             },
                             icon: const Icon(Icons.favorite))
                       ],

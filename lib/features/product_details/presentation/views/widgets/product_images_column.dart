@@ -24,10 +24,10 @@ class ProductImagesColumn extends StatelessWidget {
                 width: 50,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
-                    border: Border.all(color: Colors.black12)),
+                    border: Border.all(color: Colors.black12),),
                 child: IconButton(onPressed: () {
                   Navigator.pop(context);
-                }, icon: const Icon(Icons.arrow_back, size: 25)),
+                }, icon: const Icon(Icons.arrow_back, size: 25),),
               ),
               const SizedBox(
                 height: 20,
