@@ -1,6 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trade_fashion/constants.dart';
-import 'package:trade_fashion/features/home/data/models/product_model.dart';
 import '../../../../core/widgets/toast.dart';
 import '../../data/model.dart';
 part 'auth_state.dart';
@@ -82,46 +81,6 @@ class AuthCubit extends Cubit<AuthState> {
     });
   }
 
-
-
-  Future<void> getCart()async{
-    emit(GetCartLoadingState());
-    final db = await DatabaseHelper().db;
-    await db!.query(
-      'cart',
-      where: 'email = ?',
-      whereArgs: [tokenEmail],
-    ).then((value) =>
-        emit(GetCartSuccessState(value))
-    ).catchError((e){
-      print(e);
-      emit(GetCartErrorState(e.toString()));
-    });
-  }
-  void insertCart({
-    required String productName,
-    required String price,
-    required String image,
-    required String color,
-    required String size,
-  })async{
-    emit(InsertCartLoadingState());
-    final db = await DatabaseHelper().db;
-    await db?.insert('cart', {
-      "productName": productName,
-      "price": price,
-      "email": tokenEmail,
-      "image": image,
-      "color": color,
-      "size": size,
-    }).then((value) {
-      print(value);
-      emit(InsertCartSuccessState());
-    }).catchError((e) {
-      print(e.toString());
-      emit(InsertCartErrorState());
-    });
-  }
 
 
 

@@ -40,9 +40,14 @@ class LoginViewBody extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Image.asset(
-                      AssetsData.loginImage,
-                      fit: BoxFit.fill,
+                    Align(
+                      alignment: Alignment.center,
+                      child: Image.asset(
+                        AssetsData.loginImage,
+                        fit: BoxFit.fill,
+                        height: 400,
+                        width: 400,
+                      ),
                     ),
                     Text('Login', style: Styles.textStyle32),
                     const SizedBox(

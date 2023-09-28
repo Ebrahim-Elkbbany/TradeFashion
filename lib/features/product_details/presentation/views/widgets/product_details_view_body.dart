@@ -14,28 +14,30 @@ class ProductDetailsViewBody extends StatelessWidget {
   final ProductModelProduct? productModelProduct;
   @override
   Widget build(BuildContext context) {
-    return  Column(
-      children: [
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            ProductImagesColumn(productModelProduct:productModelProduct),
-             Padding(
-               padding: const EdgeInsets.only(top:20),
-               child: ShowProductImageContainer(productModelProduct:productModelProduct),
-             ),
-          ],
-        ),
-         DetailsSection(productModelProduct:productModelProduct),
-        const ProductSpecificationContainer(),
-        const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20),
-          child: Divider(thickness: 0.6),
-        ),
-        const  SelectColorContainer(),
-        const Spacer(),
-         AddCardButtonSection(productModelProduct:productModelProduct),
-      ],
+    return  SingleChildScrollView(
+      child: Column(
+        children: [
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ProductImagesColumn(productModelProduct:productModelProduct),
+               Padding(
+                 padding: const EdgeInsets.only(top:20),
+                 child: ShowProductImageContainer(productModelProduct:productModelProduct),
+               ),
+            ],
+          ),
+           DetailsSection(productModelProduct:productModelProduct),
+          const ProductSpecificationContainer(),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20),
+            child: Divider(thickness: 0.6),
+          ),
+          const  SelectColorContainer(),
+           const SizedBox(height: 20,),
+           AddCardButtonSection(productModelProduct:productModelProduct),
+        ],
+      ),
     );
   }
 }

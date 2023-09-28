@@ -29,7 +29,7 @@ class CartCubit extends Cubit<CartState> {
     });
   }
 
-  void insertCart({
+  void insertbCart({
     required String productName,
     required String productId,
     required String price,
@@ -63,7 +63,7 @@ class CartCubit extends Cubit<CartState> {
         emit(InsertCartErrorState());
       });
     } else {
-      showToast(message: 'هذا العنصر مضاف من قبل', state: ToastStates.warning);
+      // showToast(message: 'هذا العنصر مضاف من قبل', state: ToastStates.warning);
       emit(InsertCartBeforeState());
     }
   }
