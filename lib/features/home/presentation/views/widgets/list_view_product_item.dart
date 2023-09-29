@@ -7,6 +7,7 @@ import 'package:trade_fashion/features/auth/presentation/manger/auth_cubit.dart'
 import 'package:trade_fashion/features/favourites/presentation/manger/favourites_cubit/favourites_cubit.dart';
 import 'package:trade_fashion/features/home/data/models/product_model.dart';
 import '../../../../../core/utils/styles.dart';
+import '../../../../category/presentation/manger/category_product_cubit/category_product_cubit.dart';
 import '../../../../product_details/presentation/views/product_details_view.dart';
 
 class ListViewProductItem extends StatelessWidget {
@@ -17,6 +18,7 @@ class ListViewProductItem extends StatelessWidget {
 
   final ProductModelProduct? productModelProduct;
 
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -25,7 +27,9 @@ class ListViewProductItem extends StatelessWidget {
             context,
             MaterialPageRoute(
               builder: (context) =>
-                  ProductDetailsView(productModelProduct: productModelProduct),
+                  ProductDetailsView(productModelProduct:
+                      productModelProduct
+                     ),
             ));
       },
       child: Container(
@@ -60,35 +64,40 @@ class ListViewProductItem extends StatelessWidget {
                 child: Text(
                   productModelProduct!.price!.current!.text!,
                   style:
-                      Styles.textStyle16.copyWith(fontWeight: FontWeight.w500),
+                  Styles.textStyle16.copyWith(fontWeight: FontWeight.w500),
                 ),
               )
             ]),
             BlocBuilder<FavouritesCubit, FavouritesState>(
               builder: (context, state) {
-              return IconButton(
-              icon: Icon(
-                FavouritesCubit.get(context).favoriteItems.any(
-                      (item) => item == productModelProduct!.id.toString(),
-                )
-                    ? Icons.favorite
-                    : Icons.favorite_outline,
-                color: FavouritesCubit.get(context).favoriteItems.any(
-                      (item) => item == productModelProduct!.id.toString(),
-                )
-                    ? kPrimaryColor
-                    : null,
-              ),
-              onPressed: () {
-                FavouritesCubit.get(context).insertFavourite(
-                  productName: productModelProduct!.name!,
-                  price: productModelProduct!.price!.current!.text!,
-                  image: 'http://${productModelProduct!.imageUrl}',
-                  productId: "${productModelProduct!.id}",
+                return IconButton(
+                  icon: Icon(
+                    FavouritesCubit
+                        .get(context)
+                        .favoriteItems
+                        .any(
+                          (item) => item == productModelProduct!.id.toString(),
+                    )
+                        ? Icons.favorite
+                        : Icons.favorite_outline,
+                    color: FavouritesCubit
+                        .get(context)
+                        .favoriteItems
+                        .any(
+                          (item) => item == productModelProduct!.id.toString(),
+                    )
+                        ? kPrimaryColor
+                        : null,
+                  ),
+                  onPressed: () {
+                    FavouritesCubit.get(context).insertFavourite(
+                      productName: productModelProduct!.name!,
+                      price: productModelProduct!.price!.current!.text!,
+                      image: 'http://${productModelProduct!.imageUrl}',
+                      productId: "${productModelProduct!.id}",
+                    );
+                  },
                 );
-
-              },
-            );
               },
             ),
           ],

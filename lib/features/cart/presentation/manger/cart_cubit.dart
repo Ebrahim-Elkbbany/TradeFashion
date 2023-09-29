@@ -1,9 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:trade_fashion/core/widgets/toast.dart';
 import '../../../../constants.dart';
 import '../../../auth/data/model.dart';
-
 part 'cart_state.dart';
 
 class CartCubit extends Cubit<CartState> {
@@ -22,9 +20,10 @@ class CartCubit extends Cubit<CartState> {
       where: 'email = ?',
       whereArgs: [tokenEmail],
     ).then((value) {
+      cartList=value;
       emit(GetCartSuccessState(value));
     }).catchError((e) {
-      print(e);
+      print(e.toString());
       emit(GetCartErrorState(e.toString()));
     });
   }

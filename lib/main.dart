@@ -11,6 +11,7 @@ import 'package:trade_fashion/features/favourites/presentation/manger/favourites
 import 'package:trade_fashion/features/home/presentation/manger/home_cubit.dart';
 import 'app_bloc_observer.dart';
 import 'core/utils/theme.dart';
+import 'features/category/presentation/manger/category_product_cubit/category_product_cubit.dart';
 import 'features/layout/manger/layout_cubit.dart';
 import 'features/product_details/presentation/manger/product_details_cubit/product_details_cubit.dart';
 
@@ -33,6 +34,7 @@ class TradeFashion extends StatelessWidget {
         BlocProvider(create: (context) => LayoutCubit()),
         BlocProvider(create: (context) => AuthCubit()),
         BlocProvider(create: (context) => CartCubit()),
+        BlocProvider(create: (context) => CategoryProductCubit()..getCategoryProduct(categoryId: 4208)),
         BlocProvider(create:(context) => FavouritesCubit()),
         BlocProvider(create: (context) => HomeCubit()..getHomeProduct()),
         BlocProvider(create: (context) => ProductDetailsCubit()),

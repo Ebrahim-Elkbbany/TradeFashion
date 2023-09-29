@@ -14,7 +14,6 @@ class HomeCubit extends Cubit<HomeState> {
   static HomeCubit get(context){
     return BlocProvider.of(context);
   }
-  int currentIndex=4209;
   ProductModel? productModel;
   void getHomeProduct()async{
     emit(HomeLoading());

@@ -15,6 +15,7 @@ class FavouritesCubit extends Cubit<FavouritesState> {
   FavouritesCubit() : super(FavouritesInitial());
 
   List<String> favoriteItems = [];
+   List<Map<String, Object?>>?  favouritesList ;
 
   Future<void> getFavourite() async {
     emit(GetFavouritesLoadingState());
@@ -24,6 +25,7 @@ class FavouritesCubit extends Cubit<FavouritesState> {
       where: 'email = ?',
       whereArgs: [tokenEmail],
     ).then((value) {
+      favouritesList=value;
       emit(GetFavouritesSuccessState(value));
     }
     ).catchError((e){
@@ -37,6 +39,7 @@ class FavouritesCubit extends Cubit<FavouritesState> {
         required String price,
         required String image,
         required String productId,
+         String? categoryId,
       }) async {
     emit(InsertFavouritesLoadingState());
     Database? myDb = await DatabaseHelper().db;
@@ -49,6 +52,7 @@ class FavouritesCubit extends Cubit<FavouritesState> {
       await myDb?.insert('favourite', {
         "productName": productName,
         "productId": productId,
+        "categoryId": categoryId,
         "price": price,
         "email": tokenEmail,
         "image": image,
