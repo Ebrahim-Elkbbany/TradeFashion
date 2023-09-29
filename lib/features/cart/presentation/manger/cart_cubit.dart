@@ -12,6 +12,7 @@ class CartCubit extends Cubit<CartState> {
   static CartCubit get(context) => BlocProvider.of(context);
 
   List<Map<String, Object?>>? cartList;
+  List<int> totalPrice=[];
 
   Future<void> getCart() async {
     emit(GetCartLoadingState());
@@ -21,7 +22,6 @@ class CartCubit extends Cubit<CartState> {
       where: 'email = ?',
       whereArgs: [tokenEmail],
     ).then((value) {
-      cartList = value;
       emit(GetCartSuccessState(value));
     }).catchError((e) {
       print(e);
@@ -77,15 +77,17 @@ class CartCubit extends Cubit<CartState> {
       where: 'productId = ? AND email = ?',
       whereArgs: [productId, tokenEmail],
     );
-    if (cartList![indexItem]['quantity'] == 0) {
-      await myDb?.delete(
-        'cart',
-        where: 'productId = ? AND email = ?',
-        whereArgs: [productId, tokenEmail],
-      );
-      getCart();
-      emit(DeleteCartState());
-    }
+    getCart();
     emit(ChangeQuantityState());
+  }
+  void deleteCartItem({required String productId, required int indexItem})async{
+    Database? myDb = await DatabaseHelper().db;
+    await myDb?.delete(
+    'cart',
+    where: 'productId = ? AND email = ?',
+    whereArgs: [productId, tokenEmail],
+    );
+    getCart();
+    emit(DeleteCartState());
   }
 }
