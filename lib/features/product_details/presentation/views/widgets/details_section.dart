@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../../../home/data/models/product_model.dart';
-
 class DetailsSection extends StatelessWidget {
-  const DetailsSection({Key? key, this.productModelProduct}) : super(key: key);
-  final ProductModelProduct? productModelProduct;
-
+  const DetailsSection({Key? key, required this.name, }) : super(key: key);
+  final String name;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -17,7 +14,7 @@ class DetailsSection extends StatelessWidget {
             children: [
               Expanded(
                 child: Text(
-                  productModelProduct!.name!,
+                  name,
                   style: const TextStyle(
                       fontWeight: FontWeight.w800,
                       fontSize: 23,

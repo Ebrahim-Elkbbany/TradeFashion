@@ -44,6 +44,7 @@ class ProductViewBody extends StatelessWidget {
                     child: ListViewProductItem(
                         productModelProduct:
                         state.categoryProductModel.products![index],
+                      index: index,
 
                     ),
                   );

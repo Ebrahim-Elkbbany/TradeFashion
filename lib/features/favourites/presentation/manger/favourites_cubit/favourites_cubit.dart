@@ -1,10 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:meta/meta.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:trade_fashion/constants.dart';
 import 'package:trade_fashion/features/auth/data/model.dart';
-import 'package:trade_fashion/features/auth/presentation/manger/auth_cubit.dart';
 
 part 'favourites_state.dart';
 
@@ -12,10 +10,11 @@ class FavouritesCubit extends Cubit<FavouritesState> {
   static FavouritesCubit get(context) {
     return BlocProvider.of(context);
   }
+
   FavouritesCubit() : super(FavouritesInitial());
 
-  List<String> favoriteItems = [];
-   List<Map<String, Object?>>?  favouritesList ;
+  List<Map<String, Object?>>?  favouritesList ;
+  List<String>  favouritesId =[];
 
   Future<void> getFavourite() async {
     emit(GetFavouritesLoadingState());
@@ -38,6 +37,9 @@ class FavouritesCubit extends Cubit<FavouritesState> {
       {required String productName,
         required String price,
         required String image,
+        required String image1,
+        required String image2,
+        required String image3,
         required String productId,
          String? categoryId,
       }) async {
@@ -52,32 +54,52 @@ class FavouritesCubit extends Cubit<FavouritesState> {
       await myDb?.insert('favourite', {
         "productName": productName,
         "productId": productId,
-        "categoryId": categoryId,
         "price": price,
         "email": tokenEmail,
         "image": image,
+        "isFavorite":'true',
+        "image1": image1,
+        "image2": image2,
+        "image3": image3,
       }).then((value) {
-        print(value);
-        favoriteItems.add(productId);
-
+        favouritesId.add(productId);
         emit(InsertFavouritesSuccessState());
       }).catchError((e) {
         print(e.toString());
         emit(InsertFavouritesErrorState());
       });
     } else {
-      await myDb?.delete(
-        'favourite',
-        where: 'productId = ? AND email = ?',
-        whereArgs: [productId, tokenEmail],
-      ).then((value) {
-        print(value);
-        favoriteItems.remove(productId);
-        emit(InsertFavouritesSuccessState());
-      }).catchError((e) {
-        print(e.toString());
-        emit(InsertFavouritesErrorState());
-      });
+      deleteFavourite(productId:productId);
     }
+  }
+
+  void updateFavorite( productId,String isFavorite) async {
+    Database? myDb = await DatabaseHelper().db;
+
+    await myDb?.update(
+      'favourite',
+      {'isFavorite': isFavorite},
+      where: 'productId = ? AND email = ?',
+      whereArgs: [productId, tokenEmail],
+    );
+    getFavourite();
+    emit(UpdateFavoriteState());
+  }
+
+  void deleteFavourite({ required String productId,})async{
+    Database? myDb = await DatabaseHelper().db;
+    updateFavorite(productId,'false');
+    await myDb?.delete(
+      'favourite',
+      where: 'productId = ? AND email = ?',
+      whereArgs: [productId, tokenEmail],
+    ).then((value) {
+      print(value);
+      favouritesId.remove(productId);
+      emit(InsertFavouritesSuccessState());
+    }).catchError((e) {
+      print(e.toString());
+      emit(InsertFavouritesErrorState());
+    });
   }
 }

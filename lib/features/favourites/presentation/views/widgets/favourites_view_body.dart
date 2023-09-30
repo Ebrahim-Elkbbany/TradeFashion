@@ -4,8 +4,6 @@ import 'package:trade_fashion/core/widgets/custom_circular_indicator.dart';
 import 'package:trade_fashion/core/widgets/custom_error_widget.dart';
 import 'package:trade_fashion/features/favourites/presentation/manger/favourites_cubit/favourites_cubit.dart';
 import 'package:trade_fashion/features/favourites/presentation/views/widgets/favourites_list_item.dart';
-
-import '../../../../category/presentation/manger/category_product_cubit/category_product_cubit.dart';
 import '../../../../home/data/models/product_model.dart';
 
 
@@ -45,11 +43,14 @@ class FavouritesViewBody extends StatelessWidget {
                 (index) {
                   return Center(
                       child: ListViewFavouriteItem(
-                    productModelProduct: CategoryProductCubit.get(context).categoryProductModel!.products![index],
                     name: state.favouritesList![index]['productName'].toString(),
                     price: state.favouritesList![index]['price'].toString(),
-                    image: state.favouritesList![index]['image'].toString(),
+                    mainImage: state.favouritesList![index]['image'].toString(),
                    productId: state.favouritesList![index]['productId'].toString(),
+                        image1:state.favouritesList![index]['image1'].toString(),
+                        image2: state.favouritesList![index]['image2'].toString(),
+                        image3: state.favouritesList![index]['image3'].toString(),
+                        index: index,
                    ),
                   );
                 },

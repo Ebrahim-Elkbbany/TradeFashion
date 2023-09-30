@@ -1,23 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:trade_fashion/constants.dart';
-import 'package:trade_fashion/core/utils/app_router.dart';
-import 'package:trade_fashion/features/auth/presentation/manger/auth_cubit.dart';
 import 'package:trade_fashion/features/favourites/presentation/manger/favourites_cubit/favourites_cubit.dart';
 import 'package:trade_fashion/features/home/data/models/product_model.dart';
 import '../../../../../core/utils/styles.dart';
-import '../../../../category/presentation/manger/category_product_cubit/category_product_cubit.dart';
 import '../../../../product_details/presentation/views/product_details_view.dart';
 
 class ListViewProductItem extends StatelessWidget {
   const ListViewProductItem({
     this.productModelProduct,
     super.key,
+    required this.index,
   });
 
   final ProductModelProduct? productModelProduct;
-
+  final int index;
 
   @override
   Widget build(BuildContext context) {
@@ -26,10 +23,15 @@ class ListViewProductItem extends StatelessWidget {
         Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) =>
-                  ProductDetailsView(productModelProduct:
-                      productModelProduct
-                     ),
+              builder: (context) => ProductDetailsView(
+                mainImage: productModelProduct!.imageUrl!,
+                image1: productModelProduct!.additionalImageUrls![0],
+                image2: productModelProduct!.additionalImageUrls![1],
+                image3: productModelProduct!.additionalImageUrls![2],
+                name: productModelProduct!.name!,
+                price: productModelProduct!.price!.current!.value.toString(),
+                productId: productModelProduct!.id!.toString(),
+              ),
             ));
       },
       child: Container(
@@ -64,7 +66,7 @@ class ListViewProductItem extends StatelessWidget {
                 child: Text(
                   productModelProduct!.price!.current!.text!,
                   style:
-                  Styles.textStyle16.copyWith(fontWeight: FontWeight.w500),
+                      Styles.textStyle16.copyWith(fontWeight: FontWeight.w500),
                 ),
               )
             ]),
@@ -72,19 +74,13 @@ class ListViewProductItem extends StatelessWidget {
               builder: (context, state) {
                 return IconButton(
                   icon: Icon(
-                    FavouritesCubit
-                        .get(context)
-                        .favoriteItems
-                        .any(
-                          (item) => item == productModelProduct!.id.toString(),
+                    FavouritesCubit.get(context).favouritesId.any(
+                          (id) => id == productModelProduct!.id!.toString(),
                     )
                         ? Icons.favorite
                         : Icons.favorite_outline,
-                    color: FavouritesCubit
-                        .get(context)
-                        .favoriteItems
-                        .any(
-                          (item) => item == productModelProduct!.id.toString(),
+                    color: FavouritesCubit.get(context).favouritesId.any(
+                          (id) => id == productModelProduct!.id!.toString(),
                     )
                         ? kPrimaryColor
                         : null,
@@ -93,8 +89,11 @@ class ListViewProductItem extends StatelessWidget {
                     FavouritesCubit.get(context).insertFavourite(
                       productName: productModelProduct!.name!,
                       price: productModelProduct!.price!.current!.text!,
-                      image: 'http://${productModelProduct!.imageUrl}',
+                      image: productModelProduct!.imageUrl!,
                       productId: "${productModelProduct!.id}",
+                      image1: productModelProduct!.additionalImageUrls![0],
+                      image2: productModelProduct!.additionalImageUrls![1],
+                      image3: productModelProduct!.additionalImageUrls![2],
                     );
                   },
                 );

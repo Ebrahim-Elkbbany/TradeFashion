@@ -20,7 +20,7 @@ class DatabaseHelper {
 
   Future<Database> initDb() async {
     final databasesPath = await getDatabasesPath();
-    final path = join(databasesPath, 'mybs.db');
+    final path = join(databasesPath, 'om.db');
     var theDb = await openDatabase(path, version: 1, onCreate: _onCreate,onUpgrade: _onUpgrade);
     return theDb;
   }
@@ -60,7 +60,11 @@ class DatabaseHelper {
         productId TEXT,
         price TEXT,
         email TEXT,
-        image TEXT
+        image TEXT,
+        image1 TEXT,
+        image2 TEXT,
+        image3 TEXT,
+        isFavorite TEXT
       )
     ''');
     batch.commit();

@@ -2,37 +2,45 @@ import 'package:flutter/material.dart';
 import 'package:trade_fashion/constants.dart';
 import 'package:trade_fashion/features/favourites/presentation/manger/favourites_cubit/favourites_cubit.dart';
 import '../../../../../core/utils/styles.dart';
-import '../../../../category/presentation/manger/category_product_cubit/category_product_cubit.dart';
-import '../../../../home/data/models/product_model.dart';
 import '../../../../product_details/presentation/views/product_details_view.dart';
 
 class ListViewFavouriteItem extends StatelessWidget {
   const ListViewFavouriteItem({
     super.key,
+    required this.mainImage,
+    required this.image1,
+    required this.image2,
+    required this.image3,
     required this.name,
     required this.price,
-    required this.image,
-    required this.productId,
-    required this.productModelProduct,
-
+    required this.productId, required this.index,
   });
 
+  final String mainImage;
+  final String image1;
+  final String image2;
+  final String image3;
   final String name;
   final String price;
-  final String image;
   final String productId;
-  final ProductModelProduct productModelProduct;
-
+  final int index;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
+        print(image1);
         Navigator.push(
             context,
             MaterialPageRoute(
               builder: (context) => ProductDetailsView(
-                productModelProduct:productModelProduct
+                mainImage:mainImage,
+                image1: image1,
+                image2: image2,
+                image3: image3,
+                name: name,
+                price: price,
+                productId: productId,
               ),
             ));
       },
@@ -47,7 +55,7 @@ class ListViewFavouriteItem extends StatelessWidget {
           children: [
             Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               Image.network(
-                image,
+                'http://$mainImage',
               ),
               const SizedBox(
                 height: 10,
@@ -74,22 +82,15 @@ class ListViewFavouriteItem extends StatelessWidget {
             ]),
             IconButton(
               icon: Icon(
-                FavouritesCubit.get(context).favoriteItems.any(
-                          (item) => item == productId,
-                        )
+                FavouritesCubit.get(context).favouritesList![index]['isFavorite'].toString()=='true'
                     ? Icons.favorite
                     : Icons.favorite_outline,
-                color: FavouritesCubit.get(context).favoriteItems.any(
-                          (item) => item == productId,
-                        )
+                color: FavouritesCubit.get(context).favouritesList![index]['isFavorite'].toString()=='true'
                     ? kPrimaryColor
                     : null,
               ),
               onPressed: () {
-                FavouritesCubit.get(context).insertFavourite(
-                  productName: name,
-                  price: price,
-                  image: image,
+                FavouritesCubit.get(context).deleteFavourite(
                   productId: productId,
                 );
               },

@@ -36,7 +36,7 @@ class ListViewItem extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Image.network(image, height: 80, width: 80, fit: BoxFit.cover),
+          Image.network('http://$image', height: 80, width: 80, fit: BoxFit.cover),
           SizedBox(
             width: MediaQuery.of(context).size.width * .02,
           ),
