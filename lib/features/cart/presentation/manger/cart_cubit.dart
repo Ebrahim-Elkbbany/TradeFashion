@@ -1,9 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:trade_fashion/core/widgets/toast.dart';
 import '../../../../constants.dart';
 import '../../../auth/data/model.dart';
-
 part 'cart_state.dart';
 
 class CartCubit extends Cubit<CartState> {
@@ -12,6 +10,7 @@ class CartCubit extends Cubit<CartState> {
   static CartCubit get(context) => BlocProvider.of(context);
 
   List<Map<String, Object?>>? cartList;
+  List<int> totalPrice=[];
 
   Future<void> getCart() async {
     emit(GetCartLoadingState());
@@ -21,15 +20,15 @@ class CartCubit extends Cubit<CartState> {
       where: 'email = ?',
       whereArgs: [tokenEmail],
     ).then((value) {
-      cartList = value;
+      cartList=value;
       emit(GetCartSuccessState(value));
     }).catchError((e) {
-      print(e);
+      print(e.toString());
       emit(GetCartErrorState(e.toString()));
     });
   }
 
-  void insertCart({
+  void insertbCart({
     required String productName,
     required String productId,
     required String price,
@@ -63,7 +62,7 @@ class CartCubit extends Cubit<CartState> {
         emit(InsertCartErrorState());
       });
     } else {
-      showToast(message: 'هذا العنصر مضاف من قبل', state: ToastStates.warning);
+      // showToast(message: 'هذا العنصر مضاف من قبل', state: ToastStates.warning);
       emit(InsertCartBeforeState());
     }
   }
@@ -77,15 +76,17 @@ class CartCubit extends Cubit<CartState> {
       where: 'productId = ? AND email = ?',
       whereArgs: [productId, tokenEmail],
     );
-    if (cartList![indexItem]['quantity'] == 0) {
-      await myDb?.delete(
-        'cart',
-        where: 'productId = ? AND email = ?',
-        whereArgs: [productId, tokenEmail],
-      );
-      getCart();
-      emit(DeleteCartState());
-    }
+    getCart();
     emit(ChangeQuantityState());
+  }
+  void deleteCartItem({required String productId, required int indexItem})async{
+    Database? myDb = await DatabaseHelper().db;
+    await myDb?.delete(
+    'cart',
+    where: 'productId = ? AND email = ?',
+    whereArgs: [productId, tokenEmail],
+    );
+    getCart();
+    emit(DeleteCartState());
   }
 }

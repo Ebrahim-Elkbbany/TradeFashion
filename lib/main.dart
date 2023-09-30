@@ -1,18 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
+import 'package:sqflite/sqflite.dart';
+import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'package:trade_fashion/core/utils/app_router.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trade_fashion/core/utils/styles.dart';
 import 'package:trade_fashion/features/auth/presentation/manger/auth_cubit.dart';
+import 'package:trade_fashion/features/cart/presentation/manger/cart_cubit.dart';
 import 'package:trade_fashion/features/favourites/presentation/manger/favourites_cubit/favourites_cubit.dart';
 import 'package:trade_fashion/features/home/presentation/manger/home_cubit.dart';
 import 'app_bloc_observer.dart';
 import 'core/utils/theme.dart';
+import 'features/category/presentation/manger/category_product_cubit/category_product_cubit.dart';
 import 'features/layout/manger/layout_cubit.dart';
 import 'features/product_details/presentation/manger/product_details_cubit/product_details_cubit.dart';
 
 void main() {
+  // Initialize FFI
+  sqfliteFfiInit();
+
+  databaseFactory = databaseFactoryFfi;
   runApp(const TradeFashion());
   Bloc.observer = AppBlocObserver();
 }
@@ -25,7 +32,9 @@ class TradeFashion extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => LayoutCubit()),
-        BlocProvider(create: (context) => AuthCubit()..getCart()),
+        BlocProvider(create: (context) => AuthCubit()),
+        BlocProvider(create: (context) => CartCubit()),
+        BlocProvider(create: (context) => CategoryProductCubit()..getCategoryProduct(categoryId: 4208)),
         BlocProvider(create:(context) => FavouritesCubit()),
         BlocProvider(create: (context) => HomeCubit()..getHomeProduct()),
         BlocProvider(create: (context) => ProductDetailsCubit()),

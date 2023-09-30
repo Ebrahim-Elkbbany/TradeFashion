@@ -3,10 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trade_fashion/core/utils/api_service.dart';
-
 import '../../data/models/product_model.dart';
-
-
 part 'home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
@@ -14,8 +11,9 @@ class HomeCubit extends Cubit<HomeState> {
   static HomeCubit get(context){
     return BlocProvider.of(context);
   }
-  int currentIndex=4209;
   ProductModel? productModel;
+  List<String>  modelId =[];
+
   void getHomeProduct()async{
     emit(HomeLoading());
     await ApiService(Dio()).get(endPoint:'v2/list' ,queryParams: {
@@ -31,13 +29,10 @@ class HomeCubit extends Cubit<HomeState> {
     'lang': 'en-US'
     },).then((value){
       productModel=ProductModel.fromJson(value);
-      print(productModel!.products?[0].price?.current?.text);
       emit(HomeSuccess(productModel!));
 
     }).catchError((error){
-      print(error.toString());
       emit(HomeFailure(error.toString()));
-
     });
   }
 

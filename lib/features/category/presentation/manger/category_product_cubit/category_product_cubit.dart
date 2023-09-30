@@ -1,10 +1,7 @@
-import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:meta/meta.dart';
 import 'package:trade_fashion/core/utils/api_service.dart';
 import 'package:trade_fashion/features/home/data/models/product_model.dart';
-
 part 'category_product_state.dart';
 
 class CategoryProductCubit extends Cubit<CategoryProductState> {
@@ -12,6 +9,9 @@ class CategoryProductCubit extends Cubit<CategoryProductState> {
   static CategoryProductCubit get(context){
     return BlocProvider.of(context);
   }
+
+
+
   ProductModel? categoryProductModel;
    getCategoryProduct({int? categoryId})async{
     emit(CategoryProductLoading());

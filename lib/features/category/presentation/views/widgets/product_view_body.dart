@@ -14,6 +14,7 @@ class ProductViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    CategoryProductCubit.get(context).getCategoryProduct(categoryId: categoryId);
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -21,41 +22,41 @@ class ProductViewBody extends StatelessWidget {
           style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
         ),
       ),
-      body: BlocProvider(
-        create: (context) =>CategoryProductCubit()..getCategoryProduct(categoryId: categoryId),
-        child: BlocBuilder<CategoryProductCubit, CategoryProductState>(
-          builder: (context, state) {
-            if (state is CategoryProductSuccess) {
-              return GridView.count(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                shrinkWrap: true,
-                physics: const BouncingScrollPhysics(),
-                crossAxisCount:
-                MediaQuery.of(context).size.width.toInt() < 750 ? 2 : 6,
-                mainAxisSpacing: 10,
-                childAspectRatio:
-                MediaQuery.of(context).size.width.toInt() < 560
-                    ? 1 / 1.8
-                    : 1 / 1.2,
-                crossAxisSpacing: 10,
-                children: List.generate(
-                  state.categoryProductModel.products!.length,
-                      (index) {
-                    return Center(
-                      child: ListViewProductItem(
-                          productModelProduct:
-                          state.categoryProductModel.products![index]),
-                    );
-                  },
-                ),
-              );
-            } else if (state is CategoryProductFailure) {
-              return CustomErrorWidget(errorMessage: state.errorMessage);
-            } else {
-              return const CustomCircularIndicator();
-            }
-          },
-        ),
+      body: BlocBuilder<CategoryProductCubit, CategoryProductState>(
+        builder: (context, state) {
+          if (state is CategoryProductSuccess) {
+            return GridView.count(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              shrinkWrap: true,
+              physics: const BouncingScrollPhysics(),
+              crossAxisCount:
+              MediaQuery.of(context).size.width.toInt() < 750 ? 2 : 6,
+              mainAxisSpacing: 10,
+              childAspectRatio:
+              MediaQuery.of(context).size.width.toInt() < 560
+                  ? 1 / 1.8
+                  : 1 / 1.2,
+              crossAxisSpacing: 10,
+              children: List.generate(
+                state.categoryProductModel.products!.length,
+                    (index) {
+                  return Center(
+                    child: ListViewProductItem(
+                        productModelProduct:
+                        state.categoryProductModel.products![index],
+                      index: index,
+
+                    ),
+                  );
+                },
+              ),
+            );
+          } else if (state is CategoryProductFailure) {
+            return CustomErrorWidget(errorMessage: state.errorMessage);
+          } else {
+            return const CustomCircularIndicator();
+          }
+        },
       ),
 
     );

@@ -5,9 +5,17 @@ import 'package:trade_fashion/features/product_details/presentation/views/widget
 import '../../../../home/data/models/product_model.dart';
 
 class ProductImagesColumn extends StatelessWidget {
-  const ProductImagesColumn({Key? key, required this.productModelProduct})
+  const ProductImagesColumn(
+      {Key? key,
+      required this.mainImage,
+      required this.image1,
+      required this.image2,
+      required this.image3})
       : super(key: key);
-  final ProductModelProduct? productModelProduct;
+  final String mainImage;
+  final String image1;
+  final String image2;
+  final String image3;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +23,7 @@ class ProductImagesColumn extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
       child: BlocBuilder<ProductDetailsCubit, ProductDetailsState>(
         builder: (context, state) {
-          var cubit=ProductDetailsCubit.get(context);
+          var cubit = ProductDetailsCubit.get(context);
           return Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -23,68 +31,76 @@ class ProductImagesColumn extends StatelessWidget {
                 height: 50,
                 width: 50,
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
-                    border: Border.all(color: Colors.black12),),
-                child: IconButton(onPressed: () {
-                  Navigator.pop(context);
-                }, icon: const Icon(Icons.arrow_back, size: 25),),
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(color: Colors.black12),
+                ),
+                child: IconButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  icon: const Icon(Icons.arrow_back, size: 25),
+                ),
               ),
               const SizedBox(
                 height: 20,
               ),
               GestureDetector(
-                onTap: (){
+                onTap: () {
                   cubit.changeImage(0);
                 },
                 child: ProductImagesContainer(
-                  image: productModelProduct!.imageUrl!,
-                  color:cubit.selected==0? const Color(0xffe64660): Colors.black12,
+                  image: mainImage,
+                  color: cubit.selected == 0
+                      ? const Color(0xffe64660)
+                      : Colors.black12,
                 ),
               ),
               const SizedBox(
                 height: 20,
               ),
               GestureDetector(
-                onTap: (){
+                onTap: () {
                   cubit.changeImage(1);
                 },
                 child: ProductImagesContainer(
-                  image: productModelProduct!.additionalImageUrls![0],
-                  color:cubit.selected==1? const Color(0xffe64660): Colors.black12,
-
+                  image: image1,
+                  color: cubit.selected == 1
+                      ? const Color(0xffe64660)
+                      : Colors.black12,
                 ),
               ),
               const SizedBox(
                 height: 15,
               ),
               GestureDetector(
-                onTap: (){
+                onTap: () {
                   cubit.changeImage(2);
                 },
                 child: ProductImagesContainer(
-                  image: productModelProduct!.additionalImageUrls![1],
-                  color:cubit.selected==2? const Color(0xffe64660): Colors.black12,
-
+                  image: image2,
+                  color: cubit.selected == 2
+                      ? const Color(0xffe64660)
+                      : Colors.black12,
                 ),
               ),
               const SizedBox(
                 height: 15,
               ),
               GestureDetector(
-                onTap: (){
+                onTap: () {
                   cubit.changeImage(3);
                   print(cubit.indexImage);
                 },
                 child: ProductImagesContainer(
-                  image: productModelProduct!.additionalImageUrls![2],
-                  color:cubit.selected==3? const Color(0xffe64660): Colors.black12,
-
+                  image: image3,
+                  color: cubit.selected == 3
+                      ? const Color(0xffe64660)
+                      : Colors.black12,
                 ),
               ),
               const SizedBox(
                 height: 15,
               ),
-
             ],
           );
         },

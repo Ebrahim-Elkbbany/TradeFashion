@@ -10,7 +10,9 @@ class ListViewItem extends StatelessWidget {
     required this.price,
     required this.image,
     required this.cubit,
-    required this.productId, required this.quantity, required this.indexItem,
+    required this.productId,
+    required this.quantity,
+    required this.indexItem,
   });
 
   final CartCubit cubit;
@@ -23,6 +25,7 @@ class ListViewItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+     String intPrice=price.characters.getRange(1).string;
     return Container(
       padding: const EdgeInsetsDirectional.all(10),
       width: double.infinity,
@@ -33,7 +36,7 @@ class ListViewItem extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Image.network(image, height: 80, width: 80, fit: BoxFit.cover),
+          Image.network('http://$image', height: 80, width: 80, fit: BoxFit.cover),
           SizedBox(
             width: MediaQuery.of(context).size.width * .02,
           ),
@@ -92,7 +95,7 @@ class ListViewItem extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Text(
-                price,
+                '${double.parse(intPrice).round()*quantity} \$' ,
                 style: Styles.textStyle16.copyWith(
                   fontWeight: FontWeight.bold,
                 ),
@@ -107,8 +110,8 @@ class ListViewItem extends StatelessWidget {
                       backgroundColor: kPrimaryColor,
                       child: IconButton(
                         onPressed: () {
-                          print (quantity+1);
-                          cubit.changeQuantity(quantity+1,productId,indexItem);
+                          cubit.changeQuantity(
+                              quantity + 1, productId, indexItem);
                         },
                         icon: const Icon(
                           Icons.add,
@@ -122,8 +125,12 @@ class ListViewItem extends StatelessWidget {
                       backgroundColor: kPrimaryColor,
                       child: IconButton(
                         onPressed: () {
-                          print (quantity-1);
-                          cubit.changeQuantity(quantity-1,productId,indexItem);
+                          if (quantity == 1) {
+                            cubit.deleteCartItem(
+                                indexItem: indexItem, productId: productId);
+                          }
+                          cubit.changeQuantity(
+                              quantity - 1, productId, indexItem);
                         },
                         icon: const Icon(
                           Icons.remove,
