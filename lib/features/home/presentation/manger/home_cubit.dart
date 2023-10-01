@@ -12,7 +12,6 @@ class HomeCubit extends Cubit<HomeState> {
     return BlocProvider.of(context);
   }
   ProductModel? productModel;
-  List<String>  modelId =[];
 
   void getHomeProduct()async{
     emit(HomeLoading());

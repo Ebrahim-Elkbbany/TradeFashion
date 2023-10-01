@@ -18,6 +18,7 @@ class ListViewProductItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var cubit = FavouritesCubit.get(context);
     return GestureDetector(
       onTap: () {
         Navigator.push(
@@ -74,16 +75,17 @@ class ListViewProductItem extends StatelessWidget {
               builder: (context, state) {
                 return IconButton(
                   icon: Icon(
-                    FavouritesCubit.get(context).favouritesId.any(
-                          (id) => id == productModelProduct!.id!.toString(),
+                    cubit.favouritesList!.any(
+                          (item) => item["productId"].toString()== productModelProduct!.id.toString(),
                     )
                         ? Icons.favorite
                         : Icons.favorite_outline,
-                    color: FavouritesCubit.get(context).favouritesId.any(
-                          (id) => id == productModelProduct!.id!.toString(),
+                    color:
+                    cubit.favouritesList!.any(
+                          (item) => item["productId"].toString()== productModelProduct!.id.toString(),
                     )
-                        ? kPrimaryColor
-                        : null,
+                            ? kPrimaryColor
+                            : null,
                   ),
                   onPressed: () {
                     FavouritesCubit.get(context).insertFavourite(

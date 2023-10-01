@@ -9,6 +9,7 @@ import 'package:trade_fashion/core/widgets/custom_continue_with_container.dart';
 import 'package:trade_fashion/core/widgets/custom_text_form_field.dart';
 import 'package:trade_fashion/features/auth/presentation/manger/auth_cubit.dart';
 import 'package:trade_fashion/features/auth/presentation/views/widgets/login_view_row.dart';
+import 'package:trade_fashion/features/favourites/presentation/manger/favourites_cubit/favourites_cubit.dart';
 import 'package:trade_fashion/features/layout/layout.dart';
 
 import '../../../../../core/utils/component.dart';
@@ -25,6 +26,7 @@ class LoginViewBody extends StatelessWidget {
       child: BlocConsumer<AuthCubit, AuthState>(
         listener: (context, state) {
           if (state is LoginSuccessState) {
+            FavouritesCubit.get(context).getFavourite();
             navigateTo(context, const LayoutView());
           }
         },
