@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:trade_fashion/constants.dart';
 import 'package:trade_fashion/features/auth/data/model.dart';
-
 part 'favourites_state.dart';
 
 class FavouritesCubit extends Cubit<FavouritesState> {
@@ -13,13 +12,12 @@ class FavouritesCubit extends Cubit<FavouritesState> {
 
   FavouritesCubit() : super(FavouritesInitial());
 
-  List<Map<String, Object?>>?  favouritesList ;
+   List<Map<String, Object?>>?  favouritesList ;
   List<String>  favouritesId =[];
-
   Future<void> getFavourite() async {
     emit(GetFavouritesLoadingState());
     final db = await DatabaseHelper().db;
-    await db!.query(
+   await db!.query(
       'favourite',
       where: 'email = ?',
       whereArgs: [tokenEmail],
@@ -31,6 +29,7 @@ class FavouritesCubit extends Cubit<FavouritesState> {
       print(e);
       emit(GetFavouritesErrorState(e.toString()));
     });
+
   }
 
   void insertFavourite(
@@ -41,7 +40,6 @@ class FavouritesCubit extends Cubit<FavouritesState> {
         required String image2,
         required String image3,
         required String productId,
-         String? categoryId,
       }) async {
     emit(InsertFavouritesLoadingState());
     Database? myDb = await DatabaseHelper().db;
@@ -61,8 +59,10 @@ class FavouritesCubit extends Cubit<FavouritesState> {
         "image1": image1,
         "image2": image2,
         "image3": image3,
-      }).then((value) {
+      }).
+      then((value) {
         favouritesId.add(productId);
+        getFavourite();
         emit(InsertFavouritesSuccessState());
       }).catchError((e) {
         print(e.toString());
@@ -94,11 +94,9 @@ class FavouritesCubit extends Cubit<FavouritesState> {
       where: 'productId = ? AND email = ?',
       whereArgs: [productId, tokenEmail],
     ).then((value) {
-      print(value);
       favouritesId.remove(productId);
       emit(InsertFavouritesSuccessState());
     }).catchError((e) {
-      print(e.toString());
       emit(InsertFavouritesErrorState());
     });
   }
