@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trade_fashion/constants.dart';
+import '../favourites/presentation/manger/favourites_cubit/favourites_cubit.dart';
 import 'manger/layout_cubit.dart';
 
 class LayoutView extends StatelessWidget {
@@ -10,6 +11,7 @@ class LayoutView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<LayoutCubit, LayoutState>(
       builder: (context, state) {
+         FavouritesCubit.get(context).getFavourite();
         var cubit=LayoutCubit.get(context);
         return Scaffold(
           body: cubit.bottomScreen[cubit.currentIndex],

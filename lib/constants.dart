@@ -5,4 +5,5 @@ const kSecondaryColor = Color(0xffF4F4F4);
 const kTransitionDuration = Duration(milliseconds: 250);
 const kGTSectraFont = 'GT Sectra';
 String? tokenEmail;
+String? token;
 List<String>? myList;

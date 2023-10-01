@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:trade_fashion/constants.dart';
 import 'package:trade_fashion/core/utils/app_router.dart';
 import 'package:trade_fashion/core/utils/assets.dart';
+import 'package:trade_fashion/core/utils/shared_prefrence.dart';
 import 'package:trade_fashion/core/utils/styles.dart';
 import 'package:trade_fashion/core/widgets/custom_button.dart';
 import 'package:trade_fashion/core/widgets/custom_continue_with_container.dart';
 import 'package:trade_fashion/core/widgets/custom_text_form_field.dart';
 import 'package:trade_fashion/features/auth/presentation/manger/auth_cubit.dart';
 import 'package:trade_fashion/features/auth/presentation/views/widgets/login_view_row.dart';
+import 'package:trade_fashion/features/category/presentation/manger/category_product_cubit/category_product_cubit.dart';
 import 'package:trade_fashion/features/favourites/presentation/manger/favourites_cubit/favourites_cubit.dart';
+import 'package:trade_fashion/features/home/presentation/manger/home_cubit.dart';
 import 'package:trade_fashion/features/layout/layout.dart';
-
 import '../../../../../core/utils/component.dart';
 
 class LoginViewBody extends StatelessWidget {
@@ -26,8 +29,12 @@ class LoginViewBody extends StatelessWidget {
       child: BlocConsumer<AuthCubit, AuthState>(
         listener: (context, state) {
           if (state is LoginSuccessState) {
-            FavouritesCubit.get(context).getFavourite();
-            navigateTo(context, const LayoutView());
+            CategoryProductCubit().getCategoryProduct(categoryId: 4208);
+            FavouritesCubit().getFavourite();
+            HomeCubit().getHomeProduct();
+            SharedPreference.setData(key: 'tokenEmail', value: tokenEmail).then((value) {
+              navigateTo(context, const LayoutView());
+            });
           }
         },
         builder: (context, state) {
@@ -47,8 +54,7 @@ class LoginViewBody extends StatelessWidget {
                       child: Image.asset(
                         AssetsData.loginImage,
                         fit: BoxFit.fill,
-                        height: 400,
-                        width: 400,
+
                       ),
                     ),
                     Text('Login', style: Styles.textStyle32),

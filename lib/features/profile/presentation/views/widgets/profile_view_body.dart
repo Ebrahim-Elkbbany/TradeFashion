@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:trade_fashion/core/utils/app_router.dart';
 import 'package:trade_fashion/core/utils/assets.dart';
+import 'package:trade_fashion/core/utils/shared_prefrence.dart';
 import 'package:trade_fashion/core/utils/styles.dart';
 import 'package:trade_fashion/core/widgets/custom_text_button.dart';
+import 'package:trade_fashion/features/layout/manger/layout_cubit.dart';
 import 'package:trade_fashion/features/profile/presentation/views/widgets/profile_info_container.dart';
 import 'package:trade_fashion/features/profile/presentation/views/widgets/profile_list_tile_section.dart';
 
@@ -40,7 +42,10 @@ class ProfileViewBody extends StatelessWidget {
               ),
               CustomTextButton(
                 onPressed: (){
-                  GoRouter.of(context).push(AppRouter.kLoginView);
+                  SharedPreference.removeData(key: 'tokenEmail').then((value) {
+                    GoRouter.of(context).push(AppRouter.kLoginView);
+                    LayoutCubit.get(context).currentIndex =0;
+                  });
                 },
                 text: 'Sign Out',
                 textStyle: Styles.textStyle16.copyWith(

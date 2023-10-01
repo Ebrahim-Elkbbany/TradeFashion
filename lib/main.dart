@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:sqflite_common_ffi/sqflite_ffi.dart';
+import 'package:trade_fashion/constants.dart';
+
 import 'package:trade_fashion/core/utils/app_router.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:trade_fashion/core/utils/shared_prefrence.dart';
 import 'package:trade_fashion/core/utils/styles.dart';
 import 'package:trade_fashion/features/auth/presentation/manger/auth_cubit.dart';
 import 'package:trade_fashion/features/cart/presentation/manger/cart_cubit.dart';
@@ -15,13 +17,14 @@ import 'features/category/presentation/manger/category_product_cubit/category_pr
 import 'features/layout/manger/layout_cubit.dart';
 import 'features/product_details/presentation/manger/product_details_cubit/product_details_cubit.dart';
 
-void main() {
+void main() async{
   // Initialize FFI
-  sqfliteFfiInit();
-
-  databaseFactory = databaseFactoryFfi;
-  runApp(const TradeFashion());
+  WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = AppBlocObserver();
+  await SharedPreference.init();
+   token = SharedPreference.getData(key: 'tokenEmail');
+  runApp( const TradeFashion());
+
 }
 
 class TradeFashion extends StatelessWidget {

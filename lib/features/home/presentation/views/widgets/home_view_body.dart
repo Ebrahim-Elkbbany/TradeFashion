@@ -26,76 +26,77 @@ class HomeViewBody extends StatelessWidget {
             child: SingleChildScrollView(
               physics: const BouncingScrollPhysics(),
               child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Row(
-                      children: [
-                        Image.asset(AssetsData.profile),
-                        const Spacer(),
-                        IconButton(
-                            onPressed: () {
-                              navigateTo(
-                                  context,
-                                  FavouritesView(
-                                      productModel: state.productModel));
-                            },
-                            icon: const Icon(Icons.favorite))
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 24,
-                    ),
-                    const CustomTextFormField(
-                      boarderRadius: 100,
-                      prefix: Icons.search_outlined,
-                      prefixColor: kPrimaryColor,
-                      hintText: 'search',
-                    ),
-                    const SizedBox(
-                      height: 24,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Text(
-                          'Categories',
-                          style: TextStyle(
-                              fontSize: 16, fontWeight: FontWeight.w700),
-                        ),
-                        InkWell(
-                          onTap: () {
-                            LayoutCubit.get(context).changeBottomScreen(1);
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Row(
+                    children: [
+                      Image.asset(AssetsData.profile),
+                      const Spacer(),
+                      IconButton(
+                          onPressed: () {
+                            navigateTo(
+                                context,
+                                FavouritesView(
+                                    productModel: state.productModel));
                           },
-                          child: const Text(
-                            'See All',
-                            style: TextStyle(
-                                fontSize: 16, fontWeight: FontWeight.w400),
-                          ),
+                          icon: const Icon(Icons.favorite))
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 24,
+                  ),
+                  const CustomTextFormField(
+                    boarderRadius: 100,
+                    prefix: Icons.search_outlined,
+                    prefixColor: kPrimaryColor,
+                    hintText: 'search',
+                  ),
+                  const SizedBox(
+                    height: 24,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text(
+                        'Categories',
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.w700),
+                      ),
+                      InkWell(
+                        onTap: () {
+                          LayoutCubit.get(context).changeBottomScreen(1);
+                        },
+                        child: const Text(
+                          'See All',
+                          style: TextStyle(
+                              fontSize: 16, fontWeight: FontWeight.w400),
                         ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 25,
-                    ),
-                    CategoryListView(categoryRepo: CategoryRepo()),
-                    const SizedBox(
-                      height: 25,
-                    ),
-                    const Text(
-                      'Product',
-                      style: TextStyle(
-                          color: kPrimaryColor,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w700),
-                    ),
-                    const SizedBox(
-                      height: 24,
-                    ),
-                    ProductListView(productModel: state.productModel),
-                  ]),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 25,
+                  ),
+                  CategoryListView(categoryRepo: CategoryRepo()),
+                  const SizedBox(
+                    height: 25,
+                  ),
+                  const Text(
+                    'Product',
+                    style: TextStyle(
+                        color: kPrimaryColor,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w700),
+                  ),
+                  const SizedBox(
+                    height: 24,
+                  ),
+                  ProductListView(productModel: state.productModel),
+                ],
+              ),
             ),
           );
         } else if (state is HomeFailure) {

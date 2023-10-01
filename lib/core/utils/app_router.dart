@@ -1,4 +1,5 @@
 import 'package:go_router/go_router.dart';
+import 'package:trade_fashion/constants.dart';
 import 'package:trade_fashion/features/auth/presentation/views/login_view.dart';
 import 'package:trade_fashion/features/auth/presentation/views/register_view.dart';
 import 'package:trade_fashion/features/auth/presentation/views/reset_password_view.dart';
@@ -31,7 +32,9 @@ class AppRouter {
     routes: [
       GoRoute(
         path: '/',
-        builder: (context, state) => const SplashView(),
+        builder: (context, state){
+         return token == null ? const SplashView():const LayoutView();
+        },
       ),
       GoRoute(
         path: kLoginView,

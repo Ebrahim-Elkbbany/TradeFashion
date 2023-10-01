@@ -20,7 +20,7 @@ class FavouritesCubit extends Cubit<FavouritesState> {
    await db!.query(
       'favourite',
       where: 'email = ?',
-      whereArgs: [tokenEmail],
+      whereArgs: [token],
     ).then((value) {
       favouritesList=value;
       emit(GetFavouritesSuccessState(value));
@@ -46,14 +46,14 @@ class FavouritesCubit extends Cubit<FavouritesState> {
     final existingItems = await myDb?.query(
       'favourite',
       where: 'productId = ? AND email = ?',
-      whereArgs: [productId, tokenEmail],
+      whereArgs: [productId, token],
     );
     if (existingItems!.isEmpty) {
       await myDb?.insert('favourite', {
         "productName": productName,
         "productId": productId,
         "price": price,
-        "email": tokenEmail,
+        "email": token,
         "image": image,
         "isFavorite":'true',
         "image1": image1,
@@ -80,7 +80,7 @@ class FavouritesCubit extends Cubit<FavouritesState> {
       'favourite',
       {'isFavorite': isFavorite},
       where: 'productId = ? AND email = ?',
-      whereArgs: [productId, tokenEmail],
+      whereArgs: [productId, token],
     );
     getFavourite();
     emit(UpdateFavoriteState());
@@ -92,7 +92,7 @@ class FavouritesCubit extends Cubit<FavouritesState> {
     await myDb?.delete(
       'favourite',
       where: 'productId = ? AND email = ?',
-      whereArgs: [productId, tokenEmail],
+      whereArgs: [productId, token],
     ).then((value) {
       favouritesId.remove(productId);
       emit(InsertFavouritesSuccessState());

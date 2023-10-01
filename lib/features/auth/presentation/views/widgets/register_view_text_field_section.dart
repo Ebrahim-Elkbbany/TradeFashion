@@ -2,9 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trade_fashion/core/widgets/custom_text_form_field.dart';
 import 'package:trade_fashion/features/auth/presentation/manger/auth_cubit.dart';
+import 'package:trade_fashion/features/home/presentation/manger/home_cubit.dart';
 
+import '../../../../../constants.dart';
 import '../../../../../core/utils/component.dart';
+import '../../../../../core/utils/shared_prefrence.dart';
 import '../../../../../core/widgets/custom_button.dart';
+import '../../../../category/presentation/manger/category_product_cubit/category_product_cubit.dart';
+import '../../../../favourites/presentation/manger/favourites_cubit/favourites_cubit.dart';
 import '../../../../layout/layout.dart';
 
 class RegisterViewTextFieldSection extends StatelessWidget {
@@ -22,7 +27,12 @@ class RegisterViewTextFieldSection extends StatelessWidget {
       child: BlocConsumer<AuthCubit, AuthState>(
         listener: (context, state) {
           if (state is RegisterSuccessState) {
-            navigateTo(context, const LayoutView());
+            CategoryProductCubit().getCategoryProduct(categoryId: 4208);
+            FavouritesCubit().getFavourite();
+            HomeCubit().getHomeProduct();
+            SharedPreference.setData(key: 'tokenEmail', value: tokenEmail).then((value) {
+              navigateTo(context, const LayoutView());
+            });
           }
         },
         builder: (context, state) {

@@ -18,7 +18,7 @@ class CartCubit extends Cubit<CartState> {
     await db!.query(
       'cart',
       where: 'email = ?',
-      whereArgs: [tokenEmail],
+      whereArgs: [token],
     ).then((value) {
       cartList=value;
       emit(GetCartSuccessState(value));
@@ -42,7 +42,7 @@ class CartCubit extends Cubit<CartState> {
     final existingItems = await db?.query(
       'cart',
       where: 'productId = ? AND email = ?',
-      whereArgs: [productId, tokenEmail],
+      whereArgs: [productId, token],
     );
     if (existingItems!.isEmpty) {
       await db?.insert('cart', {
@@ -50,7 +50,7 @@ class CartCubit extends Cubit<CartState> {
         "productId":productId,
         'Quantity':quantity,
         "price": price,
-        "email": tokenEmail,
+        "email": token,
         "image": image,
         "color": color,
         "size": size,
@@ -74,7 +74,7 @@ class CartCubit extends Cubit<CartState> {
       'cart',
       {'quantity': index},
       where: 'productId = ? AND email = ?',
-      whereArgs: [productId, tokenEmail],
+      whereArgs: [productId, token],
     );
     getCart();
     emit(ChangeQuantityState());
@@ -84,7 +84,7 @@ class CartCubit extends Cubit<CartState> {
     await myDb?.delete(
     'cart',
     where: 'productId = ? AND email = ?',
-    whereArgs: [productId, tokenEmail],
+    whereArgs: [productId, token],
     );
     getCart();
     emit(DeleteCartState());
