@@ -29,14 +29,13 @@ class LoginViewBody extends StatelessWidget {
       child: BlocConsumer<AuthCubit, AuthState>(
         listener: (context, state) {
           if (state is LoginSuccessState) {
-            CategoryProductCubit().getCategoryProduct(categoryId: 4208);
-            FavouritesCubit().getFavourite();
-            HomeCubit().getHomeProduct();
-            SharedPreference.setData(key: 'tokenEmail', value: tokenEmail).then(
-              (value) {
-                navigateTo(context, const LayoutView());
-              },
-            );
+            SharedPreference.setData(key: 'tokenEmail', value: tokenEmail).then((value) {
+              token = SharedPreference.getData(key: 'tokenEmail');
+              CategoryProductCubit().getCategoryProduct(categoryId: 4208);
+              FavouritesCubit().getFavourite();
+              HomeCubit().getHomeProduct();
+              navigateTo(context, const LayoutView());
+            });
           }
         },
         builder: (context, state) {

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:sqflite/sqflite.dart';
+import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'package:trade_fashion/constants.dart';
 
 import 'package:trade_fashion/core/utils/app_router.dart';
@@ -18,7 +19,10 @@ import 'features/layout/manger/layout_cubit.dart';
 import 'features/product_details/presentation/manger/product_details_cubit/product_details_cubit.dart';
 
 void main() async{
-  // Initialize FFI
+
+  sqfliteFfiInit();
+  databaseFactory = databaseFactoryFfi;
+
   WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = AppBlocObserver();
   await SharedPreference.init();
@@ -37,9 +41,9 @@ class TradeFashion extends StatelessWidget {
         BlocProvider(create: (context) => LayoutCubit()),
         BlocProvider(create: (context) => AuthCubit()),
         BlocProvider(create: (context) => CartCubit()),
-        BlocProvider(create: (context) => CategoryProductCubit()..getCategoryProduct(categoryId: 4208)),
-        BlocProvider(create:(context) => FavouritesCubit()..getFavourite()),
-        BlocProvider(create: (context) => HomeCubit()..getHomeProduct()),
+        BlocProvider(create: (context) => CategoryProductCubit()),
+        BlocProvider(create:(context) => FavouritesCubit()),
+        BlocProvider(create: (context) => HomeCubit()),
         BlocProvider(create: (context) => ProductDetailsCubit()),
       ],
       child: MaterialApp.router(
