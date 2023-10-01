@@ -32,9 +32,11 @@ class LoginViewBody extends StatelessWidget {
             CategoryProductCubit().getCategoryProduct(categoryId: 4208);
             FavouritesCubit().getFavourite();
             HomeCubit().getHomeProduct();
-            SharedPreference.setData(key: 'tokenEmail', value: tokenEmail).then((value) {
-              navigateTo(context, const LayoutView());
-            });
+            SharedPreference.setData(key: 'tokenEmail', value: tokenEmail).then(
+              (value) {
+                navigateTo(context, const LayoutView());
+              },
+            );
           }
         },
         builder: (context, state) {
@@ -54,7 +56,6 @@ class LoginViewBody extends StatelessWidget {
                       child: Image.asset(
                         AssetsData.loginImage,
                         fit: BoxFit.fill,
-
                       ),
                     ),
                     Text('Login', style: Styles.textStyle32),
@@ -77,11 +78,9 @@ class LoginViewBody extends StatelessWidget {
                     CustomTextFormField(
                       controller: passController,
                       type: TextInputType.visiblePassword,
-
                       validate: (value) {
-                        if (value!.isEmpty ) {
-
-                        return ('field must noy empty');
+                        if (value!.isEmpty) {
+                          return ('field must noy empty');
                         }
                       },
                       hintText: 'Password',
