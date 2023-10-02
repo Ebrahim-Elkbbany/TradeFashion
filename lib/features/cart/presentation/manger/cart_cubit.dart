@@ -28,7 +28,7 @@ class CartCubit extends Cubit<CartState> {
     });
   }
 
-  void insertbCart({
+  void insertToCart({
     required String productName,
     required String productId,
     required String price,

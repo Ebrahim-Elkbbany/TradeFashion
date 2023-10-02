@@ -20,16 +20,5 @@ class RegisterErrorState extends AuthState {}
 class InsertCartLoadingState extends AuthState {}
 class InsertCartSuccessState extends AuthState {
 }
-class InsertCartErrorState extends AuthState {}
-class GetCartLoadingState extends AuthState {}
-class GetCartSuccessState extends AuthState {
-  final List<Map<String, Object?>> ? cartList ;
-
-  GetCartSuccessState(this.cartList);
-
-}
-class GetCartErrorState extends AuthState {
-  final String error;
-
-  GetCartErrorState(this.error);
-}
+class GetUserSuccessState extends AuthState {}
+class UpdateSuccessState extends AuthState {}

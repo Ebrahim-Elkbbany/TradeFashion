@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trade_fashion/constants.dart';
+import '../auth/presentation/manger/auth_cubit.dart';
 import '../favourites/presentation/manger/favourites_cubit/favourites_cubit.dart';
 import 'manger/layout_cubit.dart';
 
@@ -12,6 +13,7 @@ class LayoutView extends StatelessWidget {
     return BlocBuilder<LayoutCubit, LayoutState>(
       builder: (context, state) {
          FavouritesCubit.get(context).getFavourite();
+         AuthCubit.get(context).getUsersByEmail(token!);
         var cubit=LayoutCubit.get(context);
         return Scaffold(
           body: cubit.bottomScreen[cubit.currentIndex],

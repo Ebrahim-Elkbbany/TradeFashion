@@ -43,7 +43,7 @@ class TradeFashion extends StatelessWidget {
         BlocProvider(create: (context) => CartCubit()),
         BlocProvider(create: (context) => CategoryProductCubit()),
         BlocProvider(create:(context) => FavouritesCubit()),
-        BlocProvider(create: (context) => HomeCubit()),
+        BlocProvider(create: (context) => HomeCubit()..getHomeProduct()),
         BlocProvider(create: (context) => ProductDetailsCubit()),
       ],
       child: MaterialApp.router(

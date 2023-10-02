@@ -3,29 +3,29 @@ import 'package:trade_fashion/constants.dart';
 import 'package:trade_fashion/core/utils/styles.dart';
 
 class CustomTextFormField extends StatelessWidget {
-  const CustomTextFormField({
-    Key? key,
-    this.controller,
-    this.isPassword = false,
-    this.type,
-    this.isClickable = true,
-    this.onSubmit,
-    this.onChange,
-    this.onTap,
-    this.validate,
-    this.hintText,
-    this.suffix,
-    this.suffixPressed,
-    this.maxLines = 1 ,
-    this.disabledBorderColor = const Color(0xffF4F4F4),
-    this.enabledBorderColor = const Color(0xffF4F4F4),
-    this.focusedBorderColor = kPrimaryColor,
-    this.fillColor = const Color(0xffF4F4F4),
-    this.boarderRadius = 8,
-    this.prefix,
-    this.prefixColor,
-    this.labelText
-  }) : super(key: key);
+  const CustomTextFormField(
+      {Key? key,
+      this.controller,
+      this.isPassword = false,
+      this.type,
+      this.isClickable = true,
+      this.onSubmit,
+      this.onChange,
+      this.onTap,
+      this.validate,
+      this.hintText,
+      this.suffix,
+      this.suffixPressed,
+      this.maxLines = 1,
+      this.disabledBorderColor = const Color(0xffF4F4F4),
+      this.enabledBorderColor = const Color(0xffF4F4F4),
+      this.focusedBorderColor = kPrimaryColor,
+      this.fillColor = const Color(0xffF4F4F4),
+      this.boarderRadius = 8,
+      this.prefix,
+      this.prefixColor,
+      this.labelText})
+      : super(key: key);
 
   final TextEditingController? controller;
   final TextInputType? type;
@@ -66,9 +66,9 @@ class CustomTextFormField extends StatelessWidget {
         fillColor: fillColor,
         prefixIcon: prefix != null
             ? Icon(
-                  prefix,
-                  color: prefixColor,
-                )
+                prefix,
+                color: prefixColor,
+              )
             : null,
         disabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(boarderRadius),
@@ -83,7 +83,7 @@ class CustomTextFormField extends StatelessWidget {
             borderSide: BorderSide(color: focusedBorderColor)),
         hintText: hintText,
         labelText: labelText,
-        hintStyle: Styles.textStyle16.copyWith(color: const Color(0xff8E8E8E)),
+        hintStyle: Styles.textStyle16.copyWith(color: kPrimaryColor),
         suffixIcon: suffix != null
             ? IconButton(
                 onPressed: suffixPressed,
