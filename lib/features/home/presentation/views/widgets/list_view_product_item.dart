@@ -30,7 +30,7 @@ class ListViewProductItem extends StatelessWidget {
                 image2: productModelProduct!.additionalImageUrls![1],
                 image3: productModelProduct!.additionalImageUrls![2],
                 name: productModelProduct!.name!,
-                price: productModelProduct!.price!.current!.value.toString(),
+                price: productModelProduct!.price!.current!.text.toString(),
                 productId: productModelProduct!.id!.toString(),
               ),
             ));
