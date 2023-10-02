@@ -1,17 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:trade_fashion/core/utils/styles.dart';
 
-ThemeData lightTheme=ThemeData(
-  appBarTheme: const AppBarTheme(
-    iconTheme: IconThemeData(color: Colors.black),
-    systemOverlayStyle: SystemUiOverlayStyle(
+ThemeData lightTheme = ThemeData(
+  appBarTheme: AppBarTheme(
+    elevation: 0,
+    backgroundColor: Colors.white,
+    systemOverlayStyle: SystemUiOverlayStyle.light.copyWith(
       statusBarColor: Colors.white,
+      statusBarBrightness: Brightness.light,
       statusBarIconBrightness: Brightness.dark,
     ),
-    backgroundColor: Colors.white,
-    elevation: 0,
-    toolbarHeight: 58,
+    centerTitle: true,
+    iconTheme: const IconThemeData(color: Colors.black),
+    titleTextStyle: Styles.textStyle16.copyWith(
+      fontWeight: FontWeight.bold,
+      color: Colors.black,
+    ),
   ),
   scaffoldBackgroundColor: Colors.white,
   bottomNavigationBarTheme: const BottomNavigationBarThemeData(
@@ -22,23 +28,29 @@ ThemeData lightTheme=ThemeData(
     unselectedItemColor: Colors.grey,
   ),
 );
-ThemeData darkTheme=ThemeData(
-  appBarTheme:  AppBarTheme(
-    iconTheme: IconThemeData(color: Colors.white),
-    systemOverlayStyle: SystemUiOverlayStyle(
-      statusBarColor: Colors.black,
-      statusBarIconBrightness: Brightness.light,
-    ),
-    backgroundColor: Colors.black,
+ThemeData darkTheme = ThemeData(
+  appBarTheme: AppBarTheme(
     elevation: 0,
-    toolbarHeight: 58.h,
+    backgroundColor: Colors.white,
+    systemOverlayStyle: SystemUiOverlayStyle.light.copyWith(
+      statusBarColor: Colors.white,
+      statusBarBrightness: Brightness.light,
+      statusBarIconBrightness: Brightness.dark,
+    ),
+    centerTitle: true,
+    iconTheme: const IconThemeData(color: Colors.black),
+    titleTextStyle: Styles.textStyle16.copyWith(
+      fontWeight: FontWeight.bold,
+      color: Colors.black,
+    ),
   ),
-  scaffoldBackgroundColor: Colors.black,
+  scaffoldBackgroundColor: Colors.white,
   bottomNavigationBarTheme: const BottomNavigationBarThemeData(
     type: BottomNavigationBarType.fixed,
-    backgroundColor: Colors.black,
+    backgroundColor: Colors.white,
     selectedItemColor: Colors.blueAccent,
     elevation: 20.0,
     unselectedItemColor: Colors.grey,
   ),
 );
+
