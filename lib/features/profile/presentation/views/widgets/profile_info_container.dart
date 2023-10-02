@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:trade_fashion/constants.dart';
 import 'package:trade_fashion/core/utils/app_router.dart';
 import 'package:trade_fashion/core/utils/styles.dart';
 import 'package:trade_fashion/core/widgets/custom_text_button.dart';
+import 'package:trade_fashion/features/auth/presentation/manger/auth_cubit.dart';
 
 class ProfileInfoContainer extends StatelessWidget {
   const ProfileInfoContainer({Key? key}) : super(key: key);
@@ -22,29 +24,29 @@ class ProfileInfoContainer extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Text(
-                  'Gilbert Jones',
-                  style: Styles.textStyle16.copyWith(
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                Text(
-                  'Glbertjones001@gmail.com',
-                  style: Styles.textStyle16.copyWith(
-                    color: Colors.black45,
-                  ),
-                ),
-                Text(
-                  '121-224-7890',
-                  style: Styles.textStyle16.copyWith(
-                    color: Colors.black45,
-                  ),
-                ),
-              ],
+            BlocBuilder<AuthCubit, AuthState>(
+              builder: (context, state) {
+               var cubit=AuthCubit.get(context);
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      cubit.authModel['firstName']+" "+cubit.authModel['lastName'],
+                      style: Styles.textStyle16.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 5,),
+                    Text(
+                      cubit.authModel['email'],
+                      style: Styles.textStyle16.copyWith(
+                        color: Colors.black45,
+                      ),
+                    ),
+                  ],
+                );
+              },
             ),
             CustomTextButton(
               text: 'Edit',

@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sqflite/sqflite.dart';
 import 'package:trade_fashion/constants.dart';
 import '../../../../core/widgets/toast.dart';
 import '../../data/model.dart';
@@ -11,13 +12,22 @@ class AuthCubit extends Cubit<AuthState> {
     return BlocProvider.of(context);
   }
 
+  dynamic authModel;
+
   Future<List<Map<String, dynamic>>> getUsersByEmail(String email) async {
     final db = await DatabaseHelper().db;
-    return await db!.query(
+     final result= await db!.query(
       'users',
       where: 'email = ?',
       whereArgs: [email],
     );
+    for (var element in result) {
+      if(element['email']==token){
+        authModel=element;
+      }
+    }
+    emit(GetUserSuccessState());
+     return result;
   }
 
   Future<void> login({
@@ -32,6 +42,7 @@ class AuthCubit extends Cubit<AuthState> {
           user['password']; // استخراج كلمة المرور المخزنة في الجدول
 
       if (password == storedPassword) {
+
         tokenEmail = email;
         // تسجيل الدخول ناجح
         emit(LoginSuccessState(5));
@@ -70,6 +81,7 @@ class AuthCubit extends Cubit<AuthState> {
         firstName: firstName,
         lastName: lastName).then((value){
        tokenEmail = email;
+
       emit(RegisterSuccessState(5));
       showToast(message: 'تم تسجيل الدخول ناجح ',state: ToastStates.error)  ;
 
@@ -80,6 +92,20 @@ class AuthCubit extends Cubit<AuthState> {
 
     });
   }
+
+  void updateUserData({required String firstName,required String lastName,required String email,required String password}) async {
+    Database? myDb = await DatabaseHelper().db;
+    await myDb?.update(
+      'users',
+      {'firstName': firstName,'lastName':lastName,'email': email,'password': password,},
+      where: ' email = ?',
+      whereArgs: [token],
+    );
+    getUsersByEmail(token!);
+    showToast(message: 'Data Update Successfully', state: ToastStates.success);
+    emit(UpdateSuccessState());
+  }
+
 
 
 

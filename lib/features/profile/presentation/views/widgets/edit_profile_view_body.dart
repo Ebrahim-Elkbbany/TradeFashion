@@ -41,13 +41,7 @@ class EditProfileViewBody extends StatelessWidget {
                 height: 32,
               ),
               const EditProfileViewTextFieldSec(),
-              const SizedBox(height: 70),
-              CustomButton(
-                buttonName: 'Save Changes',
-                radius: 8,
-                onPressed: () {
-                },
-              ),
+
 
             ],
           ),

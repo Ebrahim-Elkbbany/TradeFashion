@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trade_fashion/constants.dart';
-import 'package:trade_fashion/core/utils/component.dart';
 import 'package:trade_fashion/core/widgets/custom_circular_indicator.dart';
 import 'package:trade_fashion/core/widgets/custom_error_widget.dart';
 import 'package:trade_fashion/core/widgets/custom_text_form_field.dart';
-import 'package:trade_fashion/features/favourites/presentation/views/favourites_view.dart';
 import 'package:trade_fashion/features/home/presentation/manger/home_cubit.dart';
 import 'package:trade_fashion/features/home/presentation/views/widgets/product_list_view.dart';
 import 'package:trade_fashion/features/layout/manger/layout_cubit.dart';
@@ -35,14 +33,8 @@ class HomeViewBody extends StatelessWidget {
                     children: [
                       Image.asset(AssetsData.profile),
                       const Spacer(),
-                      IconButton(
-                          onPressed: () {
-                            navigateTo(
-                                context,
-                                FavouritesView(
-                                    productModel: state.productModel));
-                          },
-                          icon: const Icon(Icons.favorite))
+                      Image.asset(AssetsData.lockImage),
+
                     ],
                   ),
                   const SizedBox(
