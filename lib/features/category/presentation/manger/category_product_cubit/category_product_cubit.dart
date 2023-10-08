@@ -15,7 +15,8 @@ class CategoryProductCubit extends Cubit<CategoryProductState> {
   ProductModel? categoryProductModel;
    getCategoryProduct({int? categoryId})async{
     emit(CategoryProductLoading());
-    await ApiService(Dio()).get(endPoint:'v2/list' ,queryParams: {
+    await ApiService(Dio()).get(endPoint:'v2/list' ,
+      queryParams: {
       'store': 'US',
       'offset': '0',
       'categoryId': '$categoryId',

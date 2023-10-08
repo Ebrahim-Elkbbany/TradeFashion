@@ -74,7 +74,7 @@ class ListViewFavouriteItem extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(left: 10),
                 child: Text(
-                  price,
+                  '$price \$',
                   style:
                       Styles.textStyle16.copyWith(fontWeight: FontWeight.w500),
                 ),

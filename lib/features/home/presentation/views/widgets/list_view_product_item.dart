@@ -30,7 +30,7 @@ class ListViewProductItem extends StatelessWidget {
                 image2: productModelProduct!.additionalImageUrls![1],
                 image3: productModelProduct!.additionalImageUrls![2],
                 name: productModelProduct!.name!,
-                price: productModelProduct!.price!.current!.text.toString(),
+                price: productModelProduct!.price!.current!.value.toString(),
                 productId: productModelProduct!.id!.toString(),
               ),
             ));
@@ -90,7 +90,7 @@ class ListViewProductItem extends StatelessWidget {
                   onPressed: () {
                     FavouritesCubit.get(context).insertFavourite(
                       productName: productModelProduct!.name!,
-                      price: productModelProduct!.price!.current!.text!,
+                      price: productModelProduct!.price!.current!.value!.toString(),
                       image: productModelProduct!.imageUrl!,
                       productId: "${productModelProduct!.id}",
                       image1: productModelProduct!.additionalImageUrls![0],

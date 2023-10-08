@@ -33,9 +33,10 @@ class AddCardButtonSection extends StatelessWidget {
           const Spacer(),
           AddCardButton(onTap: () {
             CartCubit.get(context).insertToCart(
+              totalPrice: double.parse(price),
                 productName: name,
                 productId: productId,
-                price: price,
+                price: double.parse(price),
                 quantity: 1,
                 image: mainImage,
                 color: 'Black',
