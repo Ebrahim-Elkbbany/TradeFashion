@@ -13,11 +13,13 @@ class ListViewItem extends StatelessWidget {
     required this.productId,
     required this.quantity,
     required this.indexItem,
+     required this.totalPrice,
   });
 
   final CartCubit cubit;
   final String name;
   final String price;
+   final int totalPrice;
   final int quantity;
   final int indexItem;
   final String image;
@@ -25,7 +27,7 @@ class ListViewItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-     String intPrice=price.characters.getRange(1).string;
+     // String intPrice=price.characters.getRange(1).string;
     return Container(
       padding: const EdgeInsetsDirectional.all(10),
       width: double.infinity,
@@ -95,7 +97,7 @@ class ListViewItem extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Text(
-                '${double.parse(intPrice).round()*quantity} \$' ,
+                '${double.parse(price).round()*quantity} \$' ,
                 style: Styles.textStyle16.copyWith(
                   fontWeight: FontWeight.bold,
                 ),
@@ -112,6 +114,7 @@ class ListViewItem extends StatelessWidget {
                         onPressed: () {
                           cubit.changeQuantity(
                               quantity + 1, productId, indexItem);
+
                         },
                         icon: const Icon(
                           Icons.add,
@@ -129,8 +132,7 @@ class ListViewItem extends StatelessWidget {
                             cubit.deleteCartItem(
                                 indexItem: indexItem, productId: productId);
                           }
-                          cubit.changeQuantity(
-                              quantity - 1, productId, indexItem);
+                          cubit.changeQuantity(quantity - 1, productId, indexItem);
                         },
                         icon: const Icon(
                           Icons.remove,

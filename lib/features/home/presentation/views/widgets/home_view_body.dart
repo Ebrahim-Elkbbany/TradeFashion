@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trade_fashion/constants.dart';
+import 'package:trade_fashion/core/utils/component.dart';
 import 'package:trade_fashion/core/widgets/custom_circular_indicator.dart';
 import 'package:trade_fashion/core/widgets/custom_error_widget.dart';
 import 'package:trade_fashion/core/widgets/custom_text_form_field.dart';
 import 'package:trade_fashion/features/home/presentation/manger/home_cubit.dart';
 import 'package:trade_fashion/features/home/presentation/views/widgets/product_list_view.dart';
 import 'package:trade_fashion/features/layout/manger/layout_cubit.dart';
+import 'package:trade_fashion/features/search/presentation/views/search_view.dart';
 import '../../../../../core/utils/assets.dart';
 import '../../../../category/data/category_repo.dart';
 import 'category_list_view.dart';
@@ -18,6 +20,7 @@ class HomeViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<HomeCubit, HomeState>(
       builder: (context, state) {
+        var cubit=HomeCubit.get(context);
         if (state is HomeSuccess) {
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -40,7 +43,10 @@ class HomeViewBody extends StatelessWidget {
                   const SizedBox(
                     height: 24,
                   ),
-                  const CustomTextFormField(
+                   CustomTextFormField(
+                   onTap: (){
+                     navigateTo(context, const SearchView());
+                   },
                     boarderRadius: 100,
                     prefix: Icons.search_outlined,
                     prefixColor: kPrimaryColor,
@@ -86,7 +92,7 @@ class HomeViewBody extends StatelessWidget {
                   const SizedBox(
                     height: 24,
                   ),
-                  ProductListView(productModel: state.productModel),
+                  ProductListView(productModel: cubit.productModel),
                 ],
               ),
             ),

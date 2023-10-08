@@ -20,7 +20,7 @@ class DatabaseHelper {
 
   Future<Database> initDb() async {
     final databasesPath = await getDatabasesPath();
-    final path = join(databasesPath, 'om.db');
+    final path = join(databasesPath, '002.db');
     var theDb = await openDatabase(path, version: 1, onCreate: _onCreate,onUpgrade: _onUpgrade);
     return theDb;
   }
@@ -46,7 +46,8 @@ class DatabaseHelper {
         productName TEXT,
         productId TEXT,
         quantity INTEGER,
-        price TEXT,
+        price INTEGER,
+        totalPrice INTEGER,
         email TEXT,
         image TEXT,
         color TEXT,
