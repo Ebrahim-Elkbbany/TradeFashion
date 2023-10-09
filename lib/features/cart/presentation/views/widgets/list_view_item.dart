@@ -13,13 +13,13 @@ class ListViewItem extends StatelessWidget {
     required this.productId,
     required this.quantity,
     required this.indexItem,
-     required this.totalPrice,
+     // required this.totalPrice,
   });
 
   final CartCubit cubit;
   final String name;
   final String price;
-   final int totalPrice;
+   // final int totalPrice;
   final int quantity;
   final int indexItem;
   final String image;
@@ -113,7 +113,7 @@ class ListViewItem extends StatelessWidget {
                       child: IconButton(
                         onPressed: () {
                           cubit.changeQuantity(
-                              quantity + 1, productId, indexItem);
+                              quantity + 1, productId);
 
                         },
                         icon: const Icon(
@@ -130,9 +130,9 @@ class ListViewItem extends StatelessWidget {
                         onPressed: () {
                           if (quantity == 1) {
                             cubit.deleteCartItem(
-                                indexItem: indexItem, productId: productId);
+                                productId: productId);
                           }
-                          cubit.changeQuantity(quantity - 1, productId, indexItem);
+                          cubit.changeQuantity(quantity - 1, productId,);
                         },
                         icon: const Icon(
                           Icons.remove,

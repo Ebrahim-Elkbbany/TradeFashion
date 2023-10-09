@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../constants.dart';
+
 class AddCardButton extends StatelessWidget {
   const AddCardButton({super.key, this.onTap});
 
@@ -11,7 +13,7 @@ class AddCardButton extends StatelessWidget {
       onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
-          color: const Color(0xffe64660),
+          color: kPrimaryColor,
           borderRadius: BorderRadius.circular(16),
         ),
         height: 50,        width: 200,
