@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../constants.dart';
+
 class ProductSpecificationContainer extends StatelessWidget {
   const ProductSpecificationContainer({Key? key}) : super(key: key);
 
@@ -24,9 +26,7 @@ class ProductSpecificationContainer extends StatelessWidget {
               ),
               child: Icon(
                 Icons.event_note_outlined,
-                color: Color(
-                  0xffe64660,
-                ),
+                color:kPrimaryColor,
               ),
             ),
           ),

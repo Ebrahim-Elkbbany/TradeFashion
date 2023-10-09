@@ -23,3 +23,4 @@ class GetCartErrorState extends CartInitial {
 
 class ChangeQuantityState extends CartInitial {}
 class DeleteCartState extends CartInitial {}
+class GetDoubleState extends CartInitial {}

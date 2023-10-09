@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trade_fashion/features/product_details/presentation/manger/product_details_cubit/product_details_cubit.dart';
 import 'package:trade_fashion/features/product_details/presentation/views/widgets/pruduct_images_container.dart';
+import '../../../../../constants.dart';
 import '../../../../home/data/models/product_model.dart';
 
 class ProductImagesColumn extends StatelessWidget {
@@ -51,7 +52,7 @@ class ProductImagesColumn extends StatelessWidget {
                 child: ProductImagesContainer(
                   image: mainImage,
                   color: cubit.selected == 0
-                      ? const Color(0xffe64660)
+                      ?  kPrimaryColor
                       : Colors.black12,
                 ),
               ),
@@ -65,7 +66,7 @@ class ProductImagesColumn extends StatelessWidget {
                 child: ProductImagesContainer(
                   image: image1,
                   color: cubit.selected == 1
-                      ? const Color(0xffe64660)
+                      ?kPrimaryColor
                       : Colors.black12,
                 ),
               ),
@@ -79,7 +80,7 @@ class ProductImagesColumn extends StatelessWidget {
                 child: ProductImagesContainer(
                   image: image2,
                   color: cubit.selected == 2
-                      ? const Color(0xffe64660)
+                      ? kPrimaryColor
                       : Colors.black12,
                 ),
               ),
@@ -94,7 +95,7 @@ class ProductImagesColumn extends StatelessWidget {
                 child: ProductImagesContainer(
                   image: image3,
                   color: cubit.selected == 3
-                      ? const Color(0xffe64660)
+                      ? kPrimaryColor
                       : Colors.black12,
                 ),
               ),

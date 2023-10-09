@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:trade_fashion/features/product_details/presentation/views/widgets/colors_container.dart';
 
+import '../../../../../constants.dart';
+
 class SelectColorContainer extends StatelessWidget {
   const SelectColorContainer({Key? key}) : super(key: key);
 
@@ -25,9 +27,7 @@ class SelectColorContainer extends StatelessWidget {
               ),
               child: Icon(
                 Icons.color_lens_outlined,
-                color: Color(
-                  0xffe64660,
-                ),
+                color:kPrimaryColor
               ),
             ),
           ),

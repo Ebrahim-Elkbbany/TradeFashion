@@ -9,6 +9,8 @@ import 'package:trade_fashion/features/layout/manger/layout_cubit.dart';
 import 'package:trade_fashion/features/profile/presentation/views/widgets/profile_info_container.dart';
 import 'package:trade_fashion/features/profile/presentation/views/widgets/profile_list_tile_section.dart';
 
+import '../../../../../constants.dart';
+
 
 class ProfileViewBody extends StatelessWidget {
   const ProfileViewBody({Key? key}) : super(key: key);
@@ -49,7 +51,7 @@ class ProfileViewBody extends StatelessWidget {
                 },
                 text: 'Sign Out',
                 textStyle: Styles.textStyle16.copyWith(
-                  color: const Color(0xffFA3636),
+                  color: kPrimaryColor,
                   fontWeight: FontWeight.bold,
                 ),
               ),

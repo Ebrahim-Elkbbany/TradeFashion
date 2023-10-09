@@ -11,6 +11,16 @@ class CartCubit extends Cubit<CartState> {
 
   List<Map<String, Object?>>? cartList;
 
+  double getTotal(){
+    double total=0;
+    for(var i in cartList! ){
+      total+=double.parse(i['quantity'].toString()) *double.parse(i['price'].toString());
+    }
+    print(total);
+    emit(GetDoubleState());
+    return total;
+  }
+
 
   Future<void> getCart() async {
     emit(GetCartLoadingState());
@@ -74,7 +84,7 @@ class CartCubit extends Cubit<CartState> {
   }
 
 
-  void changeQuantity(int index, productId,int indexItem) async {
+  void changeQuantity(int index, productId) async {
     Database? myDb = await DatabaseHelper().db;
     await myDb?.update(
       'cart',
@@ -96,7 +106,7 @@ class CartCubit extends Cubit<CartState> {
     getCart();
     emit(ChangeQuantityState());
   }
-  void deleteCartItem({required String productId, required int indexItem})async{
+  void deleteCartItem({required String productId})async{
     Database? myDb = await DatabaseHelper().db;
     await myDb?.delete(
     'cart',

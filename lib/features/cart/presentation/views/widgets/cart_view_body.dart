@@ -26,6 +26,8 @@ class CartViewBody extends StatelessWidget {
                 Align(
                   alignment:Alignment.centerRight,
                   child: CustomTextButton(
+                    onPressed: (){
+                    },
                     text: 'Remove All',
                     textStyle: Styles.textStyle16.copyWith(
                       fontWeight: FontWeight.w500,
@@ -47,7 +49,7 @@ class CartViewBody extends StatelessWidget {
                       cubit:cubit,
                       indexItem: index,
                       quantity:int.parse(cubit.cartList![index]['quantity'].toString()),
-                      totalPrice: int.parse(cubit.cartList![index]['totalPrice'].toString()),
+                      // totalPrice: int.parse(cubit.cartList![index]['totalPrice'].toString()),
                       name: cubit.cartList![index]['productName'].toString(),
                       price: (cubit.cartList![index]['price']).toString(),
                       image: cubit.cartList![index]['image'].toString(),
@@ -58,10 +60,7 @@ class CartViewBody extends StatelessWidget {
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.03,
                 ),
-                 TextButton(onPressed: (){
-                   print(int.parse(cubit.cartList![1]['quantity'].toString()) * int.parse(cubit.cartList![1]['price'].toString()),);
-                 }, child:Text('ggggggg')),
-                 const CheOutSec(),
+                  CheOutSec(cubit: cubit,),
               ],
             ),
           );
