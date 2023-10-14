@@ -23,16 +23,22 @@ class CartViewBody extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Column(
               children: [
-                Align(
-                  alignment:Alignment.centerRight,
-                  child: CustomTextButton(
-                    onPressed: (){
-                    },
-                    text: 'Remove All',
-                    textStyle: Styles.textStyle16.copyWith(
-                      fontWeight: FontWeight.w500,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    IconButton(onPressed: (){
+                      Navigator.pop(context);
+                    }, icon: const Icon(Icons.arrow_back_ios_new,)),
+                    CustomTextButton(
+                      onPressed: (){
+                        cubit.deleteCart();
+                      },
+                      text: 'Remove All',
+                      textStyle: Styles.textStyle16.copyWith(
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
-                  ),
+                  ],
                 ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.02,

@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:trade_fashion/core/utils/styles.dart';
-import 'package:trade_fashion/features/category/presentation/manger/category_product_cubit/category_product_cubit.dart';
 import 'package:trade_fashion/features/category/presentation/views/product_view.dart';
-import '../../../../../core/utils/app_router.dart';
 import '../../../../category/data/category_repo.dart';
 
 class CategoryListView extends StatelessWidget {

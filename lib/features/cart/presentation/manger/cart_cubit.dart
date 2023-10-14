@@ -11,16 +11,6 @@ class CartCubit extends Cubit<CartState> {
 
   List<Map<String, Object?>>? cartList;
 
-  double getTotal(){
-    double total=0;
-    for(var i in cartList! ){
-      total+=double.parse(i['quantity'].toString()) *double.parse(i['price'].toString());
-    }
-    print(total);
-    emit(GetDoubleState());
-    return total;
-  }
-
 
   Future<void> getCart() async {
     emit(GetCartLoadingState());
@@ -83,7 +73,15 @@ class CartCubit extends Cubit<CartState> {
     }
   }
 
-
+  double getTotal(){
+    double total=0;
+    for(var i in cartList! ){
+      total+=double.parse(i['quantity'].toString()) *double.parse(i['price'].toString());
+    }
+    print(total);
+    emit(GetDoubleState());
+    return total;
+  }
   void changeQuantity(int index, productId) async {
     Database? myDb = await DatabaseHelper().db;
     await myDb?.update(
@@ -95,23 +93,20 @@ class CartCubit extends Cubit<CartState> {
     getCart();
     emit(ChangeQuantityState());
   }
-  void changeTotalPrice({required double totalPrice, productId}) async {
+  void deleteCartItem({required String productId})async{
     Database? myDb = await DatabaseHelper().db;
-    await myDb?.update(
+    await myDb?.delete(
       'cart',
-      {'totalPrice': totalPrice},
       where: 'productId = ? AND email = ?',
       whereArgs: [productId, token],
     );
     getCart();
-    emit(ChangeQuantityState());
+    emit(DeleteCartState());
   }
-  void deleteCartItem({required String productId})async{
+  void deleteCart()async{
     Database? myDb = await DatabaseHelper().db;
     await myDb?.delete(
-    'cart',
-    where: 'productId = ? AND email = ?',
-    whereArgs: [productId, token],
+      'cart',
     );
     getCart();
     emit(DeleteCartState());
