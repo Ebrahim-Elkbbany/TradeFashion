@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:trade_fashion/core/utils/styles.dart';
-
 import 'widgets/cart_view_body.dart';
 
 class CartView extends StatelessWidget {

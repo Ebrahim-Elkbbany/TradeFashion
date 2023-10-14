@@ -5,6 +5,7 @@ import 'package:trade_fashion/core/utils/component.dart';
 import 'package:trade_fashion/core/widgets/custom_circular_indicator.dart';
 import 'package:trade_fashion/core/widgets/custom_error_widget.dart';
 import 'package:trade_fashion/core/widgets/custom_text_form_field.dart';
+import 'package:trade_fashion/features/cart/presentation/views/cart_view.dart';
 import 'package:trade_fashion/features/home/presentation/manger/home_cubit.dart';
 import 'package:trade_fashion/features/home/presentation/views/widgets/product_list_view.dart';
 import 'package:trade_fashion/features/layout/manger/layout_cubit.dart';
@@ -36,7 +37,9 @@ class HomeViewBody extends StatelessWidget {
                     children: [
                       Image.asset(AssetsData.profile),
                       const Spacer(),
-                      Image.asset(AssetsData.lockImage),
+                      IconButton(onPressed: (){
+                        navigateTo(context, const CartView());
+                      }, icon: const Icon(Icons.shopping_cart_sharp,))
 
                     ],
                   ),

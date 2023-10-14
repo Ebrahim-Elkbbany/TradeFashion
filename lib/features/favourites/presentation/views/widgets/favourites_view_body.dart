@@ -4,14 +4,12 @@ import 'package:trade_fashion/core/widgets/custom_circular_indicator.dart';
 import 'package:trade_fashion/core/widgets/custom_error_widget.dart';
 import 'package:trade_fashion/features/favourites/presentation/manger/favourites_cubit/favourites_cubit.dart';
 import 'package:trade_fashion/features/favourites/presentation/views/widgets/favourites_list_item.dart';
-import '../../../../home/data/models/product_model.dart';
 
 
 class FavouritesViewBody extends StatelessWidget {
   const FavouritesViewBody({
-    Key? key, required this.productModel,
+    Key? key,
   }) : super(key: key);
-  final ProductModel productModel;
 
   @override
   Widget build(BuildContext context) {

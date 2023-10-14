@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:trade_fashion/core/widgets/custom_button.dart';
 import 'package:trade_fashion/features/cart/presentation/views/widgets/custom_check_out_price_row.dart';
-
 import '../../manger/cart_cubit.dart';
 
 class CheOutSec extends StatelessWidget {

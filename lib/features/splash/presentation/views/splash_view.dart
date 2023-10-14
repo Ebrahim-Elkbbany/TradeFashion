@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:trade_fashion/constants.dart';
 import 'package:trade_fashion/features/splash/presentation/views/widgets/splash_view_body.dart';
 
