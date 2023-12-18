@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:sqflite/sqflite.dart';
-import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'package:trade_fashion/constants.dart';
-
 import 'package:trade_fashion/core/utils/app_router.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trade_fashion/core/utils/shared_prefrence.dart';
@@ -20,13 +17,13 @@ import 'features/product_details/presentation/manger/product_details_cubit/produ
 
 void main() async{
 
-  sqfliteFfiInit();
-  databaseFactory = databaseFactoryFfi;
+  // sqfliteFfiInit();
+  // databaseFactory = databaseFactoryFfi;
 
   WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = AppBlocObserver();
   await SharedPreference.init();
-   token = SharedPreference.getData(key: 'tokenEmail');
+   token = SharedPreference.getData(key:'tokenEmail');
   runApp( const TradeFashion());
 
 }

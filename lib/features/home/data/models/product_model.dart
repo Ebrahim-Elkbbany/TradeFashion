@@ -7,14 +7,15 @@ class ProductModel {
     this.products,
   });
 
-  factory ProductModel.fromJson(Map<String, dynamic> json) =>
-      ProductModel(
+  factory ProductModel.fromJson(Map<String, dynamic> json) => ProductModel(
         categoryName: json["categoryName"],
         products: json["products"] == null
             ? []
             : List<ProductModelProduct>.from(
-            json["products"]!.map((x) => ProductModelProduct.fromJson(x))),
-
+                json["products"]!.map(
+                  (x) => ProductModelProduct.fromJson(x),
+                ),
+              ),
       );
 }
 
@@ -52,7 +53,6 @@ class ProductModelProduct {
             ? []
             : List<String>.from(json["additionalImageUrls"]!.map((x) => x)),
       );
-
 }
 
 class Price {
@@ -64,15 +64,13 @@ class Price {
     this.previous,
   });
 
-  factory Price.fromJson(Map<String, dynamic> json) =>
-      Price(
+  factory Price.fromJson(Map<String, dynamic> json) => Price(
         current:
-        json["current"] == null ? null : Current.fromJson(json["current"]),
+            json["current"] == null ? null : Current.fromJson(json["current"]),
         previous: json["previous"] == null
             ? null
             : Current.fromJson(json["previous"]),
       );
-
 }
 
 class Current {
@@ -84,14 +82,12 @@ class Current {
     this.text,
   });
 
-  factory Current.fromJson(Map<String, dynamic> json) =>
-      Current(
+  factory Current.fromJson(Map<String, dynamic> json) => Current(
         value: json["value"]?.toDouble(),
         text: json["text"],
       );
 
-  Map<String, dynamic> toJson() =>
-      {
+  Map<String, dynamic> toJson() => {
         "value": value,
         "text": text,
       };
