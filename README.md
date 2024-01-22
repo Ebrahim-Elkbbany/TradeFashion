@@ -4,7 +4,7 @@ This project showcases a cutting-edge clothing application built with Flutter, f
 
 ## Key Features
 
-- **MVVM Design Pattern:** The application is structured following the Model-View-ViewModel (MVVM) design pattern for a scalable and maintainable architecture.
+- **MVVM:** The application is structured following the Model-View-ViewModel (MVVM) design pattern for a scalable and maintainable architecture.
 
 - **API Integration:** Utilizes Dio for efficient API integration, allowing the app to fetch and display real-time data.
 
