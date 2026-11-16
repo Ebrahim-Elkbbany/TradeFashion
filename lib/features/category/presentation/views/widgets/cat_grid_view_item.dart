@@ -1,10 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'package:trade_fashion/features/category/presentation/views/product_view.dart';
-import 'package:trade_fashion/features/home/presentation/manger/home_cubit.dart';
-import 'package:trade_fashion/features/home/presentation/manger/home_cubit.dart';
-
 import '../../../data/category_repo.dart';
 
 class CatGridViewItem extends StatelessWidget {

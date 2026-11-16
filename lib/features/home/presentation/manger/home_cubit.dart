@@ -31,7 +31,7 @@ class HomeCubit extends Cubit<HomeState> {
       emit(HomeSuccess(productModel!));
 
     }).catchError((error){
-      print(error.toString());
+
       emit(HomeFailure(error.toString()));
     });
   }

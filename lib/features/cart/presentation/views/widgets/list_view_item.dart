@@ -13,13 +13,11 @@ class ListViewItem extends StatelessWidget {
     required this.productId,
     required this.quantity,
     required this.indexItem,
-     // required this.totalPrice,
   });
 
   final CartCubit cubit;
   final String name;
   final String price;
-   // final int totalPrice;
   final int quantity;
   final int indexItem;
   final String image;

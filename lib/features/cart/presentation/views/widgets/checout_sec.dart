@@ -13,15 +13,15 @@ class CheOutSec extends StatelessWidget {
     int total=double.parse(cubit.getTotal().toString()).round();
     return  Column(
       children: [
-         CustomCheckOutPriceRow(text: 'Subtotal', price: '\$ $total'),
+         CustomCheckOutPriceRow(text: 'Subtotal:', price: '$total \$'),
         SizedBox(
           height: MediaQuery.of(context).size.height * 0.01,
         ),
-         CustomCheckOutPriceRow(text: 'Tax', price: '\$ ${(total*.05).round()}'),
+         CustomCheckOutPriceRow(text: 'Tax:', price: '${(total*.05).round()} \$'),
         SizedBox(
           height: MediaQuery.of(context).size.height * 0.01,
         ),
-         CustomCheckOutPriceRow(text: 'Subtotal', price: '\$  ${(total*.05).round() +total}'),
+         CustomCheckOutPriceRow(text: 'Subtotal:', price: '${(total*.05).round() +total} \$'),
         SizedBox(
           height: MediaQuery.of(context).size.height * 0.04,
         ),

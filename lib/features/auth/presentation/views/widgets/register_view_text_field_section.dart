@@ -44,7 +44,7 @@ class RegisterViewTextFieldSection extends StatelessWidget {
                 controller: fNameController,
                 validate: (value) {
                   if (value!.isEmpty) {
-                    return ('field must noy empty');
+                    return ('Field must not empty');
                   }
                   return null;
                 },
@@ -57,7 +57,7 @@ class RegisterViewTextFieldSection extends StatelessWidget {
                 controller: lNameController,
                 validate: (value) {
                   if (value!.isEmpty) {
-                    return ('field must noy empty');
+                    return ('Field must not empty');
                   }
                   return null;
                 },
@@ -70,7 +70,9 @@ class RegisterViewTextFieldSection extends StatelessWidget {
                 controller: emailController,
                 type: TextInputType.emailAddress,
                 validate: (value) {
-                  if (RegExp(r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$').hasMatch(value!) == false){
+                  if (value!.isEmpty) {
+                    return ('Field must not empty');
+                  }else if(RegExp(r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$').hasMatch(value) == false){
                      return ('Check your email');
                   }
                   return null;
@@ -82,10 +84,15 @@ class RegisterViewTextFieldSection extends StatelessWidget {
               ),
               CustomTextFormField(
                 controller: passController,
+                suffixPressed: () {
+                  cubit.changePasswordVisibility();
+                },
                 type: TextInputType.visiblePassword,
+                isPassword: cubit.isPassword,
+                suffix: cubit.suffix,
                 validate: (value) {
                   if (value!.isEmpty || value.length < 8) {
-                    return ('field must noy empty');
+                    return ('Field must not empty');
                   }
                   return null;
                 },
@@ -107,6 +114,9 @@ class RegisterViewTextFieldSection extends StatelessWidget {
 
                   // GoRouter.of(context).push(AppRouter.kLayoutView);
                 },
+              ),
+              const SizedBox(
+                height: 16,
               ),
             ],
           );

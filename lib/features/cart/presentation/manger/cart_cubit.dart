@@ -16,7 +16,7 @@ class CartCubit extends Cubit<CartState> {
     for(var i in cartList! ){
       total+=double.parse(i['quantity'].toString()) *double.parse(i['price'].toString());
     }
-    print(total);
+
     emit(GetDoubleState());
     return total;
   }
@@ -71,10 +71,9 @@ class CartCubit extends Cubit<CartState> {
         "color": color,
         "size": size,
       }).then((value) {
-        print(value);
         emit(InsertCartSuccessState());
       }).catchError((e) {
-        print(e.toString());
+
         emit(InsertCartErrorState());
       });
     } else {

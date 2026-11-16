@@ -66,8 +66,9 @@ class LoginViewBody extends StatelessWidget {
                       type: TextInputType.emailAddress,
                       validate: (value) {
                         if (value!.isEmpty) {
-                          return ('field must noy empty');
+                          return ('Email required');
                         }
+                        return null;
                       },
                       hintText: 'Email Address',
                     ),
@@ -75,12 +76,18 @@ class LoginViewBody extends StatelessWidget {
                       height: 20,
                     ),
                     CustomTextFormField(
+                      suffixPressed: () {
+                        cubit.changePasswordVisibility();
+                      },
                       controller: passController,
                       type: TextInputType.visiblePassword,
+                      isPassword: cubit.isPassword,
+                      suffix: cubit.suffix,
                       validate: (value) {
                         if (value!.isEmpty) {
-                          return ('field must noy empty');
+                          return ('Password required');
                         }
+                        return null;
                       },
                       hintText: 'Password',
                     ),
@@ -89,7 +96,7 @@ class LoginViewBody extends StatelessWidget {
                     ),
                     LoginViewRow(
                       buttonName: 'Reset',
-                      leftName: 'Forget Password? ',
+                      leftName: 'Forget Password ?  ',
                       onPressed: () {
                         GoRouter.of(context).push(AppRouter.kResetPassView);
                       },
@@ -121,14 +128,6 @@ class LoginViewBody extends StatelessWidget {
                       height: 30,
                     ),
                     ContinueWithContainer(
-                      image: 'assets/images/auth/apple_svg.png',
-                      name: 'Continue With Apple',
-                      onTap: () {},
-                    ),
-                    const SizedBox(
-                      height: 16,
-                    ),
-                    ContinueWithContainer(
                       image: 'assets/images/auth/google.png',
                       name: 'Continue With Google',
                       onTap: () {},
@@ -140,6 +139,9 @@ class LoginViewBody extends StatelessWidget {
                       image: 'assets/images/auth/Facebook.png',
                       name: 'Continue With Facebook',
                       onTap: () async {},
+                    ),
+                    const SizedBox(
+                      height: 20,
                     ),
                   ],
                 ),

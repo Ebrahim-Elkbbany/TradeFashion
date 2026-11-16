@@ -14,7 +14,7 @@ class ApiService {
       options: Options(
         headers: {
           'X-RapidAPI-Key':
-              'cf3c2bacefmsh0970afc0d2f3adfp1eb3a2jsnda1f282ba2f2',
+              '8333962330msh426c16e1d9aebaap11419fjsn59f23772962c',
           'X-RapidAPI-Host': 'asos2.p.rapidapi.com'
         },
       ),

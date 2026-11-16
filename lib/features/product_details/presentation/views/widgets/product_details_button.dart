@@ -18,7 +18,7 @@ class AddCardButton extends StatelessWidget {
         ),
         height: 50,        width: 200,
         child: const Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Text('Add To Card',
                 style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold,),),
