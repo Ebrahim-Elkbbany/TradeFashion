@@ -28,10 +28,10 @@ class CategoryProductCubit extends Cubit<CategoryProductState> {
       'lang': 'en-US'
     },).then((value){
       categoryProductModel=ProductModel.fromJson(value);
-      print(categoryProductModel!.products?[0].price?.current?.text);
+
       emit(CategoryProductSuccess(categoryProductModel!));
     }).catchError((error){
-      print(error.toString());
+
       emit(CategoryProductFailure(error.toString()));
     });
   }

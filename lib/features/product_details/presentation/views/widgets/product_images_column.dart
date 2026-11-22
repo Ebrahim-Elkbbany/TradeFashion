@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trade_fashion/features/product_details/presentation/manger/product_details_cubit/product_details_cubit.dart';
 import 'package:trade_fashion/features/product_details/presentation/views/widgets/pruduct_images_container.dart';
 import '../../../../../constants.dart';
-import '../../../../home/data/models/product_model.dart';
+
 
 class ProductImagesColumn extends StatelessWidget {
   const ProductImagesColumn(
@@ -90,7 +90,7 @@ class ProductImagesColumn extends StatelessWidget {
               GestureDetector(
                 onTap: () {
                   cubit.changeImage(3);
-                  print(cubit.indexImage);
+
                 },
                 child: ProductImagesContainer(
                   image: image3,

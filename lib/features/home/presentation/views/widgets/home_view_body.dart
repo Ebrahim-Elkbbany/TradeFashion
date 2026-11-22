@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trade_fashion/constants.dart';
 import 'package:trade_fashion/core/utils/component.dart';
+import 'package:trade_fashion/core/utils/styles.dart';
 import 'package:trade_fashion/core/widgets/custom_circular_indicator.dart';
 import 'package:trade_fashion/core/widgets/custom_error_widget.dart';
 import 'package:trade_fashion/core/widgets/custom_text_form_field.dart';
@@ -33,9 +34,15 @@ class HomeViewBody extends StatelessWidget {
                     height: 10,
                   ),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Image.asset(AssetsData.profile),
-                      const Spacer(),
+                      Text(
+                        'Home',
+                        style: Styles.textStyle20.copyWith(
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
                       Image.asset(AssetsData.lockImage),
 
                     ],

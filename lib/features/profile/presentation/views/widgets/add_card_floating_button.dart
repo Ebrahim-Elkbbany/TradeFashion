@@ -29,8 +29,8 @@ class AddCardFloatingActionButton extends StatelessWidget {
           },
         );
       },
-      child: const Icon(Icons.add),
       backgroundColor: kPrimaryColor,
+      child: const Icon(Icons.add),
     );
   }
 }

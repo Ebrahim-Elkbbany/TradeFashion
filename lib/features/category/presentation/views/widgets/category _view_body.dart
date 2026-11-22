@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import '../../../data/category_repo.dart';
 import 'cat_grid_view_item.dart';
@@ -11,7 +12,7 @@ class CategoryViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Text(''),
+        leading: const Text(''),
         title: const Text(
           'Category',
         ),

@@ -26,7 +26,7 @@ class ProductDetailsCubit extends Cubit<ProductDetailsState> {
       },
     ).then((value) {
       productDetailsModel = ProductDetailsModel.fromJson(value);
-      print(productDetailsModel?.media!.images?[0]);
+
       emit(ProductDetailsSuccess(productDetailsModel!));
     }).catchError((error) {
       emit(ProductDetailsFailure(error.toString()));

@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:trade_fashion/features/product_details/presentation/views/widgets/product_details_button.dart';
-
 import '../../../../cart/presentation/manger/cart_cubit.dart';
-import '../../../../home/data/models/product_model.dart';
-
 class AddCardButtonSection extends StatelessWidget {
   const AddCardButtonSection(
       {Key? key,
@@ -31,7 +28,8 @@ class AddCardButtonSection extends StatelessWidget {
             ),
           ),
           const Spacer(),
-          AddCardButton(onTap: () {
+          AddCardButton(
+              onTap: () {
             CartCubit.get(context).insertToCart(
               totalPrice: double.parse(price),
                 productName: name,

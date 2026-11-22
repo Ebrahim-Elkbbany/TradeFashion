@@ -22,3 +22,4 @@ class InsertCartSuccessState extends AuthState {
 }
 class GetUserSuccessState extends AuthState {}
 class UpdateSuccessState extends AuthState {}
+class ChangePasswordVisibility extends AuthState {}

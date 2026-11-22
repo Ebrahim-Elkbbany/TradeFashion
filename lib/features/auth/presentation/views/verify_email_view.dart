@@ -25,6 +25,9 @@ class VerifyEmailView extends StatelessWidget {
             const CustomTextFormField(
               hintText: 'Enter Code',
             ),
+            const SizedBox(
+              height: 32,
+            ),
             CustomButton(
               buttonName: 'Send Code',
               onPressed: () {
