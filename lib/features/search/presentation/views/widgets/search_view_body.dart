@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:trade_fashion/core/errors/failures.dart';
 import 'package:trade_fashion/core/widgets/custom_circular_indicator.dart';
 import 'package:trade_fashion/core/widgets/custom_error_widget.dart';
 import '../../../../../constants.dart';
@@ -65,7 +64,7 @@ class SearchViewBody extends StatelessWidget {
                       if( state is SearchFailure)
                         const CustomErrorWidget(errorMessage: 'No Result'),
                       if(state is! SearchSuccess&&state is! SearchLoading && state is! SearchFailure)
-                        const CustomErrorWidget(errorMessage: 'please enter any word'),
+                        const CustomErrorWidget(errorMessage: 'Please Enter any word'),
 
 
 

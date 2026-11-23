@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
-import 'package:trade_fashion/core/utils/assets.dart';
+
+import 'package:trade_fashion/core/utils/styles.dart';
 
 class AnimatedText extends StatelessWidget {
   const AnimatedText({
@@ -17,7 +18,7 @@ class AnimatedText extends StatelessWidget {
       builder: (context, _) {
         return SlideTransition(
           position: slidingAnimation,
-          child:  Image.asset(AssetsData.logoImage),
+          child:   Text("Trade \nFashion",style: Styles.textStyle32.copyWith(color: Colors.white,fontWeight: FontWeight.w700,fontSize: 42),textAlign: TextAlign.center),
         );
       },
     );

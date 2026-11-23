@@ -9,6 +9,7 @@ Widget customRadioListTile({required onChanged,required groupValue,required valu
     controlAffinity: ListTileControlAffinity.trailing,
     value: value,
     groupValue: groupValue,
+
     title:Text(title,style: Styles.textStyle16.copyWith(fontWeight: FontWeight.w500,color:color)),
     onChanged: onChanged,
   );

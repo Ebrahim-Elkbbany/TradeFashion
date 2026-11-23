@@ -29,7 +29,7 @@ class ListViewFavouriteItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        print(image1);
+
         Navigator.push(
             context,
             MaterialPageRoute(

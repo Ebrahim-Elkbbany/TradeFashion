@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:trade_fashion/constants.dart';
@@ -57,7 +58,7 @@ class AuthCubit extends Cubit<AuthState> {
     } else {
       // المستخدم غير موجود
       showToast(message: 'المستخدم غير موجود',state: ToastStates.error)  ;
-      print('المستخدم غير موجود');
+
       emit(LoginErrorState());
     }
   }
@@ -98,7 +99,7 @@ class AuthCubit extends Cubit<AuthState> {
     await myDb?.update(
       'users',
       {'firstName': firstName,'lastName':lastName,'email': email,'password': password,},
-      where: ' email = ?',
+      where: 'email = ?',
       whereArgs: [token],
     );
     getUsersByEmail(token!);
@@ -106,7 +107,15 @@ class AuthCubit extends Cubit<AuthState> {
     emit(UpdateSuccessState());
   }
 
+  IconData suffix = Icons.visibility_off_outlined;
+  bool isPassword = true;
 
+  void changePasswordVisibility() {
+    isPassword = !isPassword;
+    suffix =
+    isPassword ? Icons.visibility_off_outlined : Icons.visibility_outlined;
+    emit(ChangePasswordVisibility());
+  }
 
 
 

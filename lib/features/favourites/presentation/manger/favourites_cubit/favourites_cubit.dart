@@ -1,4 +1,3 @@
-import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:trade_fashion/constants.dart';
@@ -26,7 +25,6 @@ class FavouritesCubit extends Cubit<FavouritesState> {
       emit(GetFavouritesSuccessState(value));
     }
     ).catchError((e){
-      print(e);
       emit(GetFavouritesErrorState(e.toString()));
     });
 
@@ -65,7 +63,7 @@ class FavouritesCubit extends Cubit<FavouritesState> {
         getFavourite();
         emit(InsertFavouritesSuccessState());
       }).catchError((e) {
-        print(e.toString());
+
         emit(InsertFavouritesErrorState());
       });
     } else {
@@ -95,6 +93,7 @@ class FavouritesCubit extends Cubit<FavouritesState> {
       whereArgs: [productId, token],
     ).then((value) {
       favouritesId.remove(productId);
+      getFavourite();
       emit(InsertFavouritesSuccessState());
     }).catchError((e) {
       emit(InsertFavouritesErrorState());
